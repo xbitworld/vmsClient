@@ -83,6 +83,7 @@
             // 
             this.listViewPICs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewPICs.CheckBoxes = true;
             listViewItem1.StateImageIndex = 0;
             this.listViewPICs.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
