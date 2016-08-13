@@ -26,6 +26,8 @@ namespace VmsClientDemo
 
         private UCTimeRecPlay _timeRecPlay = new UCTimeRecPlay();
 
+        private UCPreview _PreviewPic = new UCPreview();
+
         private int iPicsAcocunt = 3;
 
         private Brush coverBrush = new SolidBrush(Color.FromArgb(96, Color.Black));
@@ -51,6 +53,9 @@ namespace VmsClientDemo
 
             this.tabPage4.Controls.Add(_timeRecPlay);
             _timeRecPlay.Dock = DockStyle.Fill;
+
+            this.tabPage5.Controls.Add(_PreviewPic);
+            _PreviewPic.Dock = DockStyle.Fill;
 
         }
 
@@ -377,41 +382,6 @@ namespace VmsClientDemo
                 MessageBox.Show("图片保存失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            switch (OrderChar)
-            {
-                case '1':
-                    Cap1.Text = @"已截-1";
-                    Cap2.Text = @"截图-2";
-                    Cap3.Text = @"截图-3";
-                    Cap4.Text = @"截图-4";
-                    Cap5.Text = @"截图-5";
-                    Cap6.Text = @"截图-6";
-
-                    accPICs.Enabled = false;
-                    break;
-                case '2':
-                    Cap2.Text = @"已截-2";
-                    break;
-                case '3':
-                    Cap3.Text = @"已截-3";
-                    break;
-                case '4':
-                    Cap4.Text = @"已截-4";
-                    break;
-                case '5':
-                    Cap5.Text = @"已截-5";
-                    break;
-                case '6':
-                    Cap6.Text = @"已截-6";
-                    break;
-            }
-
-            if (iPicsAcocunt.ToString() == OrderChar.ToString())
-            {
-                Cap1.Text = @"截图-1";
-                accPICs.Enabled = true;
-            }
         }
 
         private void SelectDIR_Click(object sender, EventArgs e)
@@ -422,22 +392,6 @@ namespace VmsClientDemo
             if (result == DialogResult.OK)
             {
                 SavePICPath.Text = fbd.SelectedPath;
-            }
-        }
-
-        private void PICAccChanged(object sender, EventArgs e)
-        {
-            Button []btList = {Cap1, Cap2, Cap3, Cap4, Cap5, Cap6};
-            iPicsAcocunt = this.accPICs.SelectedIndex + 1;
-            for (int iBT = 0; iBT < iPicsAcocunt;)
-            {
-                btList[iBT].Enabled = true;
-                iBT++;
-            }
-            for (int iBT = iPicsAcocunt; iBT < 6;)
-            {
-                btList[iBT].Enabled = false;
-                iBT++;
             }
         }
 
@@ -453,6 +407,12 @@ namespace VmsClientDemo
                 iColor = colorD.Color.ToArgb();
             }
         }
-       
+
+        private void ChoisePIC(object sender, EventArgs e)
+        {
+            this.VideoPlayTab.SelectedTab = this.tabPage5;
+
+            _PreviewPic.LoadImageList();
+        }
     }
 }

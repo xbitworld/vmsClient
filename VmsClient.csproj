@@ -50,6 +50,8 @@
     <Reference Include="Nvr.VideoLib.Sockets">
       <HintPath>DLL\Nvr.VideoLib.Sockets.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="Spnet.Core.Service">
       <HintPath>DLL\Spnet.Core.Service.dll</HintPath>
     </Reference>
@@ -66,6 +68,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -73,6 +76,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCPreview.Designer.cs">
+      <DependentUpon>UCPreview.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,9 +121,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UCPreVideoPlay.resx">
       <DependentUpon>UCPreVideoPlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCPreView.resx">
+      <DependentUpon>UCPreview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCRealVideo.resx">
       <DependentUpon>UCRealVideo.cs</DependentUpon>
@@ -134,6 +147,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="1454046538594.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
