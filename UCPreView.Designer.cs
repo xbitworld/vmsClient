@@ -36,6 +36,7 @@
             this.AmountTextbox = new System.Windows.Forms.TextBox();
             this.PICsList = new System.Windows.Forms.ImageList(this.components);
             this.listViewPICs = new System.Windows.Forms.ListView();
+            this.ListColumnHeader_1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,14 +77,20 @@
             // PICsList
             // 
             this.PICsList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PICsList.ImageStream")));
-            this.PICsList.TransparentColor = System.Drawing.Color.Transparent;
+            this.PICsList.TransparentColor = System.Drawing.Color.Empty;
             this.PICsList.Images.SetKeyName(0, "1454046538594.jpg");
+            this.PICsList.Images.SetKeyName(1, "1454046538594.jpg");
+            this.PICsList.Images.SetKeyName(2, "1454046538594.jpg");
             // 
             // listViewPICs
             // 
             this.listViewPICs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewPICs.BackColor = System.Drawing.SystemColors.Control;
             this.listViewPICs.CheckBoxes = true;
+            this.listViewPICs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ListColumnHeader_1});
+            this.listViewPICs.FullRowSelect = true;
             listViewItem1.StateImageIndex = 0;
             this.listViewPICs.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
@@ -93,10 +100,14 @@
             this.listViewPICs.OwnerDraw = true;
             this.listViewPICs.Size = new System.Drawing.Size(389, 773);
             this.listViewPICs.SmallImageList = this.PICsList;
-            this.listViewPICs.StateImageList = this.PICsList;
             this.listViewPICs.TabIndex = 0;
             this.listViewPICs.UseCompatibleStateImageBehavior = false;
             this.listViewPICs.View = System.Windows.Forms.View.List;
+            // 
+            // ListColumnHeader_1
+            // 
+            this.ListColumnHeader_1.Text = "截图列表";
+            this.ListColumnHeader_1.Width = 350;
             // 
             // UCPreview
             // 
@@ -120,5 +131,6 @@
         private System.Windows.Forms.TextBox AmountTextbox;
         private System.Windows.Forms.ImageList PICsList;
         private System.Windows.Forms.ListView listViewPICs;
+        private System.Windows.Forms.ColumnHeader ListColumnHeader_1;
     }
 }

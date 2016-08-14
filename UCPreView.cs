@@ -16,16 +16,17 @@ namespace VmsClientDemo
             InitializeComponent();
 
             PICsList.ImageSize = new Size(255, 255);
-            listViewPICs.Items.Add("缩略图");
-
-            System.Drawing.Image myImage =
-                Image.FromFile(@"C:\Users\dutao\Source\Repos\vmsClient\1454046538594.jpg");
-
-            PICsList.Images.Add(myImage);
         }
 
         public void LoadImageList()
         {
+            //listViewPICs.Items.Clear();
+            listViewPICs.Items.Add("缩略图");
+
+            listViewPICs.Items[0].ImageIndex = 1;
+            //Image myImage =
+            //    Image.FromFile(@".\1454046538594.jpg");
+            //PICsList.Images.Add(myImage);
 
             return;
         }
