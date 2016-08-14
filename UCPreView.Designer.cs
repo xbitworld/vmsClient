@@ -29,30 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCPreview));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("", 0);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.Confirm = new System.Windows.Forms.Button();
             this.AmountTextbox = new System.Windows.Forms.TextBox();
             this.PICsList = new System.Windows.Forms.ImageList(this.components);
             this.listViewPICs = new System.Windows.Forms.ListView();
-            this.ListColumnHeader_1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pictureBox
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::VmsClientDemo.Properties.Resources._1454046538594;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(872, 881);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox.Image = global::VmsClientDemo.Properties.Resources._1454046538594;
+            this.pictureBox.InitialImage = null;
+            this.pictureBox.Location = new System.Drawing.Point(0, -3);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(872, 881);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 1;
+            this.pictureBox.TabStop = false;
             // 
             // Confirm
             // 
@@ -76,61 +73,44 @@
             // 
             // PICsList
             // 
-            this.PICsList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PICsList.ImageStream")));
+            this.PICsList.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
+            this.PICsList.ImageSize = new System.Drawing.Size(200, 200);
             this.PICsList.TransparentColor = System.Drawing.Color.Empty;
-            this.PICsList.Images.SetKeyName(0, "1454046538594.jpg");
-            this.PICsList.Images.SetKeyName(1, "1454046538594.jpg");
-            this.PICsList.Images.SetKeyName(2, "1454046538594.jpg");
             // 
             // listViewPICs
             // 
             this.listViewPICs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewPICs.BackColor = System.Drawing.SystemColors.Control;
             this.listViewPICs.CheckBoxes = true;
-            this.listViewPICs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ListColumnHeader_1});
-            this.listViewPICs.FullRowSelect = true;
-            listViewItem1.StateImageIndex = 0;
-            this.listViewPICs.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listViewPICs.LargeImageList = this.PICsList;
             this.listViewPICs.Location = new System.Drawing.Point(878, 3);
+            this.listViewPICs.MultiSelect = false;
             this.listViewPICs.Name = "listViewPICs";
-            this.listViewPICs.OwnerDraw = true;
-            this.listViewPICs.Size = new System.Drawing.Size(389, 773);
-            this.listViewPICs.SmallImageList = this.PICsList;
-            this.listViewPICs.TabIndex = 0;
+            this.listViewPICs.Size = new System.Drawing.Size(389, 777);
+            this.listViewPICs.TabIndex = 4;
             this.listViewPICs.UseCompatibleStateImageBehavior = false;
-            this.listViewPICs.View = System.Windows.Forms.View.List;
-            // 
-            // ListColumnHeader_1
-            // 
-            this.ListColumnHeader_1.Text = "截图列表";
-            this.ListColumnHeader_1.Width = 350;
+            this.listViewPICs.SelectedIndexChanged += new System.EventHandler(this.listViewPICs_SelectedIndexChanged);
             // 
             // UCPreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listViewPICs);
             this.Controls.Add(this.AmountTextbox);
             this.Controls.Add(this.Confirm);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.listViewPICs);
+            this.Controls.Add(this.pictureBox);
             this.Name = "UCPreview";
             this.Size = new System.Drawing.Size(1270, 878);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button Confirm;
         private System.Windows.Forms.TextBox AmountTextbox;
         private System.Windows.Forms.ImageList PICsList;
         private System.Windows.Forms.ListView listViewPICs;
-        private System.Windows.Forms.ColumnHeader ListColumnHeader_1;
     }
 }

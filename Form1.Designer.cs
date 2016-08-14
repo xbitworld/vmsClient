@@ -68,6 +68,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.rstCAP = new System.Windows.Forms.Button();
             this.VideoPlayTab.SuspendLayout();
             this.LoginGroup.SuspendLayout();
             this.DevGroup.SuspendLayout();
@@ -198,7 +199,7 @@
             this.VideoPlayTab.Margin = new System.Windows.Forms.Padding(4);
             this.VideoPlayTab.Name = "VideoPlayTab";
             this.VideoPlayTab.SelectedIndex = 0;
-            this.VideoPlayTab.Size = new System.Drawing.Size(1234, 1070);
+            this.VideoPlayTab.Size = new System.Drawing.Size(1343, 1070);
             this.VideoPlayTab.TabIndex = 9;
             // 
             // tabPage1
@@ -207,7 +208,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1226, 1038);
+            this.tabPage1.Size = new System.Drawing.Size(1335, 1038);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "实时视频";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -317,6 +318,7 @@
             this.DevGroup.Controls.Add(this.fileStr2);
             this.DevGroup.Controls.Add(this.SavePICPath);
             this.DevGroup.Controls.Add(this.SelectDIR);
+            this.DevGroup.Controls.Add(this.rstCAP);
             this.DevGroup.Controls.Add(this.ChoisePICs);
             this.DevGroup.Controls.Add(this.Cap2);
             this.DevGroup.Controls.Add(this.Cap1);
@@ -388,7 +390,7 @@
             this.ChoisePICs.Location = new System.Drawing.Point(74, 233);
             this.ChoisePICs.Margin = new System.Windows.Forms.Padding(4);
             this.ChoisePICs.Name = "ChoisePICs";
-            this.ChoisePICs.Size = new System.Drawing.Size(322, 34);
+            this.ChoisePICs.Size = new System.Drawing.Size(133, 34);
             this.ChoisePICs.TabIndex = 14;
             this.ChoisePICs.Text = "选图";
             this.ChoisePICs.UseVisualStyleBackColor = true;
@@ -489,11 +491,23 @@
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // rstCAP
+            // 
+            this.rstCAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rstCAP.Location = new System.Drawing.Point(262, 233);
+            this.rstCAP.Margin = new System.Windows.Forms.Padding(4);
+            this.rstCAP.Name = "rstCAP";
+            this.rstCAP.Size = new System.Drawing.Size(133, 34);
+            this.rstCAP.TabIndex = 14;
+            this.rstCAP.Text = "截图复位";
+            this.rstCAP.UseVisualStyleBackColor = true;
+            this.rstCAP.Click += new System.EventHandler(this.ResetCAP);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1713, 1124);
+            this.ClientSize = new System.Drawing.Size(1822, 1124);
             this.Controls.Add(this.LoginGroup);
             this.Controls.Add(this.VideoPlayTab);
             this.Controls.Add(this.lstCamList);
@@ -553,6 +567,7 @@
         private System.Windows.Forms.PictureBox colorBox;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button rstCAP;
     }
 }
 
