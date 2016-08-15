@@ -47,9 +47,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::VmsClientDemo.Properties.Resources._1454046538594;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -3);
+            this.pictureBox1.Location = new System.Drawing.Point(0, -2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(872, 881);
+            this.pictureBox1.Size = new System.Drawing.Size(614, 587);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -57,9 +58,10 @@
             // Confirm
             // 
             this.Confirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Confirm.Location = new System.Drawing.Point(1099, 808);
+            this.Confirm.Location = new System.Drawing.Point(742, 539);
+            this.Confirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Confirm.Name = "Confirm";
-            this.Confirm.Size = new System.Drawing.Size(99, 39);
+            this.Confirm.Size = new System.Drawing.Size(66, 26);
             this.Confirm.TabIndex = 2;
             this.Confirm.Text = "确定";
             this.Confirm.UseVisualStyleBackColor = true;
@@ -67,9 +69,10 @@
             // AmountTextbox
             // 
             this.AmountTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AmountTextbox.Location = new System.Drawing.Point(957, 813);
+            this.AmountTextbox.Location = new System.Drawing.Point(647, 542);
+            this.AmountTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AmountTextbox.Name = "AmountTextbox";
-            this.AmountTextbox.Size = new System.Drawing.Size(100, 28);
+            this.AmountTextbox.Size = new System.Drawing.Size(68, 21);
             this.AmountTextbox.TabIndex = 3;
             this.AmountTextbox.Text = "0";
             this.AmountTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -95,10 +98,11 @@
             this.listViewPICs.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.listViewPICs.LargeImageList = this.PICsList;
-            this.listViewPICs.Location = new System.Drawing.Point(878, 3);
+            this.listViewPICs.Location = new System.Drawing.Point(618, 2);
+            this.listViewPICs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewPICs.Name = "listViewPICs";
             this.listViewPICs.OwnerDraw = true;
-            this.listViewPICs.Size = new System.Drawing.Size(389, 773);
+            this.listViewPICs.Size = new System.Drawing.Size(228, 517);
             this.listViewPICs.SmallImageList = this.PICsList;
             this.listViewPICs.TabIndex = 0;
             this.listViewPICs.UseCompatibleStateImageBehavior = false;
@@ -111,14 +115,15 @@
             // 
             // UCPreview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.AmountTextbox);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listViewPICs);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UCPreview";
-            this.Size = new System.Drawing.Size(1270, 878);
+            this.Size = new System.Drawing.Size(847, 585);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
