@@ -111,8 +111,9 @@ namespace VmsClientDemo
             }
 
             int iAmount = getFiles.Count();
-            if(iAmount < 1)
+            if(iAmount < 3)
             {
+                MessageBox.Show("截图数不能少于三张！");
                 return;
             }
 
