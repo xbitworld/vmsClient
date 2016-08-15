@@ -260,6 +260,7 @@ namespace VmsClientDemo
             }
         }
 
+        string picsDir = @"./";
         DateTime FirstFileTime = DateTime.Now;
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
@@ -365,6 +366,8 @@ namespace VmsClientDemo
                     Directory.CreateDirectory(strSavePath);
                 }
 
+                picsDir = strSavePath;
+
                 string finalFileName = ""; fileStr1.Text.ToString();
                 finalFileName = @"510122000000" + CamID.Text.Trim();
                 finalFileName += FirstFileTime.ToString("yyMMddHHmmss");
@@ -412,7 +415,12 @@ namespace VmsClientDemo
         {
             this.VideoPlayTab.SelectedTab = this.tabPage5;
 
-            _PreviewPic.LoadImageList();
+            _PreviewPic.LoadImageList(picsDir);
+        }
+
+        private void ResetCAP(object sender, EventArgs e)
+        {//Clear the list for the capture operation of the next time
+            _PreviewPic.resetList();
         }
     }
 }
