@@ -27,12 +27,6 @@ namespace VmsClientDemo
         {
             listViewPICs.Items.Clear();
             ShowImages(strPath);
-            //listViewPICs.Items.Add("缩略图");
-
-            //listViewPICs.Items[0].ImageIndex = 1;
-            //Image myImage =
-            //    Image.FromFile(@".\1454046538594.jpg");
-            //PICsList.Images.Add(myImage);
 
             //PICsList.ImageSize = new Size(255, 255);
 

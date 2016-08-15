@@ -413,7 +413,7 @@ namespace VmsClientDemo
 
         private void ChoisePIC(object sender, EventArgs e)
         {
-            this.VideoPlayTab.SelectedTab = this.tabPage5;
+            VideoPlayTab.SelectedTab = tabPage5;
 
             _PreviewPic.LoadImageList(picsDir);
         }
