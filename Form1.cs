@@ -261,17 +261,12 @@ namespace VmsClientDemo
         }
 
         string picsDir = @"./";
+        int iFilesCounter = 0;
         DateTime FirstFileTime = DateTime.Now;
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
         {
-            bool bFirst = false;
             Button sendBT = (Button)sender;
-            char OrderChar = Control.FromHandle(sendBT.Handle).Text[3];
-            if (OrderChar == '1')
-            {
-                bFirst = true;
-            }
 
             if (string.IsNullOrEmpty(SavePICPath.Text.Trim()))
             {
@@ -296,18 +291,16 @@ namespace VmsClientDemo
             //
 
             string picPath = "";
-            bool b = false;
+            bool bCaptured = false;
             if (VideoPlayTab.SelectedIndex == 0)
             {
-                if(bFirst == true)
-                {
-                    FirstFileTime = DateTime.Now;
-                }
+                FirstFileTime = DateTime.Now;
                 sb.Append("抓拍时间：" + FirstFileTime.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-                b = _real.SavePicToPath(out picPath);
+                bCaptured = _real.SavePicToPath(out picPath);
             }
             else if (VideoPlayTab.SelectedIndex == 1)
             {
+                //If the capture picture time are samed, user the OrderChar to tag it to avoid something wrong.
                 string strTm = _rec.getPlayTimeStr();
                 if (strTm == "")
                 {
@@ -317,19 +310,16 @@ namespace VmsClientDemo
                 {
                     string xMS = (new Random()).Next(1000).ToString("000"); //模拟毫秒数
                     sb.Append("抓拍时间：" + Convert.ToDateTime(strTm).ToString("yyyy-MM-dd HH:mm:ss") + xMS);
-                    if (bFirst == true)
-                    {
-                        FirstFileTime = Convert.ToDateTime(strTm);
-                    }
+                    FirstFileTime = Convert.ToDateTime(strTm + "." + xMS);
                 }
-                b = _rec.SaveRecPicToPath(out picPath);
+                bCaptured = _rec.SaveRecPicToPath(out picPath);
             }
             else
             {
                 return;
             }
 
-            if (!b)
+            if (!bCaptured)
             {
                 MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -361,24 +351,33 @@ namespace VmsClientDemo
                 System.IO.File.Delete(picPath); //删除原有图片
 
                 strSavePath += @"//抓取日期_" + DateTime.Now.ToString("yyyyMMdd") + @"//" + CamADD.Text;
+
+                picsDir = strSavePath;  //For the final save
+
+                strSavePath += @"//Temp";
+                picsDir = strSavePath;  //For the final save
+
                 if (!Directory.Exists(strSavePath))
                 {
                     Directory.CreateDirectory(strSavePath);
                 }
 
-                picsDir = strSavePath;
+                string finalFileName = "";
 
-                string finalFileName = ""; fileStr1.Text.ToString();
                 finalFileName = @"510122000000" + CamID.Text.Trim();
                 finalFileName += FirstFileTime.ToString("yyMMddHHmmss");
                 finalFileName += fileStr1.Text.ToString();
-                finalFileName += iPicsAcocunt.ToString();
-                finalFileName += OrderChar.ToString();
+                finalFileName += "nm";
+                finalFileName += iFilesCounter.ToString("D2");
                 finalFileName += "_" + VehicleID.Text.ToString() + "_";
                 finalFileName += fileStr2.Text.ToString();
 
                 finalFileName = strSavePath + @"//" + finalFileName + ".jpg";
                 image.Save(finalFileName.ToUpper());
+
+                //Thread.Sleep(1000);
+                _PreviewPic.AddImg(finalFileName, iFilesCounter);
+                iFilesCounter++;
             }
             else
             {
@@ -415,11 +414,12 @@ namespace VmsClientDemo
         {
             VideoPlayTab.SelectedTab = tabPage5;
 
-            _PreviewPic.LoadImageList(picsDir);
+            //_PreviewPic.LoadImageList(picsDir);
         }
 
         private void ResetCAP(object sender, EventArgs e)
         {//Clear the list for the capture operation of the next time
+            iFilesCounter = 0;
             _PreviewPic.resetList();
         }
     }

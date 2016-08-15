@@ -15,11 +15,28 @@ namespace VmsClientDemo
         public UCPreview()
         {
             InitializeComponent();
+
+            listViewPICs.View = View.LargeIcon;
+            listViewPICs.LargeImageList = PICsList;
         }
 
         public void resetList()
         {
+            pictureBox.Image.Dispose();
+            pictureBox.Image = VmsClientDemo.Properties.Resources._1454046538594;
+
+            for (int iLoop = 0; iLoop < listViewPICs.Items.Count; iLoop++)
+            {
+                string strFileName = PICsList.Images.Keys[iLoop];
+
+                Image currIMG = PICsList.Images[iLoop];
+                currIMG.Dispose();
+                File.Delete(strFileName);
+            }
+
+            PICsList.Images.Clear();
             listViewPICs.Items.Clear();
+
             return;
         }
 
@@ -27,66 +44,41 @@ namespace VmsClientDemo
         {
             listViewPICs.Items.Clear();
             ShowImages(strPath);
-
-            //PICsList.ImageSize = new Size(255, 255);
-
-            //ShowImages(@"C:\Users\dutao\Pictures\抓取日期_20160813\成都市人民南路三段17号");
             return;
         }
 
         private void ShowImages(string filePath)
         {
-            listViewPICs.View = View.LargeIcon;
-            listViewPICs.LargeImageList = PICsList;
-
             DirectoryInfo di = new DirectoryInfo(filePath);
-            FileInfo[] afi = di.GetFiles("*.*");
+            FileInfo[] afi = di.GetFiles("*.jpg");
 
             string temp;
             int j = 0;
             for (int i = 0; i < afi.Length; i++)
             {
                 temp = afi[i].Name.ToLower();
-                if (temp.EndsWith(".jpg"))
-                {
-                    AddImg(ref afi[i], ref j, ".jpg");
-                }
-                else if (temp.EndsWith(".jpeg"))
-                {
-                    AddImg(ref afi[i], ref j, ".jpeg");
-                }
-                else if (temp.EndsWith(".gif"))
-                {
-                    AddImg(ref afi[i], ref j, ".gif");
-                }
-                else if (temp.EndsWith(".png"))
-                {
-                    AddImg(ref afi[i], ref j, ".png");
-                }
-                else if (temp.EndsWith(".bmp"))
-                {
-                    AddImg(ref afi[i], ref j, ".bmp");
-                }
-                else if (temp.EndsWith(".tiff"))
-                {
-                    AddImg(ref afi[i], ref j, ".tiff");
-                }
+                AddImg(afi[i].FullName, j);
+                j++;
             }
         }
 
-        private void AddImg(ref FileInfo fi, ref int j, string ex)
+        public void AddImg(string FullName, int iOrderNumber)
         {
-            PICsList.Images.Add(Image.FromFile(fi.FullName));
-            PICsList.Images.SetKeyName(j, fi.FullName);
-            listViewPICs.Items.Add((j+1).ToString(), j);
-            j++;
+            System.IO.FileStream fs = new System.IO.FileStream(FullName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+            PICsList.Images.Add(Image.FromStream(fs));
+            fs.Close();
+            PICsList.Images.SetKeyName(iOrderNumber, FullName);
+            listViewPICs.Items.Add((iOrderNumber + 1).ToString(), iOrderNumber);
         }
 
         private void showCurrentSelected(int iIndexPIC)
         {
-            string strKey = PICsList.Images.Keys[iIndexPIC];
-            //Image currIMG = PICsList.Images[iIndexPIC];
-            pictureBox.Image = Image.FromFile(strKey);
+            string FileName = PICsList.Images.Keys[iIndexPIC];
+
+            System.IO.FileStream fs = new System.IO.FileStream(FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+            pictureBox.Image = Image.FromStream(fs);
+            fs.Close();
+
         }
 
         private void listViewPICs_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,6 +96,60 @@ namespace VmsClientDemo
                     break;
                 }
             }
+        }
+
+        private void Confirm_Click(object sender, EventArgs e)
+        {
+            List<string> getFiles = new List<string>();
+
+            for (int iLoop = 0; iLoop < listViewPICs.Items.Count; iLoop++)
+            {
+                if (listViewPICs.Items[iLoop].Checked == true)
+                {
+                    getFiles.Add(PICsList.Images.Keys[iLoop]);
+                }
+            }
+
+            int iAmount = getFiles.Count();
+            if(iAmount < 1)
+            {
+                return;
+            }
+
+            string fullPathOld = "";
+            string fullPathNew = "";
+
+            for (int iLoop = 0; iLoop < iAmount; iLoop ++)
+            {
+                System.IO.DirectoryInfo dirInfo = new DirectoryInfo(getFiles[iLoop]);
+
+                fullPathOld = dirInfo.Parent.FullName;
+                fullPathNew = dirInfo.Parent.Parent.FullName;
+                string fileNameOld = dirInfo.Name;
+
+                string[] strsName = fileNameOld.Split( '_');
+
+                string orderMark = iAmount.ToString() + (iLoop + 1).ToString();
+                string fileNameNew = strsName[0].Substring(0, strsName[0].Length - 4);
+                fileNameNew += orderMark + "_";
+                fileNameNew += strsName[1] + "_" + strsName[2];
+
+                string fullNameNew = fullPathNew + "\\" + fileNameNew;
+
+                System.IO.FileStream fs_old = new System.IO.FileStream(getFiles[iLoop], System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                System.IO.FileStream fs_new = new System.IO.FileStream(fullNameNew, System.IO.FileMode.Create, System.IO.FileAccess.Write);
+                fs_old.CopyTo(fs_new);
+
+                fs_new.Close();
+                fs_old.Close();
+            }
+
+            resetList();
+
+            System.IO.DirectoryInfo tmpDir = new DirectoryInfo(fullPathOld);
+            tmpDir.Delete(true);
+
+            //ShowImages(fullPathNew);
         }
     }
 }
