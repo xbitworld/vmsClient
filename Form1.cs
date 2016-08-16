@@ -414,12 +414,20 @@ namespace VmsClientDemo
         {
             VideoPlayTab.SelectedTab = tabPage5;
 
+            _PreviewPic.showCurrentSelected(0);
             //_PreviewPic.LoadImageList(picsDir);
         }
 
-        private void ResetCAP(object sender, EventArgs e)
-        {//Clear the list for the capture operation of the next time
-            iFilesCounter = 0;
+        private void ConfirmCAP(object sender, EventArgs e)
+        {
+            if (_PreviewPic.ConfirmSelected())
+            {//Clear the list for the capture operation of the next time
+                iFilesCounter = 0;
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
             _PreviewPic.resetList();
         }
     }

@@ -71,8 +71,11 @@ namespace VmsClientDemo
             listViewPICs.Items.Add((iOrderNumber + 1).ToString(), iOrderNumber);
         }
 
-        private void showCurrentSelected(int iIndexPIC)
+        public void showCurrentSelected(int iIndexPIC)
         {
+            if (PICsList.Images.Count < 1)
+                return;
+
             string FileName = PICsList.Images.Keys[iIndexPIC];
 
             System.IO.FileStream fs = new System.IO.FileStream(FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read);
@@ -98,7 +101,7 @@ namespace VmsClientDemo
             }
         }
 
-        private void Confirm_Click(object sender, EventArgs e)
+        public bool ConfirmSelected()
         {
             List<string> getFiles = new List<string>();
 
@@ -114,7 +117,7 @@ namespace VmsClientDemo
             if(iAmount < 3)
             {
                 MessageBox.Show("截图数不能少于三张！");
-                return;
+                return false;
             }
 
             string fullPathOld = "";
@@ -150,7 +153,27 @@ namespace VmsClientDemo
             System.IO.DirectoryInfo tmpDir = new DirectoryInfo(fullPathOld);
             tmpDir.Delete(true);
 
-            //ShowImages(fullPathNew);
+            return true;
+        }
+
+        private void checkBoxALL_CheckedChanged(object sender, EventArgs e)
+        {
+            bool bCheck = false;
+            List<bool> checkedList = new List<bool>();
+
+            if (checkBoxALL.CheckState == CheckState.Checked)
+            {
+                bCheck = true;
+            }
+            else if(checkBoxALL.CheckState == CheckState.Unchecked)
+            {
+                bCheck = false;
+            }
+
+            for (int iLoop = 0; iLoop < listViewPICs.Items.Count; iLoop++)
+            {
+                listViewPICs.Items[iLoop].Checked = bCheck;
+            }
         }
     }
 }

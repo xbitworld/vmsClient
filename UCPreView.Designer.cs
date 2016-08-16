@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.Confirm = new System.Windows.Forms.Button();
             this.AmountTextbox = new System.Windows.Forms.TextBox();
             this.PICsList = new System.Windows.Forms.ImageList(this.components);
             this.listViewPICs = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxALL = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,30 +46,18 @@
             this.pictureBox.Image = global::VmsClientDemo.Properties.Resources._1454046538594;
             this.pictureBox.InitialImage = null;
             this.pictureBox.Location = new System.Drawing.Point(0, -2);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(619, 587);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
             // 
-            // Confirm
-            // 
-            this.Confirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Confirm.Location = new System.Drawing.Point(733, 539);
-            this.Confirm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Confirm.Name = "Confirm";
-            this.Confirm.Size = new System.Drawing.Size(66, 26);
-            this.Confirm.TabIndex = 2;
-            this.Confirm.Text = "确定";
-            this.Confirm.UseVisualStyleBackColor = true;
-            this.Confirm.Click += new System.EventHandler(this.Confirm_Click);
-            // 
             // AmountTextbox
             // 
-            this.AmountTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AmountTextbox.Location = new System.Drawing.Point(651, 543);
-            this.AmountTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AmountTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AmountTextbox.Location = new System.Drawing.Point(777, 2);
+            this.AmountTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.AmountTextbox.Name = "AmountTextbox";
             this.AmountTextbox.Size = new System.Drawing.Size(68, 21);
             this.AmountTextbox.TabIndex = 3;
@@ -86,24 +75,49 @@
             this.listViewPICs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewPICs.CheckBoxes = true;
-            this.listViewPICs.Location = new System.Drawing.Point(623, 2);
-            this.listViewPICs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewPICs.Location = new System.Drawing.Point(622, 27);
+            this.listViewPICs.Margin = new System.Windows.Forms.Padding(2);
             this.listViewPICs.MultiSelect = false;
             this.listViewPICs.Name = "listViewPICs";
-            this.listViewPICs.Size = new System.Drawing.Size(223, 519);
+            this.listViewPICs.Size = new System.Drawing.Size(223, 556);
             this.listViewPICs.TabIndex = 4;
             this.listViewPICs.UseCompatibleStateImageBehavior = false;
             this.listViewPICs.SelectedIndexChanged += new System.EventHandler(this.listViewPICs_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(719, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "选择总数：";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // checkBoxALL
+            // 
+            this.checkBoxALL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxALL.AutoSize = true;
+            this.checkBoxALL.Location = new System.Drawing.Point(642, 6);
+            this.checkBoxALL.Name = "checkBoxALL";
+            this.checkBoxALL.Size = new System.Drawing.Size(48, 16);
+            this.checkBoxALL.TabIndex = 6;
+            this.checkBoxALL.Text = "全选";
+            this.checkBoxALL.ThreeState = true;
+            this.checkBoxALL.UseVisualStyleBackColor = true;
+            this.checkBoxALL.CheckedChanged += new System.EventHandler(this.checkBoxALL_CheckedChanged);
             // 
             // UCPreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBoxALL);
             this.Controls.Add(this.listViewPICs);
             this.Controls.Add(this.AmountTextbox);
-            this.Controls.Add(this.Confirm);
             this.Controls.Add(this.pictureBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UCPreview";
             this.Size = new System.Drawing.Size(847, 585);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
@@ -114,9 +128,10 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button Confirm;
         private System.Windows.Forms.TextBox AmountTextbox;
         private System.Windows.Forms.ImageList PICsList;
         private System.Windows.Forms.ListView listViewPICs;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxALL;
     }
 }

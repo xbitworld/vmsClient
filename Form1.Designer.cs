@@ -195,8 +195,8 @@
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(890, 647);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(750, 644);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "实时视频";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -205,8 +205,8 @@
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(887, 687);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(750, 644);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "录像回放";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -215,7 +215,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(887, 687);
+            this.tabPage3.Size = new System.Drawing.Size(750, 644);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "预录像播放";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -224,8 +224,8 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage4.Size = new System.Drawing.Size(887, 687);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(750, 644);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "按时间回放录像";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -233,7 +233,7 @@
             // tabPage5
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(750, 644);
             this.tabPage5.TabIndex = 4;
@@ -365,9 +365,9 @@
             this.rstCAP.Name = "rstCAP";
             this.rstCAP.Size = new System.Drawing.Size(89, 23);
             this.rstCAP.TabIndex = 14;
-            this.rstCAP.Text = "截图复位";
+            this.rstCAP.Text = "选图确认";
             this.rstCAP.UseVisualStyleBackColor = true;
-            this.rstCAP.Click += new System.EventHandler(this.ResetCAP);
+            this.rstCAP.Click += new System.EventHandler(this.ConfirmCAP);
             // 
             // ChoisePICs
             // 
@@ -477,6 +477,7 @@
             this.Controls.Add(this.DevGroup);
             this.Name = "Form1";
             this.Text = "HVMS客户端 Ver 1.2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.VideoPlayTab.ResumeLayout(false);
