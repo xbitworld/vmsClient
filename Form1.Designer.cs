@@ -59,8 +59,8 @@
             this.SelectDIR = new System.Windows.Forms.Button();
             this.rstCAP = new System.Windows.Forms.Button();
             this.ChoisePICs = new System.Windows.Forms.Button();
-            this.Cap2 = new System.Windows.Forms.Button();
-            this.Cap1 = new System.Windows.Forms.Button();
+            this.AutoCapBT = new System.Windows.Forms.Button();
+            this.CaptureBT = new System.Windows.Forms.Button();
             this.fileStr1 = new System.Windows.Forms.TextBox();
             this.VehicleID = new System.Windows.Forms.TextBox();
             this.CamID = new System.Windows.Forms.TextBox();
@@ -69,6 +69,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.IntervalTimeBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ProvinceBox = new System.Windows.Forms.ComboBox();
             this.VideoPlayTab.SuspendLayout();
             this.LoginGroup.SuspendLayout();
             this.DevGroup.SuspendLayout();
@@ -294,14 +297,16 @@
             // 
             // DevGroup
             // 
+            this.DevGroup.Controls.Add(this.ProvinceBox);
+            this.DevGroup.Controls.Add(this.IntervalTimeBox);
             this.DevGroup.Controls.Add(this.colorBox);
             this.DevGroup.Controls.Add(this.fileStr2);
             this.DevGroup.Controls.Add(this.SavePICPath);
             this.DevGroup.Controls.Add(this.SelectDIR);
             this.DevGroup.Controls.Add(this.rstCAP);
             this.DevGroup.Controls.Add(this.ChoisePICs);
-            this.DevGroup.Controls.Add(this.Cap2);
-            this.DevGroup.Controls.Add(this.Cap1);
+            this.DevGroup.Controls.Add(this.AutoCapBT);
+            this.DevGroup.Controls.Add(this.CaptureBT);
             this.DevGroup.Controls.Add(this.fileStr1);
             this.DevGroup.Controls.Add(this.VehicleID);
             this.DevGroup.Controls.Add(this.CamID);
@@ -313,6 +318,7 @@
             this.DevGroup.Controls.Add(this.label5);
             this.DevGroup.Controls.Add(this.label7);
             this.DevGroup.Controls.Add(this.label6);
+            this.DevGroup.Controls.Add(this.label11);
             this.DevGroup.Location = new System.Drawing.Point(12, 160);
             this.DevGroup.Name = "DevGroup";
             this.DevGroup.Size = new System.Drawing.Size(285, 219);
@@ -361,7 +367,7 @@
             // rstCAP
             // 
             this.rstCAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rstCAP.Location = new System.Drawing.Point(175, 155);
+            this.rstCAP.Location = new System.Drawing.Point(177, 155);
             this.rstCAP.Name = "rstCAP";
             this.rstCAP.Size = new System.Drawing.Size(89, 23);
             this.rstCAP.TabIndex = 14;
@@ -372,7 +378,7 @@
             // ChoisePICs
             // 
             this.ChoisePICs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChoisePICs.Location = new System.Drawing.Point(49, 155);
+            this.ChoisePICs.Location = new System.Drawing.Point(50, 155);
             this.ChoisePICs.Name = "ChoisePICs";
             this.ChoisePICs.Size = new System.Drawing.Size(89, 23);
             this.ChoisePICs.TabIndex = 14;
@@ -380,27 +386,27 @@
             this.ChoisePICs.UseVisualStyleBackColor = true;
             this.ChoisePICs.Click += new System.EventHandler(this.ChoisePIC);
             // 
-            // Cap2
+            // AutoCapBT
             // 
-            this.Cap2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Cap2.Location = new System.Drawing.Point(175, 127);
-            this.Cap2.Name = "Cap2";
-            this.Cap2.Size = new System.Drawing.Size(89, 23);
-            this.Cap2.TabIndex = 14;
-            this.Cap2.Text = "截图(自动)";
-            this.Cap2.UseVisualStyleBackColor = true;
-            this.Cap2.Click += new System.EventHandler(this.CapturePIC);
+            this.AutoCapBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AutoCapBT.Location = new System.Drawing.Point(177, 127);
+            this.AutoCapBT.Name = "AutoCapBT";
+            this.AutoCapBT.Size = new System.Drawing.Size(89, 23);
+            this.AutoCapBT.TabIndex = 14;
+            this.AutoCapBT.Text = "截图(自动)";
+            this.AutoCapBT.UseVisualStyleBackColor = true;
+            this.AutoCapBT.Click += new System.EventHandler(this.AutoCapPics);
             // 
-            // Cap1
+            // CaptureBT
             // 
-            this.Cap1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Cap1.Location = new System.Drawing.Point(50, 127);
-            this.Cap1.Name = "Cap1";
-            this.Cap1.Size = new System.Drawing.Size(88, 23);
-            this.Cap1.TabIndex = 14;
-            this.Cap1.Text = "截图(手动)";
-            this.Cap1.UseVisualStyleBackColor = true;
-            this.Cap1.Click += new System.EventHandler(this.CapturePIC);
+            this.CaptureBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CaptureBT.Location = new System.Drawing.Point(50, 127);
+            this.CaptureBT.Name = "CaptureBT";
+            this.CaptureBT.Size = new System.Drawing.Size(88, 23);
+            this.CaptureBT.TabIndex = 14;
+            this.CaptureBT.Text = "截图(手动)";
+            this.CaptureBT.UseVisualStyleBackColor = true;
+            this.CaptureBT.Click += new System.EventHandler(this.CapturePIC);
             // 
             // fileStr1
             // 
@@ -413,9 +419,9 @@
             // VehicleID
             // 
             this.VehicleID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.VehicleID.Location = new System.Drawing.Point(50, 99);
+            this.VehicleID.Location = new System.Drawing.Point(96, 98);
             this.VehicleID.Name = "VehicleID";
-            this.VehicleID.Size = new System.Drawing.Size(106, 21);
+            this.VehicleID.Size = new System.Drawing.Size(42, 21);
             this.VehicleID.TabIndex = 15;
             this.VehicleID.Text = "A00001";
             // 
@@ -465,6 +471,41 @@
             this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // IntervalTimeBox
+            // 
+            this.IntervalTimeBox.Location = new System.Drawing.Point(236, 98);
+            this.IntervalTimeBox.Name = "IntervalTimeBox";
+            this.IntervalTimeBox.Size = new System.Drawing.Size(30, 21);
+            this.IntervalTimeBox.TabIndex = 4;
+            this.IntervalTimeBox.Text = "800";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(154, 102);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 12);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "自动间隔(ms)：";
+            // 
+            // ProvinceBox
+            // 
+            this.ProvinceBox.FormattingEnabled = true;
+            this.ProvinceBox.Items.AddRange(new object[] {
+            "川",
+            "渝",
+            "云",
+            "贵",
+            "甘",
+            "藏",
+            "戊",
+            "戌",
+            "戍"});
+            this.ProvinceBox.Location = new System.Drawing.Point(50, 98);
+            this.ProvinceBox.Name = "ProvinceBox";
+            this.ProvinceBox.Size = new System.Drawing.Size(43, 20);
+            this.ProvinceBox.TabIndex = 5;
             // 
             // Form1
             // 
@@ -516,11 +557,11 @@
         private System.Windows.Forms.GroupBox DevGroup;
         private System.Windows.Forms.TextBox CamID;
         private System.Windows.Forms.TextBox CamDIR;
-        private System.Windows.Forms.Button Cap1;
+        private System.Windows.Forms.Button CaptureBT;
         private System.Windows.Forms.TextBox SavePICPath;
         private System.Windows.Forms.Button SelectDIR;
         private System.Windows.Forms.Button ChoisePICs;
-        private System.Windows.Forms.Button Cap2;
+        private System.Windows.Forms.Button AutoCapBT;
         private System.Windows.Forms.TextBox fileStr1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
@@ -531,6 +572,9 @@
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button rstCAP;
+        private System.Windows.Forms.ComboBox ProvinceBox;
+        private System.Windows.Forms.TextBox IntervalTimeBox;
+        private System.Windows.Forms.Label label11;
     }
 }
 

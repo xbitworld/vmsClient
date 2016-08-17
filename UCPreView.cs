@@ -32,6 +32,13 @@ namespace VmsClientDemo
                 Image currIMG = PICsList.Images[iLoop];
                 currIMG.Dispose();
                 File.Delete(strFileName);
+
+                if ((iLoop + 1) == listViewPICs.Items.Count)
+                {
+                    System.IO.DirectoryInfo dirInfo = new DirectoryInfo(strFileName);
+                    System.IO.DirectoryInfo tmpDir = new DirectoryInfo(dirInfo.Parent.FullName);
+                    tmpDir.Delete(true);
+                }
             }
 
             PICsList.Images.Clear();
@@ -114,27 +121,21 @@ namespace VmsClientDemo
             }
 
             int iAmount = getFiles.Count();
-            if(iAmount < 3)
+            if(iAmount < 3 || iAmount > 9)
             {
-                MessageBox.Show("截图数不能少于三张！");
+                MessageBox.Show("截图数不能少于3张或大于10张！");
                 return false;
             }
 
-            string fullPathOld = "";
-            string fullPathNew = "";
+            System.IO.DirectoryInfo dirInfo = new DirectoryInfo(getFiles[0]);
+            string fullPathNew = dirInfo.Parent.Parent.FullName;
+            string fileNameOld = dirInfo.Name; //Get the first file name, all the others file name base it.
+            string[] strsName = fileNameOld.Split('_');
 
             for (int iLoop = 0; iLoop < iAmount; iLoop ++)
             {
-                System.IO.DirectoryInfo dirInfo = new DirectoryInfo(getFiles[iLoop]);
-
-                fullPathOld = dirInfo.Parent.FullName;
-                fullPathNew = dirInfo.Parent.Parent.FullName;
-                string fileNameOld = dirInfo.Name;
-
-                string[] strsName = fileNameOld.Split( '_');
-
                 string orderMark = iAmount.ToString() + (iLoop + 1).ToString();
-                string fileNameNew = strsName[0].Substring(0, strsName[0].Length - 4);
+                string fileNameNew = strsName[0].Substring(0, strsName[0].Length - 4);  //orderMark to instead the last 4 chars
                 fileNameNew += orderMark + "_";
                 fileNameNew += strsName[1] + "_" + strsName[2];
 
@@ -149,9 +150,6 @@ namespace VmsClientDemo
             }
 
             resetList();
-
-            System.IO.DirectoryInfo tmpDir = new DirectoryInfo(fullPathOld);
-            tmpDir.Delete(true);
 
             return true;
         }

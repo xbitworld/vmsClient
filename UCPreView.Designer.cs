@@ -104,7 +104,6 @@
             this.checkBoxALL.Size = new System.Drawing.Size(48, 16);
             this.checkBoxALL.TabIndex = 6;
             this.checkBoxALL.Text = "全选";
-            this.checkBoxALL.ThreeState = true;
             this.checkBoxALL.UseVisualStyleBackColor = true;
             this.checkBoxALL.CheckedChanged += new System.EventHandler(this.checkBoxALL_CheckedChanged);
             // 

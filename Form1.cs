@@ -119,6 +119,12 @@ namespace VmsClientDemo
 
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _PreviewPic.resetList();
+            //here will delete the template file
+        }
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             SaveXml();
@@ -162,11 +168,13 @@ namespace VmsClientDemo
                         fileStr2.Text = dt.Rows[0]["fileStr2"].ToString();
                     }
 
-                    dt = ds.Tables["Misc"];
+                    dt = ds.Tables["Capture"];
                     if (dt.Rows.Count > 0)
                     {
                         SavePICPath.Text = dt.Rows[0]["CapPath"].ToString();
                         iColor = Convert.ToInt32(dt.Rows[0]["txtColor"].ToString());
+                        IntervalTimeBox.Text = dt.Rows[0]["IntervalTime"].ToString();
+                        ProvinceBox.Text = dt.Rows[0]["ProvIndex"].ToString(); 
                         Color boxColor = Color.FromArgb(iColor);
                         coverBrush = new SolidBrush(boxColor);
                         colorBox.BackColor = boxColor;
@@ -203,7 +211,9 @@ namespace VmsClientDemo
                 xe = (XmlElement)root[3];
                 xe.SetAttribute("CapPath", SavePICPath.Text);
                 xe.SetAttribute("txtColor", iColor.ToString());
-                
+                xe.SetAttribute("IntervalTime", IntervalTimeBox.Text);
+                xe.SetAttribute("ProvIndex", ProvinceBox.Text);
+
                 xmlDoc.Save(Application.StartupPath + "\\xmlConfig.xml");
             }
             catch { };
@@ -276,9 +286,10 @@ namespace VmsClientDemo
             string strSavePath = SavePICPath.Text;
 
             if (VideoPlayTab.SelectedIndex != 0 && VideoPlayTab.SelectedIndex != 1)
-            {
+            {//Not the vidio play table
                 return;
             }
+
             if (string.IsNullOrEmpty(CamADD.Text.Trim()))
             {
                 MessageBox.Show("地址不能为空！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -335,9 +346,6 @@ namespace VmsClientDemo
                 System.IO.MemoryStream ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(picPath));
                 Image image = Image.FromStream(ms);
                 Graphics g = Graphics.FromImage(image);
-                
-                //Brush blackBrush = new SolidBrush(Color.FromArgb(96, Color.Black));
-                //g.FillRectangle(blackBrush, 1, 0, image.Width - 1, 60);
 
                 //镶黑边
                 Brush blackBrush = new SolidBrush(Color.Black);
@@ -410,12 +418,14 @@ namespace VmsClientDemo
             }
         }
 
+        int iCurrentIndex = 0;
         private void ChoisePIC(object sender, EventArgs e)
         {
+            iCurrentIndex = VideoPlayTab.SelectedIndex;
+
             VideoPlayTab.SelectedTab = tabPage5;
 
             _PreviewPic.showCurrentSelected(0);
-            //_PreviewPic.LoadImageList(picsDir);
         }
 
         private void ConfirmCAP(object sender, EventArgs e)
@@ -424,11 +434,19 @@ namespace VmsClientDemo
             {//Clear the list for the capture operation of the next time
                 iFilesCounter = 0;
             }
+
+            VideoPlayTab.SelectedIndex = iCurrentIndex;
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void AutoCapPics(object sender, EventArgs e)
         {
-            _PreviewPic.resetList();
+            int iAmount = 3;
+            int iInterval = Convert.ToInt16(IntervalTimeBox.Text);
+            for (int iLoop = 0; iLoop < iAmount; iLoop++)
+            {
+                CaptureBT.PerformClick();
+                Thread.Sleep(iInterval);
+            }
         }
     }
 }
