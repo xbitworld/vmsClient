@@ -84,6 +84,7 @@ namespace VmsClientDemo
                                 foreach (var modelCam in camList)
                                 {
                                     ListViewItem item = new ListViewItem(modelCam.ID + "_" + modelCam.Name);
+                                    //string codex = modelCam.Code; //For test only
                                     item.Tag = modelCam;
                                     item.ImageIndex = 0;
                                     lstCamList.Items.Add(item);
@@ -347,7 +348,7 @@ namespace VmsClientDemo
                 Image image = Image.FromStream(ms);
                 Graphics g = Graphics.FromImage(image);
 
-                //镶黑边
+                //Draw the black board
                 Brush blackBrush = new SolidBrush(Color.Black);
                 g.DrawString(sb.ToString(), new Font("黑体", 16, FontStyle.Bold), blackBrush, new PointF(0, 10));
                 g.DrawString(sb.ToString(), new Font("黑体", 16, FontStyle.Bold), blackBrush, new PointF(2, 10));
