@@ -78,10 +78,20 @@ namespace VmsClientDemo
             listViewPICs.Items.Add((iOrderNumber + 1).ToString(), iOrderNumber);
         }
 
+        private void restPictureBoxPos()
+        {
+            Size OrgSize = pictureBox.Parent.Size;
+            OrgSize.Width -= BlockPanel.Width;
+            pictureBox.Size = OrgSize;
+            pictureBox.Location = new Point(0, 0);
+        }
+
         public void showCurrentSelected(int iIndexPIC)
         {
             if (PICsList.Images.Count < 1)
                 return;
+
+            restPictureBoxPos();
 
             string FileName = PICsList.Images.Keys[iIndexPIC];
 
@@ -172,6 +182,77 @@ namespace VmsClientDemo
             {
                 listViewPICs.Items[iLoop].Checked = bCheck;
             }
+        }
+
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button.ToString().Equals("Right"))
+            {
+                Size OrgSize = pictureBox.Parent.Size;
+                OrgSize.Width -= BlockPanel.Width;
+                pictureBox.Size = OrgSize;
+                pictureBox.Location = new Point(0, 0);
+            }
+        }
+
+        private void pictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            //MessageBox.Show("MouseEnter");
+        }
+
+        private void pictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            //MessageBox.Show("MouseLeave");
+        }
+
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            //MessageBox.Show("MouseMove");
+        }
+
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            //MessageBox.Show(e.Delta.ToString());
+            Point mLocation = e.Location;
+            Point oldLocation = pictureBox.Location;
+            Point newLocation = new Point();
+
+            int iWidth = pictureBox.Size.Width;
+            int iHeight = pictureBox.Size.Height;
+
+            if (e.Delta > 0)
+            {
+                pictureBox.Scale(new SizeF(1.1F, 1.1F));
+                newLocation.X = oldLocation.X - (int)(mLocation.X * 0.1F);
+                newLocation.Y = oldLocation.Y - (int)(mLocation.Y * 0.1F);
+            }
+            else
+            {
+                pictureBox.Scale(new SizeF(0.909F, 0.909F));
+                newLocation.X = oldLocation.X + (int)(mLocation.X * (1.0F-0.909F));
+                newLocation.Y = oldLocation.Y + (int)(mLocation.Y * (1.0F-0.909F));
+            }
+
+            pictureBox.Location = newLocation;
+        }
+
+        private void listViewPICs_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            int iCount = 0;
+            for (int iLoop = 0; iLoop < listViewPICs.Items.Count; iLoop++)
+            {
+                if (listViewPICs.Items[iLoop].Checked == true)
+                {
+                    iCount++;
+                }
+            }
+
+            AmountTextbox.Text = iCount.ToString();
         }
     }
 }
