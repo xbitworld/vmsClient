@@ -53,6 +53,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.CamADD = new System.Windows.Forms.TextBox();
             this.DevGroup = new System.Windows.Forms.GroupBox();
+            this.ProvinceBox = new System.Windows.Forms.ComboBox();
+            this.IntervalTimeBox = new System.Windows.Forms.TextBox();
             this.colorBox = new System.Windows.Forms.PictureBox();
             this.fileStr2 = new System.Windows.Forms.TextBox();
             this.SavePICPath = new System.Windows.Forms.TextBox();
@@ -68,10 +70,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.IntervalTimeBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.ProvinceBox = new System.Windows.Forms.ComboBox();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.VideoPlayTab.SuspendLayout();
             this.LoginGroup.SuspendLayout();
             this.DevGroup.SuspendLayout();
@@ -326,6 +326,32 @@
             this.DevGroup.TabStop = false;
             this.DevGroup.Text = "截图信息";
             // 
+            // ProvinceBox
+            // 
+            this.ProvinceBox.FormattingEnabled = true;
+            this.ProvinceBox.Items.AddRange(new object[] {
+            "川",
+            "渝",
+            "云",
+            "贵",
+            "甘",
+            "藏",
+            "戊",
+            "戌",
+            "戍"});
+            this.ProvinceBox.Location = new System.Drawing.Point(50, 98);
+            this.ProvinceBox.Name = "ProvinceBox";
+            this.ProvinceBox.Size = new System.Drawing.Size(43, 20);
+            this.ProvinceBox.TabIndex = 5;
+            // 
+            // IntervalTimeBox
+            // 
+            this.IntervalTimeBox.Location = new System.Drawing.Point(236, 98);
+            this.IntervalTimeBox.Name = "IntervalTimeBox";
+            this.IntervalTimeBox.Size = new System.Drawing.Size(30, 21);
+            this.IntervalTimeBox.TabIndex = 4;
+            this.IntervalTimeBox.Text = "800";
+            // 
             // colorBox
             // 
             this.colorBox.BackColor = System.Drawing.SystemColors.WindowText;
@@ -466,20 +492,6 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "文件名：";
             // 
-            // imageList2
-            // 
-            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // IntervalTimeBox
-            // 
-            this.IntervalTimeBox.Location = new System.Drawing.Point(236, 98);
-            this.IntervalTimeBox.Name = "IntervalTimeBox";
-            this.IntervalTimeBox.Size = new System.Drawing.Size(30, 21);
-            this.IntervalTimeBox.TabIndex = 4;
-            this.IntervalTimeBox.Text = "800";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -489,23 +501,11 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "自动间隔(ms)：";
             // 
-            // ProvinceBox
+            // imageList2
             // 
-            this.ProvinceBox.FormattingEnabled = true;
-            this.ProvinceBox.Items.AddRange(new object[] {
-            "川",
-            "渝",
-            "云",
-            "贵",
-            "甘",
-            "藏",
-            "戊",
-            "戌",
-            "戍"});
-            this.ProvinceBox.Location = new System.Drawing.Point(50, 98);
-            this.ProvinceBox.Name = "ProvinceBox";
-            this.ProvinceBox.Size = new System.Drawing.Size(43, 20);
-            this.ProvinceBox.TabIndex = 5;
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Form1
             // 

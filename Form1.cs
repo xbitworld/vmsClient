@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 using System.Xml;
+using System.Data.OleDb;
 
 namespace VmsClientDemo
 {
@@ -34,10 +35,45 @@ namespace VmsClientDemo
 
         private int iColor = 0;
 
+        System.Data.OleDb.OleDbConnection AccessConn = new System.Data.OleDb.OleDbConnection();
+
+        private void InitDBConn(string DBFullpath)
+        {
+            // TODO: Modify the connection string and include any
+            // additional required properties for your database.
+            AccessConn.ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+                @"Data source= " +
+                DBFullpath;
+            try
+            {
+                AccessConn.Open();
+                // Insert code to process data.
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to connect to data source");
+            }
+        }
+
         public Form1()
         {
             InitializeComponent();
             loadXml();
+
+            //Find the mdb from current directory.
+            FileInfo[] fileInfo = getFileFullPath(@"VMS.mdb", ".\\");
+            if (fileInfo.Count() < 1)
+            {
+                fileInfo = getFileFullPath(@"VMS.mdb", "..\\");
+            }
+            if (fileInfo.Count() < 1)
+            {
+                fileInfo = getFileFullPath(@"VMS.mdb", "..\\..\\");
+            }
+            if (fileInfo.Count() > 0)
+            {
+                InitDBConn(fileInfo[0].FullName);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -59,6 +95,64 @@ namespace VmsClientDemo
 
         }
 
+        private int AccessRead(string strSQL, ref DataTableCollection dta)
+        {
+            DataSet myDataSet = new DataSet();
+
+            try
+            {
+                OleDbCommand myAccessCommand = new OleDbCommand(strSQL, AccessConn);
+                OleDbDataAdapter myDataAdapter = new OleDbDataAdapter(myAccessCommand);
+
+                myDataAdapter.Fill(myDataSet, "最终视图");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: Failed to retrieve the required data from the DataBase.\n{0}", ex.Message);
+                return 1;
+            }
+
+            // A dataset can contain multiple tables, so let's get them
+            // all into an array:
+            dta = myDataSet.Tables;
+            return 0;
+        }
+
+        private int getData(string strSQL, ref DataRowCollection dra)
+        {
+            //string strSQL = @"Select * from 最终视图 where 设备编码 = 1";
+
+            DataTableCollection dta = null;
+            AccessRead(strSQL, ref dta);
+
+            if (dta == null)
+            {
+                return 0;
+            }
+
+            foreach (DataTable dt in dta)
+            {
+                Console.WriteLine("Found data table {0}", dt.TableName);
+            }
+
+            DataColumnCollection drc = dta["最终视图"].Columns;
+            int i = 0;
+            foreach (DataColumn dc in drc)
+            {
+                // Print the column subscript, then the column's name
+                // and its data type:
+                Console.WriteLine("Column name[{0}] is {1}, of type {2}", i++, dc.ColumnName, dc.DataType);
+            }
+
+            dra = dta["最终视图"].Rows;
+            //foreach (DataRow dr in dra)
+            //{
+            //    // Print the CategoryID as a subscript, then the CategoryName:
+            //    Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5]);
+            //}
+            return dta["最终视图"].Rows.Count;
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.lstCamList.Items.Clear();
@@ -117,7 +211,6 @@ namespace VmsClientDemo
                 _prePlay.ModelCam = modelCam;
                 _timeRecPlay.ModelCam = modelCam;
             }
-
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -128,6 +221,11 @@ namespace VmsClientDemo
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if(AccessConn.State != ConnectionState.Closed)
+            {
+                AccessConn.Close();
+            }
+
             SaveXml();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
@@ -220,7 +318,7 @@ namespace VmsClientDemo
             catch { };
         }
 
-        public static FileInfo[] getFileFullPath(string FileName, string StartPath)
+        private FileInfo[] getFileFullPath(string FileName, string StartPath)
         {
             try
             {

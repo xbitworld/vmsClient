@@ -233,9 +233,9 @@ namespace VmsClientDemo
             }
             else
             {
-                pictureBox.Scale(new SizeF(0.909F, 0.909F));
-                newLocation.X = oldLocation.X + (int)(mLocation.X * (1.0F-0.909F));
-                newLocation.Y = oldLocation.Y + (int)(mLocation.Y * (1.0F-0.909F));
+                pictureBox.Scale(new SizeF(0.9091F, 0.9091F));
+                newLocation.X = oldLocation.X + (int)(mLocation.X * (1.0F-0.9091F));
+                newLocation.Y = oldLocation.Y + (int)(mLocation.Y * (1.0F-0.9091F));
             }
 
             pictureBox.Location = newLocation;
