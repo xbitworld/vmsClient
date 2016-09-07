@@ -66,12 +66,14 @@
             this.fileStr1 = new System.Windows.Forms.TextBox();
             this.VehicleID = new System.Windows.Forms.TextBox();
             this.CamID = new System.Windows.Forms.TextBox();
-            this.CamDIR = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.DirCOMB = new System.Windows.Forms.ComboBox();
+            this.ruleCOMB = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.VideoPlayTab.SuspendLayout();
             this.LoginGroup.SuspendLayout();
             this.DevGroup.SuspendLayout();
@@ -162,9 +164,9 @@
             this.lstCamList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lstCamList.GridLines = true;
-            this.lstCamList.Location = new System.Drawing.Point(12, 380);
+            this.lstCamList.Location = new System.Drawing.Point(12, 415);
             this.lstCamList.Name = "lstCamList";
-            this.lstCamList.Size = new System.Drawing.Size(285, 296);
+            this.lstCamList.Size = new System.Drawing.Size(285, 261);
             this.lstCamList.SmallImageList = this.imageList1;
             this.lstCamList.TabIndex = 4;
             this.lstCamList.UseCompatibleStateImageBehavior = false;
@@ -297,6 +299,8 @@
             // 
             // DevGroup
             // 
+            this.DevGroup.Controls.Add(this.ruleCOMB);
+            this.DevGroup.Controls.Add(this.DirCOMB);
             this.DevGroup.Controls.Add(this.ProvinceBox);
             this.DevGroup.Controls.Add(this.IntervalTimeBox);
             this.DevGroup.Controls.Add(this.colorBox);
@@ -310,7 +314,6 @@
             this.DevGroup.Controls.Add(this.fileStr1);
             this.DevGroup.Controls.Add(this.VehicleID);
             this.DevGroup.Controls.Add(this.CamID);
-            this.DevGroup.Controls.Add(this.CamDIR);
             this.DevGroup.Controls.Add(this.CamADD);
             this.DevGroup.Controls.Add(this.label8);
             this.DevGroup.Controls.Add(this.label10);
@@ -319,9 +322,10 @@
             this.DevGroup.Controls.Add(this.label7);
             this.DevGroup.Controls.Add(this.label6);
             this.DevGroup.Controls.Add(this.label11);
+            this.DevGroup.Controls.Add(this.label12);
             this.DevGroup.Location = new System.Drawing.Point(12, 160);
             this.DevGroup.Name = "DevGroup";
-            this.DevGroup.Size = new System.Drawing.Size(285, 219);
+            this.DevGroup.Size = new System.Drawing.Size(285, 249);
             this.DevGroup.TabIndex = 13;
             this.DevGroup.TabStop = false;
             this.DevGroup.Text = "截图信息";
@@ -373,7 +377,7 @@
             // SavePICPath
             // 
             this.SavePICPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SavePICPath.Location = new System.Drawing.Point(49, 192);
+            this.SavePICPath.Location = new System.Drawing.Point(49, 215);
             this.SavePICPath.Name = "SavePICPath";
             this.SavePICPath.Size = new System.Drawing.Size(184, 21);
             this.SavePICPath.TabIndex = 15;
@@ -382,7 +386,7 @@
             // SelectDIR
             // 
             this.SelectDIR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectDIR.Location = new System.Drawing.Point(233, 191);
+            this.SelectDIR.Location = new System.Drawing.Point(233, 214);
             this.SelectDIR.Name = "SelectDIR";
             this.SelectDIR.Size = new System.Drawing.Size(32, 23);
             this.SelectDIR.TabIndex = 16;
@@ -393,7 +397,7 @@
             // rstCAP
             // 
             this.rstCAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rstCAP.Location = new System.Drawing.Point(177, 155);
+            this.rstCAP.Location = new System.Drawing.Point(177, 178);
             this.rstCAP.Name = "rstCAP";
             this.rstCAP.Size = new System.Drawing.Size(89, 23);
             this.rstCAP.TabIndex = 14;
@@ -404,7 +408,7 @@
             // ChoisePICs
             // 
             this.ChoisePICs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChoisePICs.Location = new System.Drawing.Point(50, 155);
+            this.ChoisePICs.Location = new System.Drawing.Point(50, 178);
             this.ChoisePICs.Name = "ChoisePICs";
             this.ChoisePICs.Size = new System.Drawing.Size(89, 23);
             this.ChoisePICs.TabIndex = 14;
@@ -415,7 +419,7 @@
             // AutoCapBT
             // 
             this.AutoCapBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AutoCapBT.Location = new System.Drawing.Point(177, 127);
+            this.AutoCapBT.Location = new System.Drawing.Point(177, 150);
             this.AutoCapBT.Name = "AutoCapBT";
             this.AutoCapBT.Size = new System.Drawing.Size(89, 23);
             this.AutoCapBT.TabIndex = 14;
@@ -426,7 +430,7 @@
             // CaptureBT
             // 
             this.CaptureBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CaptureBT.Location = new System.Drawing.Point(50, 127);
+            this.CaptureBT.Location = new System.Drawing.Point(50, 150);
             this.CaptureBT.Name = "CaptureBT";
             this.CaptureBT.Size = new System.Drawing.Size(88, 23);
             this.CaptureBT.TabIndex = 14;
@@ -458,17 +462,10 @@
             this.CamID.Size = new System.Drawing.Size(91, 21);
             this.CamID.TabIndex = 14;
             // 
-            // CamDIR
-            // 
-            this.CamDIR.Location = new System.Drawing.Point(50, 45);
-            this.CamDIR.Name = "CamDIR";
-            this.CamDIR.Size = new System.Drawing.Size(60, 21);
-            this.CamDIR.TabIndex = 13;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 195);
+            this.label10.Location = new System.Drawing.Point(14, 218);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 2;
@@ -506,6 +503,33 @@
             this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // DirCOMB
+            // 
+            this.DirCOMB.FormattingEnabled = true;
+            this.DirCOMB.Location = new System.Drawing.Point(50, 45);
+            this.DirCOMB.Name = "DirCOMB";
+            this.DirCOMB.Size = new System.Drawing.Size(60, 20);
+            this.DirCOMB.TabIndex = 20;
+            this.DirCOMB.SelectedIndexChanged += new System.EventHandler(this.ChangeDIR);
+            // 
+            // ruleCOMB
+            // 
+            this.ruleCOMB.FormattingEnabled = true;
+            this.ruleCOMB.Location = new System.Drawing.Point(50, 124);
+            this.ruleCOMB.Name = "ruleCOMB";
+            this.ruleCOMB.Size = new System.Drawing.Size(216, 20);
+            this.ruleCOMB.TabIndex = 21;
+            this.ruleCOMB.SelectedIndexChanged += new System.EventHandler(this.SelectedRule);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 127);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "违章名：";
             // 
             // Form1
             // 
@@ -556,7 +580,6 @@
         private System.Windows.Forms.TextBox CamADD;
         private System.Windows.Forms.GroupBox DevGroup;
         private System.Windows.Forms.TextBox CamID;
-        private System.Windows.Forms.TextBox CamDIR;
         private System.Windows.Forms.Button CaptureBT;
         private System.Windows.Forms.TextBox SavePICPath;
         private System.Windows.Forms.Button SelectDIR;
@@ -575,6 +598,9 @@
         private System.Windows.Forms.ComboBox ProvinceBox;
         private System.Windows.Forms.TextBox IntervalTimeBox;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox DirCOMB;
+        private System.Windows.Forms.ComboBox ruleCOMB;
+        private System.Windows.Forms.Label label12;
     }
 }
 

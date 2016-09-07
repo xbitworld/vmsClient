@@ -131,19 +131,19 @@ namespace VmsClientDemo
                 return 0;
             }
 
-            foreach (DataTable dt in dta)
-            {
-                Console.WriteLine("Found data table {0}", dt.TableName);
-            }
+            //foreach (DataTable dt in dta)
+            //{
+            //    Console.WriteLine("Found data table {0}", dt.TableName);
+            //}
 
-            DataColumnCollection drc = dta["最终视图"].Columns;
-            int i = 0;
-            foreach (DataColumn dc in drc)
-            {
-                // Print the column subscript, then the column's name
-                // and its data type:
-                Console.WriteLine("Column name[{0}] is {1}, of type {2}", i++, dc.ColumnName, dc.DataType);
-            }
+            //DataColumnCollection drc = dta["最终视图"].Columns;
+            //int i = 0;
+            //foreach (DataColumn dc in drc)
+            //{
+            //    // Print the column subscript, then the column's name
+            //    // and its data type:
+            //    Console.WriteLine("Column name[{0}] is {1}, of type {2}", i++, dc.ColumnName, dc.DataType);
+            //}
 
             dra = dta["最终视图"].Rows;
             //foreach (DataRow dr in dra)
@@ -153,6 +153,7 @@ namespace VmsClientDemo
             //}
             return dta["最终视图"].Rows.Count;
         }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.lstCamList.Items.Clear();
@@ -200,6 +201,7 @@ namespace VmsClientDemo
                 }));
         }
 
+        static int iX = 0;
         private void lstCamList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.lstCamList.SelectedItems.Count==0) return ;
@@ -210,6 +212,137 @@ namespace VmsClientDemo
                 _rec.ModelCam = modelCam;
                 _prePlay.ModelCam = modelCam;
                 _timeRecPlay.ModelCam = modelCam;
+
+                string CamCode = modelCam.Code;
+                DataRowCollection drc = null;
+                int iRows = 0;
+
+                iX++;
+                if (iX % 2 == 0)
+                {
+                    iRows = getData(@"select distinct 名称详情, 设备编码, 地点编码 from 地名地点视图 where 设备编码 = '510122000000A50002'", ref drc);
+                }
+                else
+                {
+                    iRows = getData(@"select distinct 名称详情, 设备编码, 地点编码 from 地名地点视图 where 设备编码 = '510122000000A50003'", ref drc);
+                }
+                if (iRows > 0)
+                {
+                    DirCOMB.Items.Clear();
+                    CamADD.Text = (string)(drc[0][0]);
+                    CamID.Text = (string)(drc[0][1]);
+                    int iAddrCode = (int)(drc[0][2]);
+
+                    iRows = getData(@"select distinct 方向描述 from 违章种类及方向 where 地点代码 = " + iAddrCode.ToString() , ref drc);
+                    if (iRows > 0)
+                    {
+                        DirCOMB.Tag = iAddrCode;    //存储当前的地址信息
+                        foreach (DataRow DR in drc)
+                        {
+                            string dirStr = (string)(DR[0]);
+                            int iPos = dirStr.IndexOf('\r');
+                            string strTMP = null;
+                            if (iPos >= 0)
+                            {
+                                strTMP = dirStr.Substring(0, iPos);
+                            }
+                            else
+                            {
+                                strTMP = dirStr;
+                            }
+                            DirCOMB.Items.Add(strTMP);
+                        }
+
+                        DirCOMB.SelectedIndex = 0;
+                        //setRulesBox();
+                    }
+                }
+            }
+        }
+
+        private void ChangeDIR(object sender, EventArgs e)
+        {
+            //string strDir = DirCOMB.SelectedText;
+            //DataRowCollection drc = null;
+
+            //string strSQL = "select distinct 违章描述 from 最终视图 where 设备编码 = '" +
+            //    CamID.Text + "' and 方向描述 like '%" +
+            //    strDir + "%'";
+
+            //int iRows = getData(strSQL, ref drc);
+            //if (iRows > 0)
+            //{
+            //    ruleCOMB.Items.Clear();
+
+            //    foreach (DataRow DR in drc)
+            //    {
+            //        ruleCOMB.Items.Add(DR[0]);
+            //    }
+            //}
+            setRulesBox();
+        }
+
+        private void setRulesBox()
+        {
+            int iAddrCode = (int)(DirCOMB.Tag);
+            string strDir = DirCOMB.Items[DirCOMB.SelectedIndex].ToString();
+            int iIndex = DirCOMB.SelectedIndex;
+            ruleCOMB.Items.Clear();
+
+            string strSQL = "select 方向描述, 违章描述 from 违章种类及方向 where 地点代码 = " +
+                iAddrCode.ToString();
+
+            DataRowCollection drc = null;
+            int iRows = getData(strSQL, ref drc);
+            if (iRows > 0)
+            {
+                ruleCOMB.SelectedText = "";
+
+                foreach (DataRow DR in drc)
+                {
+                    string dirStr = (string)(DR[0]);
+
+                    int iPos = dirStr.IndexOf('\r');
+                    string strTMP = null;
+                    if (iPos >= 0)
+                    {
+                        strTMP = dirStr.Substring(0, iPos);
+                    }
+                    else
+                    {
+                        strTMP = dirStr;
+                    }
+
+                    if (strTMP == strDir)
+                    {
+                        ruleCOMB.Items.Add(DR[1]);
+                    }
+                }
+
+                if (ruleCOMB.Items.Count > 0)
+                {
+                    ruleCOMB.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void SelectedRule(object sender, EventArgs e)
+        {
+            string strRule = ruleCOMB.Items[ruleCOMB.SelectedIndex].ToString();
+
+            if(strRule == null || strRule == "")
+            {
+                return;
+            }
+
+            string strSQL = "select 违章编码 from 违章编码表 where 违章描述 = '" +
+                    strRule + "'";
+
+            DataRowCollection drc = null;
+            int iRows = getData(strSQL, ref drc);
+            if (iRows > 0)
+            {
+                fileStr2.Text = ((int)(drc[0][0])).ToString();
             }
         }
 
@@ -253,9 +386,9 @@ namespace VmsClientDemo
                     if (dt.Rows.Count > 0)
                     {
                         DataRow xRow = dt.Rows[0];
-                        CamID.Text = dt.Rows[0]["Dev"].ToString();
-                        CamADD.Text = dt.Rows[0]["Address"].ToString();
-                        CamDIR.Text = dt.Rows[0]["Direct"].ToString();
+//                        CamID.Text = dt.Rows[0]["Dev"].ToString();
+//                        CamADD.Text = dt.Rows[0]["Address"].ToString();
+//                        CamDIR.Text = dt.Rows[0]["Direct"].ToString();
                     }
 
                     dt = ds.Tables["VehInfo"];
@@ -298,9 +431,9 @@ namespace VmsClientDemo
                 xe.SetAttribute("Pass", txtPwd.Text);
                 
                 xe = (XmlElement)root[1];
-                xe.SetAttribute("Dev", CamID.Text);
-                xe.SetAttribute("Address", CamADD.Text);
-                xe.SetAttribute("Direct", CamDIR.Text);
+//                xe.SetAttribute("Dev", CamID.Text);
+//                xe.SetAttribute("Address", CamADD.Text);
+//                xe.SetAttribute("Direct", CamDIR.Text);
 
                 xe = (XmlElement)root[2];
                 xe.SetAttribute("vID", VehicleID.Text);
@@ -397,7 +530,7 @@ namespace VmsClientDemo
             StringBuilder sb = new StringBuilder(); //文字描述
             sb.Append(@"设备编号：" + CamID.Text + "  ");
             sb.Append(@"地点：" + CamADD.Text + "  ");
-            sb.Append(@"方向：" + CamDIR.Text + "\n");
+            sb.Append(@"方向：" + DirCOMB.SelectedText + "\n");
             //
 
             string picPath = "";
