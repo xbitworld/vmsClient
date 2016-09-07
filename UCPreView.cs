@@ -225,6 +225,7 @@ namespace VmsClientDemo
             int iWidth = pictureBox.Size.Width;
             int iHeight = pictureBox.Size.Height;
 
+            pictureBox.Invalidate();
             if (e.Delta > 0)
             {
                 pictureBox.Scale(new SizeF(1.1F, 1.1F));
@@ -239,6 +240,7 @@ namespace VmsClientDemo
             }
 
             pictureBox.Location = newLocation;
+            pictureBox.Update() ;
         }
 
         private void listViewPICs_ItemChecked(object sender, ItemCheckedEventArgs e)
