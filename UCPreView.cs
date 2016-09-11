@@ -198,6 +198,7 @@ namespace VmsClientDemo
         private void pictureBox_MouseEnter(object sender, EventArgs e)
         {
             //MessageBox.Show("MouseEnter");
+            pictureBox.Focus();
         }
 
         private void pictureBox_MouseLeave(object sender, EventArgs e)
@@ -208,6 +209,12 @@ namespace VmsClientDemo
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             //MessageBox.Show("MouseMove");
+//            pictureBox.Focus();
+        }
+
+        private void pictureBox_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox.Focus();
         }
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -225,22 +232,38 @@ namespace VmsClientDemo
             int iWidth = pictureBox.Size.Width;
             int iHeight = pictureBox.Size.Height;
 
-            pictureBox.Invalidate();
+            Size OrgSize = pictureBox.Parent.Size;
+            Size CurSize = pictureBox.Size;
+            OrgSize.Width -= BlockPanel.Width;
+
             if (e.Delta > 0)
             {
-                pictureBox.Scale(new SizeF(1.1F, 1.1F));
-                newLocation.X = oldLocation.X - (int)(mLocation.X * 0.1F);
-                newLocation.Y = oldLocation.Y - (int)(mLocation.Y * 0.1F);
+                if (OrgSize.Width * 4.0 > CurSize.Width)
+                {
+                    pictureBox.Invalidate();
+
+                    pictureBox.Scale(new SizeF(1.1F, 1.1F));
+                    newLocation.X = oldLocation.X - (int)(mLocation.X * 0.1F);
+                    newLocation.Y = oldLocation.Y - (int)(mLocation.Y * 0.1F);
+                    pictureBox.Location = newLocation;
+
+                    pictureBox.Update() ;
+                }
             }
             else
             {
-                pictureBox.Scale(new SizeF(0.9091F, 0.9091F));
-                newLocation.X = oldLocation.X + (int)(mLocation.X * (1.0F-0.9091F));
-                newLocation.Y = oldLocation.Y + (int)(mLocation.Y * (1.0F-0.9091F));
-            }
+                if (OrgSize.Width < CurSize.Width)
+                {
+                    pictureBox.Invalidate();
 
-            pictureBox.Location = newLocation;
-            pictureBox.Update() ;
+                    pictureBox.Scale(new SizeF(0.9091F, 0.9091F));
+                    newLocation.X = oldLocation.X + (int)(mLocation.X * (1.0F - 0.9091F));
+                    newLocation.Y = oldLocation.Y + (int)(mLocation.Y * (1.0F - 0.9091F));
+                    pictureBox.Location = newLocation;
+
+                    pictureBox.Update() ;
+                }
+            }
         }
 
         private void listViewPICs_ItemChecked(object sender, ItemCheckedEventArgs e)

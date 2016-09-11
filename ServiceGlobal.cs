@@ -11,10 +11,5 @@ namespace VmsClientDemo
 
         public static int Port;
 
-        public static string Uid;
-
-        public static string Pwd;
-
-
     }
 }

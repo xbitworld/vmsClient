@@ -29,8 +29,6 @@ namespace VmsClientDemo
 
         private UCPreview _PreviewPic = new UCPreview();
 
-        private int iPicsAcocunt = 3;
-
         private Brush coverBrush = new SolidBrush(Color.FromArgb(96, Color.Black));
 
         private int iColor = 0;
@@ -386,9 +384,9 @@ namespace VmsClientDemo
                     if (dt.Rows.Count > 0)
                     {
                         DataRow xRow = dt.Rows[0];
-//                        CamID.Text = dt.Rows[0]["Dev"].ToString();
-//                        CamADD.Text = dt.Rows[0]["Address"].ToString();
-//                        CamDIR.Text = dt.Rows[0]["Direct"].ToString();
+                        CamID.Text = dt.Rows[0]["Dev"].ToString();
+                        CamADD.Text = dt.Rows[0]["Address"].ToString();
+                        DirCOMB.Text = dt.Rows[0]["Direct"].ToString();
                     }
 
                     dt = ds.Tables["VehInfo"];
@@ -431,9 +429,9 @@ namespace VmsClientDemo
                 xe.SetAttribute("Pass", txtPwd.Text);
                 
                 xe = (XmlElement)root[1];
-//                xe.SetAttribute("Dev", CamID.Text);
-//                xe.SetAttribute("Address", CamADD.Text);
-//                xe.SetAttribute("Direct", CamDIR.Text);
+                xe.SetAttribute("Dev", CamID.Text);
+                xe.SetAttribute("Address", CamADD.Text);
+                xe.SetAttribute("Direct", DirCOMB.Text);
 
                 xe = (XmlElement)root[2];
                 xe.SetAttribute("vID", VehicleID.Text);
