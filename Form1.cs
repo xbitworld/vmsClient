@@ -218,11 +218,11 @@ namespace VmsClientDemo
                 iX++;
                 if (iX % 2 == 0)
                 {
-                    iRows = getData(@"select distinct 名称详情, 设备编码, 地点编码 from 地名地点视图 where 设备编码 = '510122000000A50002'", ref drc);
+                    iRows = getData(@"select distinct 设备名称, 设备编码, 地点编码 from 设备及地点 where 设备编码 = '510122000000A50002'", ref drc);
                 }
                 else
                 {
-                    iRows = getData(@"select distinct 名称详情, 设备编码, 地点编码 from 地名地点视图 where 设备编码 = '510122000000A50003'", ref drc);
+                    iRows = getData(@"select distinct 设备名称, 设备编码, 地点编码 from 设备及地点 where 设备编码 = '510122000000A50003'", ref drc);
                 }
                 if (iRows > 0)
                 {

@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VmsClient", "VmsClient.csproj", "{713F3E2A-5A98-4E74-9874-8BA884B74C5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E86F5C40-5E82-43CF-B5CB-613F14C7FA5B}"
 	ProjectSection(SolutionItems) = preProject
+		手动抓拍数据格式\最新电子警察图片命名格式\17.jpg = 手动抓拍数据格式\最新电子警察图片命名格式\17.jpg
+		手动抓拍数据格式\支队标准例片\510122000000A9034216081016081420000000000000000000031.jpg = 手动抓拍数据格式\支队标准例片\510122000000A9034216081016081420000000000000000000031.jpg
 		DevelopLog.txt = DevelopLog.txt
 		VMS.mdb = VMS.mdb
 		xmlConfig.xml = xmlConfig.xml
+		手动抓拍数据格式\最新电子警察图片命名格式\图片命名格式.jpg = 手动抓拍数据格式\最新电子警察图片命名格式\图片命名格式.jpg
+		手动抓拍数据格式\附件1_前端采集系统记录违法行为证据标准及证据图片命名格式.doc = 手动抓拍数据格式\附件1_前端采集系统记录违法行为证据标准及证据图片命名格式.doc
 	EndProjectSection
 EndProject
 Global
