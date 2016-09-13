@@ -43,7 +43,7 @@ namespace VmsClientDemo
 
             PICsList.Images.Clear();
             listViewPICs.Items.Clear();
-
+            AmountTextbox.Text = "0";
             return;
         }
 
@@ -140,14 +140,14 @@ namespace VmsClientDemo
             System.IO.DirectoryInfo dirInfo = new DirectoryInfo(getFiles[0]);
             string fullPathNew = dirInfo.Parent.Parent.FullName;
             string fileNameOld = dirInfo.Name; //Get the first file name, all the others file name base it.
-            string[] strsName = fileNameOld.Split('_');
+            string[] strsName = fileNameOld.Split('.');
 
             for (int iLoop = 0; iLoop < iAmount; iLoop ++)
             {
                 string orderMark = iAmount.ToString() + (iLoop + 1).ToString();
                 string fileNameNew = strsName[0].Substring(0, strsName[0].Length - 4);  //orderMark to instead the last 4 chars
-                fileNameNew += orderMark + "_";
-                fileNameNew += strsName[1] + "_" + strsName[2];
+                fileNameNew += orderMark;
+                fileNameNew += strsName[1];
 
                 string fullNameNew = fullPathNew + "\\" + fileNameNew;
 

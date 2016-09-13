@@ -53,27 +53,26 @@
             this.label8 = new System.Windows.Forms.Label();
             this.CamADD = new System.Windows.Forms.TextBox();
             this.DevGroup = new System.Windows.Forms.GroupBox();
-            this.ProvinceBox = new System.Windows.Forms.ComboBox();
+            this.ruleCOMB = new System.Windows.Forms.ComboBox();
+            this.DirCOMB = new System.Windows.Forms.ComboBox();
             this.IntervalTimeBox = new System.Windows.Forms.TextBox();
-            this.colorBox = new System.Windows.Forms.PictureBox();
-            this.fileStr2 = new System.Windows.Forms.TextBox();
             this.SavePICPath = new System.Windows.Forms.TextBox();
             this.SelectDIR = new System.Windows.Forms.Button();
             this.rstCAP = new System.Windows.Forms.Button();
             this.ChoisePICs = new System.Windows.Forms.Button();
             this.AutoCapBT = new System.Windows.Forms.Button();
             this.CaptureBT = new System.Windows.Forms.Button();
-            this.fileStr1 = new System.Windows.Forms.TextBox();
-            this.VehicleID = new System.Windows.Forms.TextBox();
             this.CamID = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.DirCOMB = new System.Windows.Forms.ComboBox();
-            this.ruleCOMB = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.colorBox = new System.Windows.Forms.PictureBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.RoadNOCMB = new System.Windows.Forms.ComboBox();
+            this.AddrID = new System.Windows.Forms.TextBox();
             this.VideoPlayTab.SuspendLayout();
             this.LoginGroup.SuspendLayout();
             this.DevGroup.SuspendLayout();
@@ -164,9 +163,9 @@
             this.lstCamList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lstCamList.GridLines = true;
-            this.lstCamList.Location = new System.Drawing.Point(12, 415);
+            this.lstCamList.Location = new System.Drawing.Point(12, 382);
             this.lstCamList.Name = "lstCamList";
-            this.lstCamList.Size = new System.Drawing.Size(285, 261);
+            this.lstCamList.Size = new System.Drawing.Size(285, 294);
             this.lstCamList.SmallImageList = this.imageList1;
             this.lstCamList.TabIndex = 4;
             this.lstCamList.UseCompatibleStateImageBehavior = false;
@@ -190,6 +189,7 @@
             this.VideoPlayTab.Controls.Add(this.tabPage3);
             this.VideoPlayTab.Controls.Add(this.tabPage4);
             this.VideoPlayTab.Controls.Add(this.tabPage5);
+            this.VideoPlayTab.Controls.Add(this.tabPage6);
             this.VideoPlayTab.Location = new System.Drawing.Point(304, 10);
             this.VideoPlayTab.Name = "VideoPlayTab";
             this.VideoPlayTab.SelectedIndex = 0;
@@ -266,7 +266,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 21);
+            this.label6.Location = new System.Drawing.Point(14, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 12);
             this.label6.TabIndex = 2;
@@ -275,7 +275,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 48);
+            this.label7.Location = new System.Drawing.Point(14, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 2;
@@ -284,111 +284,93 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(116, 48);
+            this.label8.Location = new System.Drawing.Point(3, 23);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.Size = new System.Drawing.Size(53, 12);
             this.label8.TabIndex = 2;
-            this.label8.Text = "设备编号：";
+            this.label8.Text = "设备号：";
             // 
             // CamADD
             // 
-            this.CamADD.Location = new System.Drawing.Point(50, 18);
+            this.CamADD.Location = new System.Drawing.Point(49, 47);
             this.CamADD.Name = "CamADD";
-            this.CamADD.Size = new System.Drawing.Size(186, 21);
+            this.CamADD.Size = new System.Drawing.Size(138, 21);
             this.CamADD.TabIndex = 12;
+            this.CamADD.Text = "一环路科华路口磨子桥";
             // 
             // DevGroup
             // 
+            this.DevGroup.Controls.Add(this.AddrID);
             this.DevGroup.Controls.Add(this.ruleCOMB);
+            this.DevGroup.Controls.Add(this.RoadNOCMB);
             this.DevGroup.Controls.Add(this.DirCOMB);
-            this.DevGroup.Controls.Add(this.ProvinceBox);
             this.DevGroup.Controls.Add(this.IntervalTimeBox);
             this.DevGroup.Controls.Add(this.colorBox);
-            this.DevGroup.Controls.Add(this.fileStr2);
             this.DevGroup.Controls.Add(this.SavePICPath);
             this.DevGroup.Controls.Add(this.SelectDIR);
             this.DevGroup.Controls.Add(this.rstCAP);
             this.DevGroup.Controls.Add(this.ChoisePICs);
             this.DevGroup.Controls.Add(this.AutoCapBT);
             this.DevGroup.Controls.Add(this.CaptureBT);
-            this.DevGroup.Controls.Add(this.fileStr1);
-            this.DevGroup.Controls.Add(this.VehicleID);
             this.DevGroup.Controls.Add(this.CamID);
             this.DevGroup.Controls.Add(this.CamADD);
-            this.DevGroup.Controls.Add(this.label8);
-            this.DevGroup.Controls.Add(this.label10);
             this.DevGroup.Controls.Add(this.label9);
-            this.DevGroup.Controls.Add(this.label5);
+            this.DevGroup.Controls.Add(this.label10);
             this.DevGroup.Controls.Add(this.label7);
             this.DevGroup.Controls.Add(this.label6);
-            this.DevGroup.Controls.Add(this.label11);
             this.DevGroup.Controls.Add(this.label12);
+            this.DevGroup.Controls.Add(this.label8);
+            this.DevGroup.Controls.Add(this.label5);
+            this.DevGroup.Controls.Add(this.label11);
             this.DevGroup.Location = new System.Drawing.Point(12, 160);
             this.DevGroup.Name = "DevGroup";
-            this.DevGroup.Size = new System.Drawing.Size(285, 249);
+            this.DevGroup.Size = new System.Drawing.Size(285, 216);
             this.DevGroup.TabIndex = 13;
             this.DevGroup.TabStop = false;
             this.DevGroup.Text = "截图信息";
             // 
-            // ProvinceBox
+            // ruleCOMB
             // 
-            this.ProvinceBox.FormattingEnabled = true;
-            this.ProvinceBox.Items.AddRange(new object[] {
-            "川",
-            "渝",
-            "云",
-            "贵",
-            "甘",
-            "藏",
-            "戊",
-            "戌",
-            "戍"});
-            this.ProvinceBox.Location = new System.Drawing.Point(50, 98);
-            this.ProvinceBox.Name = "ProvinceBox";
-            this.ProvinceBox.Size = new System.Drawing.Size(43, 20);
-            this.ProvinceBox.TabIndex = 5;
+            this.ruleCOMB.FormattingEnabled = true;
+            this.ruleCOMB.Location = new System.Drawing.Point(49, 101);
+            this.ruleCOMB.Name = "ruleCOMB";
+            this.ruleCOMB.Size = new System.Drawing.Size(229, 20);
+            this.ruleCOMB.TabIndex = 21;
+            this.ruleCOMB.Text = "跨越白实线";
+            // 
+            // DirCOMB
+            // 
+            this.DirCOMB.FormattingEnabled = true;
+            this.DirCOMB.Location = new System.Drawing.Point(49, 74);
+            this.DirCOMB.Name = "DirCOMB";
+            this.DirCOMB.Size = new System.Drawing.Size(54, 20);
+            this.DirCOMB.TabIndex = 20;
+            this.DirCOMB.Text = "西南";
+            this.DirCOMB.SelectedIndexChanged += new System.EventHandler(this.ChangeDIR);
             // 
             // IntervalTimeBox
             // 
-            this.IntervalTimeBox.Location = new System.Drawing.Point(236, 98);
+            this.IntervalTimeBox.Location = new System.Drawing.Point(156, 160);
             this.IntervalTimeBox.Name = "IntervalTimeBox";
             this.IntervalTimeBox.Size = new System.Drawing.Size(30, 21);
             this.IntervalTimeBox.TabIndex = 4;
             this.IntervalTimeBox.Text = "800";
             // 
-            // colorBox
-            // 
-            this.colorBox.BackColor = System.Drawing.SystemColors.WindowText;
-            this.colorBox.Location = new System.Drawing.Point(242, 18);
-            this.colorBox.Name = "colorBox";
-            this.colorBox.Size = new System.Drawing.Size(24, 21);
-            this.colorBox.TabIndex = 19;
-            this.colorBox.TabStop = false;
-            this.colorBox.Click += new System.EventHandler(this.setColor);
-            // 
-            // fileStr2
-            // 
-            this.fileStr2.Location = new System.Drawing.Point(193, 72);
-            this.fileStr2.Name = "fileStr2";
-            this.fileStr2.Size = new System.Drawing.Size(73, 21);
-            this.fileStr2.TabIndex = 18;
-            this.fileStr2.Text = "1345";
-            // 
             // SavePICPath
             // 
             this.SavePICPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SavePICPath.Location = new System.Drawing.Point(49, 215);
+            this.SavePICPath.Location = new System.Drawing.Point(49, 127);
             this.SavePICPath.Name = "SavePICPath";
-            this.SavePICPath.Size = new System.Drawing.Size(184, 21);
+            this.SavePICPath.Size = new System.Drawing.Size(179, 21);
             this.SavePICPath.TabIndex = 15;
             this.SavePICPath.Text = "C:\\抓取图片";
             // 
             // SelectDIR
             // 
             this.SelectDIR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SelectDIR.Location = new System.Drawing.Point(233, 214);
+            this.SelectDIR.Location = new System.Drawing.Point(234, 127);
             this.SelectDIR.Name = "SelectDIR";
-            this.SelectDIR.Size = new System.Drawing.Size(32, 23);
+            this.SelectDIR.Size = new System.Drawing.Size(44, 21);
             this.SelectDIR.TabIndex = 16;
             this.SelectDIR.Text = "...";
             this.SelectDIR.UseVisualStyleBackColor = true;
@@ -397,7 +379,7 @@
             // rstCAP
             // 
             this.rstCAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rstCAP.Location = new System.Drawing.Point(177, 178);
+            this.rstCAP.Location = new System.Drawing.Point(189, 187);
             this.rstCAP.Name = "rstCAP";
             this.rstCAP.Size = new System.Drawing.Size(89, 23);
             this.rstCAP.TabIndex = 14;
@@ -408,7 +390,7 @@
             // ChoisePICs
             // 
             this.ChoisePICs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChoisePICs.Location = new System.Drawing.Point(50, 178);
+            this.ChoisePICs.Location = new System.Drawing.Point(97, 187);
             this.ChoisePICs.Name = "ChoisePICs";
             this.ChoisePICs.Size = new System.Drawing.Size(89, 23);
             this.ChoisePICs.TabIndex = 14;
@@ -419,7 +401,7 @@
             // AutoCapBT
             // 
             this.AutoCapBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AutoCapBT.Location = new System.Drawing.Point(177, 150);
+            this.AutoCapBT.Location = new System.Drawing.Point(189, 158);
             this.AutoCapBT.Name = "AutoCapBT";
             this.AutoCapBT.Size = new System.Drawing.Size(89, 23);
             this.AutoCapBT.TabIndex = 14;
@@ -430,73 +412,48 @@
             // CaptureBT
             // 
             this.CaptureBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CaptureBT.Location = new System.Drawing.Point(50, 150);
+            this.CaptureBT.Location = new System.Drawing.Point(6, 159);
             this.CaptureBT.Name = "CaptureBT";
-            this.CaptureBT.Size = new System.Drawing.Size(88, 23);
+            this.CaptureBT.Size = new System.Drawing.Size(88, 51);
             this.CaptureBT.TabIndex = 14;
             this.CaptureBT.Text = "截图(手动)";
             this.CaptureBT.UseVisualStyleBackColor = true;
             this.CaptureBT.Click += new System.EventHandler(this.CapturePIC);
             // 
-            // fileStr1
-            // 
-            this.fileStr1.Location = new System.Drawing.Point(50, 72);
-            this.fileStr1.Name = "fileStr1";
-            this.fileStr1.Size = new System.Drawing.Size(137, 21);
-            this.fileStr1.TabIndex = 15;
-            this.fileStr1.Text = "160002106400000000000";
-            // 
-            // VehicleID
-            // 
-            this.VehicleID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.VehicleID.Location = new System.Drawing.Point(96, 98);
-            this.VehicleID.Name = "VehicleID";
-            this.VehicleID.Size = new System.Drawing.Size(42, 21);
-            this.VehicleID.TabIndex = 15;
-            this.VehicleID.Text = "A00001";
-            // 
             // CamID
             // 
-            this.CamID.Location = new System.Drawing.Point(175, 45);
+            this.CamID.Location = new System.Drawing.Point(49, 20);
             this.CamID.Name = "CamID";
-            this.CamID.Size = new System.Drawing.Size(91, 21);
+            this.CamID.Size = new System.Drawing.Size(138, 21);
             this.CamID.TabIndex = 14;
+            this.CamID.Text = "512113889150570369";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 218);
+            this.label10.Location = new System.Drawing.Point(14, 130);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 2;
             this.label10.Text = "路径：";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 102);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 12);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "车牌号：";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 12);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "文件名：";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(154, 102);
+            this.label11.Location = new System.Drawing.Point(99, 163);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 12);
+            this.label11.Size = new System.Drawing.Size(65, 12);
             this.label11.TabIndex = 2;
-            this.label11.Text = "自动间隔(ms)：";
+            this.label11.Text = "间隔(ms)：";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(2, 104);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "违章名：";
             // 
             // imageList2
             // 
@@ -504,32 +461,69 @@
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // DirCOMB
+            // label5
             // 
-            this.DirCOMB.FormattingEnabled = true;
-            this.DirCOMB.Location = new System.Drawing.Point(50, 45);
-            this.DirCOMB.Name = "DirCOMB";
-            this.DirCOMB.Size = new System.Drawing.Size(60, 20);
-            this.DirCOMB.TabIndex = 20;
-            this.DirCOMB.SelectedIndexChanged += new System.EventHandler(this.ChangeDIR);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(193, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "水印颜色：";
             // 
-            // ruleCOMB
+            // colorBox
             // 
-            this.ruleCOMB.FormattingEnabled = true;
-            this.ruleCOMB.Location = new System.Drawing.Point(50, 124);
-            this.ruleCOMB.Name = "ruleCOMB";
-            this.ruleCOMB.Size = new System.Drawing.Size(216, 20);
-            this.ruleCOMB.TabIndex = 21;
-            this.ruleCOMB.SelectedIndexChanged += new System.EventHandler(this.SelectedRule);
+            this.colorBox.BackColor = System.Drawing.SystemColors.WindowText;
+            this.colorBox.Location = new System.Drawing.Point(254, 20);
+            this.colorBox.Name = "colorBox";
+            this.colorBox.Size = new System.Drawing.Size(24, 21);
+            this.colorBox.TabIndex = 19;
+            this.colorBox.TabStop = false;
+            this.colorBox.Click += new System.EventHandler(this.setColor);
             // 
-            // label12
+            // tabPage6
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 127);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 12);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "违章名：";
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(750, 644);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "数据库编辑";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(109, 77);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(41, 12);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "车道：";
+            // 
+            // RoadNOCMB
+            // 
+            this.RoadNOCMB.FormattingEnabled = true;
+            this.RoadNOCMB.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.RoadNOCMB.Location = new System.Drawing.Point(144, 74);
+            this.RoadNOCMB.Name = "RoadNOCMB";
+            this.RoadNOCMB.Size = new System.Drawing.Size(43, 20);
+            this.RoadNOCMB.TabIndex = 20;
+            this.RoadNOCMB.Text = "1";
+            this.RoadNOCMB.SelectedIndexChanged += new System.EventHandler(this.ChangeDIR);
+            // 
+            // AddrID
+            // 
+            this.AddrID.Location = new System.Drawing.Point(190, 47);
+            this.AddrID.Name = "AddrID";
+            this.AddrID.Size = new System.Drawing.Size(88, 21);
+            this.AddrID.TabIndex = 22;
+            this.AddrID.Text = "100001000100";
             // 
             // Form1
             // 
@@ -585,22 +579,21 @@
         private System.Windows.Forms.Button SelectDIR;
         private System.Windows.Forms.Button ChoisePICs;
         private System.Windows.Forms.Button AutoCapBT;
-        private System.Windows.Forms.TextBox fileStr1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox VehicleID;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox fileStr2;
         private System.Windows.Forms.PictureBox colorBox;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button rstCAP;
-        private System.Windows.Forms.ComboBox ProvinceBox;
         private System.Windows.Forms.TextBox IntervalTimeBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox DirCOMB;
         private System.Windows.Forms.ComboBox ruleCOMB;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.ComboBox RoadNOCMB;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox AddrID;
     }
 }
 

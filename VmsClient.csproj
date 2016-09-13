@@ -92,6 +92,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCDatabase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDatabase.Designer.cs">
+      <DependentUpon>UCDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCPreview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,6 +144,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCDatabase.resx">
+      <DependentUpon>UCDatabase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCPreVideoPlay.resx">
       <DependentUpon>UCPreVideoPlay.cs</DependentUpon>
     </EmbeddedResource>

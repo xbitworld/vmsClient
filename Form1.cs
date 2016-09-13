@@ -29,6 +29,8 @@ namespace VmsClientDemo
 
         private UCPreview _PreviewPic = new UCPreview();
 
+        private UCDatabase _Database = new UCDatabase();
+
         private Brush coverBrush = new SolidBrush(Color.FromArgb(96, Color.Black));
 
         private int iColor = 0;
@@ -72,6 +74,8 @@ namespace VmsClientDemo
             {
                 InitDBConn(fileInfo[0].FullName);
             }
+
+            RoadNOCMB.SelectedIndex = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -90,6 +94,9 @@ namespace VmsClientDemo
 
             this.tabPage5.Controls.Add(_PreviewPic);
             _PreviewPic.Dock = DockStyle.Fill;
+
+            this.tabPage6.Controls.Add(_Database);
+            _Database.Dock = DockStyle.Fill;
 
         }
 
@@ -199,7 +206,6 @@ namespace VmsClientDemo
                 }));
         }
 
-        static int iX = 0;
         private void lstCamList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.lstCamList.SelectedItems.Count==0) return ;
@@ -213,28 +219,20 @@ namespace VmsClientDemo
 
                 string CamCode = modelCam.Code;
                 DataRowCollection drc = null;
-                int iRows = 0;
+                int iRows = getData(@"select distinct 设备名称, 设备编码, 地点编码, 路口ID from 设备及地点 where 设备编码 = '" + CamCode + "'", ref drc);
 
-                iX++;
-                if (iX % 2 == 0)
-                {
-                    iRows = getData(@"select distinct 设备名称, 设备编码, 地点编码 from 设备及地点 where 设备编码 = '510122000000A50002'", ref drc);
-                }
-                else
-                {
-                    iRows = getData(@"select distinct 设备名称, 设备编码, 地点编码 from 设备及地点 where 设备编码 = '510122000000A50003'", ref drc);
-                }
                 if (iRows > 0)
                 {
                     DirCOMB.Items.Clear();
                     CamADD.Text = (string)(drc[0][0]);
                     CamID.Text = (string)(drc[0][1]);
-                    int iAddrCode = (int)(drc[0][2]);
+                    string strAddrCode = (string)(drc[0][2]);
+                    int iAddID = (int)(drc[0][3]);
 
-                    iRows = getData(@"select distinct 方向描述 from 违章种类及方向 where 地点代码 = " + iAddrCode.ToString() , ref drc);
+                    iRows = getData(@"select distinct 方向描述 from 违章种类及方向 where 路口ID = " + iAddID.ToString(), ref drc);
                     if (iRows > 0)
                     {
-                        DirCOMB.Tag = iAddrCode;    //存储当前的地址信息
+                        DirCOMB.Tag = iAddID;    //存储当前的地址信息
                         foreach (DataRow DR in drc)
                         {
                             string dirStr = (string)(DR[0]);
@@ -254,6 +252,15 @@ namespace VmsClientDemo
                         DirCOMB.SelectedIndex = 0;
                         //setRulesBox();
                     }
+                    else
+                    {//Switch to database table to edit rules data
+                        ;
+                    }
+                }
+                else
+                {//Switch to Database table to edit information data
+                    string CamName = modelCam.Name;
+                    ;
                 }
             }
         }
@@ -324,26 +331,6 @@ namespace VmsClientDemo
             }
         }
 
-        private void SelectedRule(object sender, EventArgs e)
-        {
-            string strRule = ruleCOMB.Items[ruleCOMB.SelectedIndex].ToString();
-
-            if(strRule == null || strRule == "")
-            {
-                return;
-            }
-
-            string strSQL = "select 违章编码 from 违章编码表 where 违章描述 = '" +
-                    strRule + "'";
-
-            DataRowCollection drc = null;
-            int iRows = getData(strSQL, ref drc);
-            if (iRows > 0)
-            {
-                fileStr2.Text = ((int)(drc[0][0])).ToString();
-            }
-        }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             _PreviewPic.resetList();
@@ -380,31 +367,12 @@ namespace VmsClientDemo
                         txtPwd.Text = dt.Rows[0]["Pass"].ToString();
                     }
 
-                    dt = ds.Tables["CamInfo"];
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow xRow = dt.Rows[0];
-                        CamID.Text = dt.Rows[0]["Dev"].ToString();
-                        CamADD.Text = dt.Rows[0]["Address"].ToString();
-                        DirCOMB.Text = dt.Rows[0]["Direct"].ToString();
-                    }
-
-                    dt = ds.Tables["VehInfo"];
-                    if (dt.Rows.Count > 0)
-                    {
-                        DataRow xRow = dt.Rows[0];
-                        VehicleID.Text = dt.Rows[0]["vID"].ToString();
-                        fileStr1.Text = dt.Rows[0]["fileStr1"].ToString();
-                        fileStr2.Text = dt.Rows[0]["fileStr2"].ToString();
-                    }
-
                     dt = ds.Tables["Capture"];
                     if (dt.Rows.Count > 0)
                     {
                         SavePICPath.Text = dt.Rows[0]["CapPath"].ToString();
                         iColor = Convert.ToInt32(dt.Rows[0]["txtColor"].ToString());
                         IntervalTimeBox.Text = dt.Rows[0]["IntervalTime"].ToString();
-                        ProvinceBox.Text = dt.Rows[0]["ProvIndex"].ToString(); 
                         Color boxColor = Color.FromArgb(iColor);
                         coverBrush = new SolidBrush(boxColor);
                         colorBox.BackColor = boxColor;
@@ -427,22 +395,11 @@ namespace VmsClientDemo
                 xe.SetAttribute("Port", txtPort.Text);
                 xe.SetAttribute("User", txtUid.Text);
                 xe.SetAttribute("Pass", txtPwd.Text);
-                
+
                 xe = (XmlElement)root[1];
-                xe.SetAttribute("Dev", CamID.Text);
-                xe.SetAttribute("Address", CamADD.Text);
-                xe.SetAttribute("Direct", DirCOMB.Text);
-
-                xe = (XmlElement)root[2];
-                xe.SetAttribute("vID", VehicleID.Text);
-                xe.SetAttribute("fileStr1", fileStr1.Text);
-                xe.SetAttribute("fileStr2", fileStr2.Text);
-
-                xe = (XmlElement)root[3];
                 xe.SetAttribute("CapPath", SavePICPath.Text);
                 xe.SetAttribute("txtColor", iColor.ToString());
                 xe.SetAttribute("IntervalTime", IntervalTimeBox.Text);
-                xe.SetAttribute("ProvIndex", ProvinceBox.Text);
 
                 xmlDoc.Save(Application.StartupPath + "\\xmlConfig.xml");
             }
@@ -501,7 +458,7 @@ namespace VmsClientDemo
         }
 
         string picsDir = @"./";
-        int iFilesCounter = 0;
+        int iFilesCounter = 0;      //Mark the file's name unique
         DateTime FirstFileTime = DateTime.Now;
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
@@ -602,13 +559,14 @@ namespace VmsClientDemo
 
                 string finalFileName = "";
 
-                finalFileName = @"510122000000" + CamID.Text.Trim();
+                finalFileName = CamID.Text.Trim();
                 finalFileName += FirstFileTime.ToString("yyMMddHHmmss");
-                finalFileName += fileStr1.Text.ToString();
+                finalFileName += RoadNOCMB.Text;
+                finalFileName += AddrID.Text;
+                finalFileName += "00000";
+                finalFileName += "000";
                 finalFileName += "nm";
                 finalFileName += iFilesCounter.ToString("D2");
-                finalFileName += "_" + VehicleID.Text.ToString() + "_";
-                finalFileName += fileStr2.Text.ToString();
 
                 finalFileName = strSavePath + @"//" + finalFileName + ".jpg";
                 image.Save(finalFileName.ToUpper());

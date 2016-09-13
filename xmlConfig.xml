@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Config>
   <Server IP="127.0.0.1" Port="8899" User="admin" Pass="admin" />
-  <CamInfo Dev="A50006" Address="成都市人民南路三段17号" Direct="南" />
-  <VehInfo vID="A00001" fileStr1="0002106400000000000" fileStr2="1345" />
-  <Capture CapPath="E:\手动抓拍违法图片" txtColor="-256" IntervalTime="600" ProvIndex="川"/>
+  <Capture CapPath="E:\手动抓拍违法图片" txtColor="-256" IntervalTime="600"/>
 </Config>
