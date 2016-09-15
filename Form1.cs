@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading;
 using System.Xml;
 using System.Data.OleDb;
+using System.Runtime.InteropServices;
 
 namespace VmsClientDemo
 {
@@ -29,13 +30,16 @@ namespace VmsClientDemo
 
         private UCPreview _PreviewPic = new UCPreview();
 
-        private UCDatabase _Database = new UCDatabase();
+        public delegate int dbCallbackFun([In] string strSQL, ref DataRowCollection dra);
+        static dbCallbackFun pDBCallFun = new dbCallbackFun(getData);
+
+        private UCDatabase _Database = new UCDatabase(pDBCallFun);
 
         private Brush coverBrush = new SolidBrush(Color.FromArgb(96, Color.Black));
 
         private int iColor = 0;
 
-        System.Data.OleDb.OleDbConnection AccessConn = new System.Data.OleDb.OleDbConnection();
+        static System.Data.OleDb.OleDbConnection AccessConn = new System.Data.OleDb.OleDbConnection();
 
         private void InitDBConn(string DBFullpath)
         {
@@ -100,7 +104,7 @@ namespace VmsClientDemo
 
         }
 
-        private int AccessRead(string strSQL, ref DataTableCollection dta)
+        private static int AccessRead(string strSQL, ref DataTableCollection dta)
         {
             DataSet myDataSet = new DataSet();
 
@@ -124,7 +128,7 @@ namespace VmsClientDemo
             return 0;
         }
 
-        private int getData(string strSQL, ref DataRowCollection dra)
+        public static int getData(string strSQL, ref DataRowCollection dra)
         {
             //string strSQL = @"Select * from 最终视图 where 设备编码 = 1";
 
@@ -150,13 +154,13 @@ namespace VmsClientDemo
             //    Console.WriteLine("Column name[{0}] is {1}, of type {2}", i++, dc.ColumnName, dc.DataType);
             //}
 
-            dra = dta["最终视图"].Rows;
+            dra = dta[0].Rows;
             //foreach (DataRow dr in dra)
             //{
             //    // Print the CategoryID as a subscript, then the CategoryName:
             //    Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5]);
             //}
-            return dta["最终视图"].Rows.Count;
+            return dta[0].Rows.Count;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -210,6 +214,9 @@ namespace VmsClientDemo
         {
             if (this.lstCamList.SelectedItems.Count==0) return ;
             Spnet.Data.Model.Camera modelCam=lstCamList.SelectedItems[0].Tag as  Spnet.Data.Model.Camera;
+
+            _Database.fillDatabaseUI(modelCam.Code, modelCam.Name);
+
             if (modelCam != null)
             {
                 _real.ModelCam = modelCam;
@@ -260,6 +267,7 @@ namespace VmsClientDemo
                 else
                 {//Switch to Database table to edit information data
                     string CamName = modelCam.Name;
+                    //code，name, road, segement, enter, 
                     ;
                 }
             }
