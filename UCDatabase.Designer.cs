@@ -32,21 +32,30 @@
             this.modRoad = new System.Windows.Forms.Button();
             this.roadCOMB = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.roadCode = new System.Windows.Forms.TextBox();
+            this.roadName = new System.Windows.Forms.TextBox();
             this.addRoad = new System.Windows.Forms.Button();
             this.delRoad = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.secCode = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.secName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.secCOMB = new System.Windows.Forms.ComboBox();
             this.delSection = new System.Windows.Forms.Button();
             this.addSection = new System.Windows.Forms.Button();
             this.modSection = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.posCode = new System.Windows.Forms.TextBox();
+            this.posName = new System.Windows.Forms.TextBox();
             this.posCOMB = new System.Windows.Forms.ComboBox();
             this.delPos = new System.Windows.Forms.Button();
             this.addPos = new System.Windows.Forms.Button();
             this.modPos = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.CAMCodeBox = new System.Windows.Forms.TextBox();
             this.CamNameBox = new System.Windows.Forms.Label();
@@ -55,15 +64,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.posCodeBox = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.roadName = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.roadCode = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.secName = new System.Windows.Forms.TextBox();
-            this.secCode = new System.Windows.Forms.TextBox();
-            this.posName = new System.Windows.Forms.TextBox();
-            this.posCode = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -119,14 +119,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "摄像机名";
             // 
-            // label3
+            // roadCode
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 18);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "道路名称：";
+            this.roadCode.Location = new System.Drawing.Point(96, 124);
+            this.roadCode.Name = "roadCode";
+            this.roadCode.Size = new System.Drawing.Size(159, 28);
+            this.roadCode.TabIndex = 9;
+            // 
+            // roadName
+            // 
+            this.roadName.Location = new System.Drawing.Point(96, 86);
+            this.roadName.Name = "roadName";
+            this.roadName.Size = new System.Drawing.Size(159, 28);
+            this.roadName.TabIndex = 9;
             // 
             // addRoad
             // 
@@ -148,6 +153,24 @@
             this.delRoad.UseVisualStyleBackColor = true;
             this.delRoad.Click += new System.EventHandler(this.delRoad_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 127);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 18);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "道路编码：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 18);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "道路名称：";
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -166,6 +189,29 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "道路名";
+            // 
+            // secCode
+            // 
+            this.secCode.Location = new System.Drawing.Point(93, 124);
+            this.secCode.Name = "secCode";
+            this.secCode.Size = new System.Drawing.Size(159, 28);
+            this.secCode.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 127);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(98, 18);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "路段编码：";
+            // 
+            // secName
+            // 
+            this.secName.Location = new System.Drawing.Point(92, 86);
+            this.secName.Name = "secName";
+            this.secName.Size = new System.Drawing.Size(159, 28);
+            this.secName.TabIndex = 9;
             // 
             // label2
             // 
@@ -235,18 +281,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "路段名";
             // 
-            // label4
+            // posCode
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 127);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 18);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "路口编码：";
+            this.posCode.Location = new System.Drawing.Point(94, 124);
+            this.posCode.Name = "posCode";
+            this.posCode.Size = new System.Drawing.Size(159, 28);
+            this.posCode.TabIndex = 9;
+            // 
+            // posName
+            // 
+            this.posName.Location = new System.Drawing.Point(95, 86);
+            this.posName.Name = "posName";
+            this.posName.Size = new System.Drawing.Size(159, 28);
+            this.posName.TabIndex = 9;
             // 
             // posCOMB
             // 
             this.posCOMB.FormattingEnabled = true;
+            this.posCOMB.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.posCOMB.Location = new System.Drawing.Point(9, 43);
             this.posCOMB.Name = "posCOMB";
             this.posCOMB.Size = new System.Drawing.Size(244, 26);
@@ -282,6 +334,24 @@
             this.modPos.Text = "改";
             this.modPos.UseVisualStyleBackColor = true;
             this.modPos.Click += new System.EventHandler(this.modPos_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 89);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(98, 18);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "路口信息：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 18);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "路口编码：";
             // 
             // label5
             // 
@@ -367,75 +437,6 @@
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "关联信息";
-            // 
-            // roadName
-            // 
-            this.roadName.Location = new System.Drawing.Point(96, 86);
-            this.roadName.Name = "roadName";
-            this.roadName.Size = new System.Drawing.Size(159, 28);
-            this.roadName.TabIndex = 9;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 127);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 18);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "道路编码：";
-            // 
-            // roadCode
-            // 
-            this.roadCode.Location = new System.Drawing.Point(96, 124);
-            this.roadCode.Name = "roadCode";
-            this.roadCode.Size = new System.Drawing.Size(159, 28);
-            this.roadCode.TabIndex = 9;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 127);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 18);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "路段编码：";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 89);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 18);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "路口信息：";
-            // 
-            // secName
-            // 
-            this.secName.Location = new System.Drawing.Point(92, 86);
-            this.secName.Name = "secName";
-            this.secName.Size = new System.Drawing.Size(159, 28);
-            this.secName.TabIndex = 9;
-            // 
-            // secCode
-            // 
-            this.secCode.Location = new System.Drawing.Point(93, 124);
-            this.secCode.Name = "secCode";
-            this.secCode.Size = new System.Drawing.Size(159, 28);
-            this.secCode.TabIndex = 9;
-            // 
-            // posName
-            // 
-            this.posName.Location = new System.Drawing.Point(95, 86);
-            this.posName.Name = "posName";
-            this.posName.Size = new System.Drawing.Size(159, 28);
-            this.posName.TabIndex = 9;
-            // 
-            // posCode
-            // 
-            this.posCode.Location = new System.Drawing.Point(94, 124);
-            this.posCode.Name = "posCode";
-            this.posCode.Size = new System.Drawing.Size(159, 28);
-            this.posCode.TabIndex = 9;
             // 
             // UCDatabase
             // 

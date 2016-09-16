@@ -113,7 +113,7 @@ namespace VmsClientDemo
                 OleDbCommand myAccessCommand = new OleDbCommand(strSQL, AccessConn);
                 OleDbDataAdapter myDataAdapter = new OleDbDataAdapter(myAccessCommand);
 
-                myDataAdapter.Fill(myDataSet, "最终视图");
+                myDataAdapter.Fill(myDataSet);
 
             }
             catch (Exception ex)
@@ -136,6 +136,11 @@ namespace VmsClientDemo
             AccessRead(strSQL, ref dta);
 
             if (dta == null)
+            {
+                return -1;
+            }
+
+            if (dta.Count == 0)
             {
                 return 0;
             }

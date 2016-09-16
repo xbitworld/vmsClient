@@ -118,6 +118,7 @@ namespace VmsClientDemo
             }
             else
             {
+                ADDCamera.Enabled = true;
                 //Fill road info
                 strSQL = "select 道路名称 from 道路编码表";
                 iRow = pDBSQLFun(strSQL, ref drc);
@@ -228,7 +229,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 FillRoadInfo(strName);
             }
@@ -246,7 +247,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 initCOMB(roadCOMB);
             }
@@ -270,7 +271,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 FillRoadInfo(strName);
             }
@@ -290,7 +291,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 FillSecInfo(strName);
             }
@@ -308,7 +309,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 initCOMB(secCOMB);
             }
@@ -332,7 +333,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 FillSecInfo(strName);
             }
@@ -352,7 +353,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 FillPosInfo(strName);
             }
@@ -370,7 +371,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 initCOMB(secCOMB);
             }
@@ -390,11 +391,11 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "update 路口编码表 set 路口名称 = '" + strName + "', 路口代码 = '" + strCode + "' where ID = " + iPosID.ToString();
+            string strSQL = "update 路口编码表 set 路口名称 = '" + strName + "', 路口代码 = " + strCode + " where ID = " + iPosID.ToString();
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (iRow >= 0)
             {
                 FillPosInfo(strName);
             }
@@ -402,6 +403,14 @@ namespace VmsClientDemo
 
         private void roadCOMB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            secCOMB.Items.Clear();
+            secCOMB.Text = "";
+            secCOMB.Tag = -1;
+
+            posCOMB.Items.Clear();
+            posCOMB.Text = "";
+            posCOMB.Tag = -1;
+
             string strRoadName = roadCOMB.Text;
 
             if (strRoadName != null && strRoadName != "")
@@ -423,7 +432,6 @@ namespace VmsClientDemo
                     iRow = pDBSQLFun(strSQL, ref drc);
                     if (iRow > 0)
                     {
-                        secCOMB.Items.Clear();
                         foreach (DataRow DR in drc)
                         {
                             secCOMB.Items.Add((string)(DR[0]));
@@ -436,6 +444,10 @@ namespace VmsClientDemo
 
         private void secCOMB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            posCOMB.Items.Clear();
+            posCOMB.Text = "";
+            posCOMB.Tag = -1;
+
             string strSecName = secCOMB.Text;
 
             if (strSecName != null && strSecName != "")
@@ -457,7 +469,6 @@ namespace VmsClientDemo
                     iRow = pDBSQLFun(strSQL, ref drc);
                     if (iRow > 0)
                     {
-                        posCOMB.Items.Clear();
                         foreach (DataRow DR in drc)
                         {
                             posCOMB.Items.Add((string)(DR[0]));
@@ -494,18 +505,40 @@ namespace VmsClientDemo
             int iSecID = (int)secCOMB.Tag;
             int iPosID = (int)posCOMB.Tag;
 
-            if(iRoadID == -1 || iSecID == -1 || iPosID == -1)
+            string strCAMID = (string)CamNameBox.Tag;
+            string strCAMCode = CAMCodeBox.Text;
+            string strCAMName = CamNameBox.Text;
+
+            if (iRoadID == -1 || iSecID == -1 || iPosID == -1
+                || strCAMID == "" || strCAMName == "" || strCAMCode == "")
             {
                 MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
-            string strSQL = "insert into 设备路口映射表(";
+            string strSQL = "insert into 设备路口映射表(设备CODE, 设备编码, 设备名称, 路口ID) values('" 
+                + strCAMID + "', '" + strCAMCode + "', '" + strCAMName + "', " + iPosID.ToString() + ")";
+
+            DataRowCollection drc = null;
+            int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow >= 0)
+            {
+                ;
+            }
         }
 
         private void ModifyCAM_Click(object sender, EventArgs e)
         {
+            int iPosID = (int)posCOMB.Tag;
+            string strCamCode = (string)CamNameBox.Tag;
+            string strSQL = "update 设备路口映射表 set 路口ID = " + iPosID.ToString() + "where 设备CODE = '" + strCamCode + "'";
 
+            DataRowCollection drc = null;
+            int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow >= 0)
+            {
+                ;
+            }
         }
     }
 }
