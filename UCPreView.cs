@@ -146,7 +146,7 @@ namespace VmsClientDemo
             {
                 string orderMark = iAmount.ToString() + (iLoop + 1).ToString();
                 string fileNameNew = strsName[0].Substring(0, strsName[0].Length - 4);  //orderMark to instead the last 4 chars
-                fileNameNew += orderMark;
+                fileNameNew += orderMark + ".";
                 fileNameNew += strsName[1];
 
                 string fullNameNew = fullPathNew + "\\" + fileNameNew;

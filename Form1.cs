@@ -79,6 +79,15 @@ namespace VmsClientDemo
                 InitDBConn(fileInfo[0].FullName);
             }
 
+            ////Find the mdb from current directory.
+            //fileInfo = getFileFullPath(@"CamIcon.png", "..\\..\\");
+            //if (fileInfo.Count() > 0)
+            //{
+            //    Image RImage = Image.FromFile(fileInfo[0].FullName);
+            //    VideoPlayTab.ImageList.Images.Add(RImage);
+            //    tabPage1.ImageIndex = 0;
+            //}
+
             RoadNOCMB.SelectedIndex = 0;
         }
 
@@ -567,7 +576,15 @@ namespace VmsClientDemo
 
                 if (!Directory.Exists(strSavePath))
                 {
-                    Directory.CreateDirectory(strSavePath);
+                    try
+                    {
+                        Directory.CreateDirectory(strSavePath);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("目录无法找到或建立，请检查后再试！");
+                        return;
+                    }
                 }
 
                 string finalFileName = "";

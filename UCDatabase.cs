@@ -39,6 +39,15 @@ namespace VmsClientDemo
                 roadCOMB.Tag = -1;
                 secCOMB.Tag = -1;
                 posCOMB.Tag = -1;
+
+                roadName.Text = "";
+                roadCode.Text = "";
+
+                secName.Text = "";
+                secCode.Text = "";
+
+                posName.Text = "";
+                posCode.Text = "";
             }
             else if(comb.Equals(secCOMB))
             {
@@ -47,12 +56,21 @@ namespace VmsClientDemo
 
                 secCOMB.Tag = -1;
                 posCOMB.Tag = -1;
+
+                secName.Text = "";
+                secCode.Text = "";
+
+                posName.Text = "";
+                posCode.Text = "";
             }
             else if(comb.Equals(posCOMB))
             {
                 posCOMB.Items.Clear();
 
                 posCOMB.Tag = -1;
+
+                posName.Text = "";
+                posCode.Text = "";
             }
         }
 
@@ -62,6 +80,7 @@ namespace VmsClientDemo
             CamNameBox.Tag = strCAMCode;
 
             initBT();
+            initCOMB(roadCOMB);
 
             DataRowCollection drc = null;
 
@@ -80,18 +99,13 @@ namespace VmsClientDemo
                 iposID = (int)drc[0][1];
                 CAMCodeBox.Text = strCAMID;
 
-                strSQL = "select 地点编码 from 设备及地点 where 设备编码 = '" + strCAMID + "'";
+                strSQL = "select 地点编码, 道路ID, 路段ID from 设备及地点 where 设备编码 = '" + strCAMID + "'";
                 iRow = pDBSQLFun(strSQL, ref drc);
                 if (iRow < 1) return false;
 
                 posCodeBox.Text = (string)drc[0][0];
-
-                strSQL = "select 道路ID, 路段ID from 设备及地点 where 路口ID = " + iposID.ToString();
-                iRow = pDBSQLFun(strSQL, ref drc);
-                if (iRow < 1) return false;
-
-                iroadID = (int)drc[0][0];
-                isecID = (int)drc[0][1];
+                iroadID = (int)drc[0][1];
+                isecID = (int)drc[0][2];
                 
                 strSQL = "select 道路名称 from 道路编码表 where ID = " + iroadID.ToString();
                 iRow = pDBSQLFun(strSQL, ref drc);
@@ -107,7 +121,7 @@ namespace VmsClientDemo
                 string strSecName = (string)drc[0][0];
                 FillSecInfo(strSecName);
                 
-                strSQL = "select 路口名称 from 路口编码表 where ID = " + iroadID.ToString();
+                strSQL = "select 路口名称 from 路口编码表 where ID = " + iposID.ToString();
                 iRow = pDBSQLFun(strSQL, ref drc);
                 if (iRow < 1) return false;
 
@@ -147,6 +161,7 @@ namespace VmsClientDemo
 
             if (strRoadName == null || strRoadName == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -173,6 +188,7 @@ namespace VmsClientDemo
 
             if(iRoadID == -1 || strSecName == null || strSecName == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
             string strSQL = "select 路段名称 from 路段编码表 where 道路ID = " + iRoadID.ToString();
@@ -198,6 +214,7 @@ namespace VmsClientDemo
 
             if (iSecID == -1 || strPosName == null || strPosName == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -222,6 +239,7 @@ namespace VmsClientDemo
             string strCode = roadCode.Text;
             if (strName == null || strName == "" || strCode == null || strCode == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -233,6 +251,10 @@ namespace VmsClientDemo
             {
                 FillRoadInfo(strName);
             }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
+            }
         }
 
         private void delRoad_Click(object sender, EventArgs e)
@@ -240,6 +262,7 @@ namespace VmsClientDemo
             int iID = (int)roadCOMB.Tag;
             if (iID == -1)
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -264,6 +287,7 @@ namespace VmsClientDemo
             int iRoadID = (int)roadCOMB.Tag;
             if (iRoadID == -1 || strName == null || strName == "" || strCode == null || strCode == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -275,6 +299,10 @@ namespace VmsClientDemo
             {
                 FillRoadInfo(strName);
             }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
+            }
         }
 
         private void addSection_Click(object sender, EventArgs e)
@@ -284,6 +312,7 @@ namespace VmsClientDemo
             int iRoadID = (int)roadCOMB.Tag;
             if (iRoadID == -1 || strName == null || strName == "" || strCode == null || strCode == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -295,6 +324,10 @@ namespace VmsClientDemo
             {
                 FillSecInfo(strName);
             }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
+            }
         }
 
         private void delSection_Click(object sender, EventArgs e)
@@ -302,6 +335,7 @@ namespace VmsClientDemo
             int iID = (int)secCOMB.Tag;
             if (iID == -1)
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -326,6 +360,7 @@ namespace VmsClientDemo
             int iSecID = (int)secCOMB.Tag;
             if (iSecID == -1 || strName == null || strName == "" || strCode == null || strCode == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -337,6 +372,10 @@ namespace VmsClientDemo
             {
                 FillSecInfo(strName);
             }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
+            }
         }
 
         private void addPos_Click(object sender, EventArgs e)
@@ -346,6 +385,7 @@ namespace VmsClientDemo
             int iSecID = (int)secCOMB.Tag;
             if (iSecID == -1 || strName == null || strName == "" || strCode == null || strCode == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -357,6 +397,10 @@ namespace VmsClientDemo
             {
                 FillPosInfo(strName);
             }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
+            }
         }
 
         private void delPos_Click(object sender, EventArgs e)
@@ -364,6 +408,7 @@ namespace VmsClientDemo
             int iID = (int)posCOMB.Tag;
             if (iID == -1)
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -388,6 +433,7 @@ namespace VmsClientDemo
             int iPosID = (int)posCOMB.Tag;
             if (iPosID == -1 || strName == null || strName == "" || strCode == null || strCode == "")
             {
+                MessageBox.Show("信息不完整，请检查！");
                 return;
             }
 
@@ -398,6 +444,10 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 FillPosInfo(strName);
+            }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
             }
         }
 
@@ -428,7 +478,7 @@ namespace VmsClientDemo
                     iRoadID = (int)drc[0][2];
 
                     //Insert info to section
-                    strSQL = "select 路段名 from 路段编码表 where 道路ID = " + iRoadID.ToString();
+                    strSQL = "select 路段名称 from 路段编码表 where 道路ID = " + iRoadID.ToString();
                     iRow = pDBSQLFun(strSQL, ref drc);
                     if (iRow > 0)
                     {
@@ -523,7 +573,11 @@ namespace VmsClientDemo
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
-                ;
+                MessageBox.Show("插入成功");
+            }
+            else
+            {
+                MessageBox.Show("插入失败，请检查是否摄像机编码重复");
             }
         }
 
@@ -531,13 +585,17 @@ namespace VmsClientDemo
         {
             int iPosID = (int)posCOMB.Tag;
             string strCamCode = (string)CamNameBox.Tag;
-            string strSQL = "update 设备路口映射表 set 路口ID = " + iPosID.ToString() + "where 设备CODE = '" + strCamCode + "'";
+            string strSQL = "update 设备路口映射表 set 路口ID = " + iPosID.ToString() + " where 设备CODE = '" + strCamCode + "'";
 
             DataRowCollection drc = null;
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
-                ;
+                MessageBox.Show("更新成功");
+            }
+            else
+            {
+                MessageBox.Show("更新失败，请核对数据有效性");
             }
         }
     }
