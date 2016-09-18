@@ -224,8 +224,11 @@ namespace VmsClientDemo
                 }));
         }
 
+        //需要修改该函数，使得主界面中的数据和数据库界面数据保持同步
         private void lstCamList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            CamADD.Tag = -1;   //Rest the AddrID
+
             if (this.lstCamList.SelectedItems.Count==0) return ;
             Spnet.Data.Model.Camera modelCam=lstCamList.SelectedItems[0].Tag as  Spnet.Data.Model.Camera;
 
@@ -250,10 +253,11 @@ namespace VmsClientDemo
                     string strAddrCode = (string)(drc[0][2]);
                     int iAddID = (int)(drc[0][3]);
 
+                    CamADD.Tag = iAddID;    //存储当前的地址信息
+
                     iRows = getData(@"select distinct 方向描述 from 违章种类及方向 where 路口ID = " + iAddID.ToString(), ref drc);
                     if (iRows > 0)
                     {
-                        DirCOMB.Tag = iAddID;    //存储当前的地址信息
                         foreach (DataRow DR in drc)
                         {
                             string dirStr = (string)(DR[0]);
@@ -311,7 +315,14 @@ namespace VmsClientDemo
 
         private void setRulesBox()
         {
-            int iAddrCode = (int)(DirCOMB.Tag);
+            int iAddrCode = (int)(CamADD.Tag);
+            if (iAddrCode == -1)
+            {
+                MessageBox.Show("地址信息错误，请检查！");
+                this.Close();
+                return;
+            }
+
             string strDir = DirCOMB.Items[DirCOMB.SelectedIndex].ToString();
             int iIndex = DirCOMB.SelectedIndex;
             ruleCOMB.Items.Clear();
@@ -665,6 +676,32 @@ namespace VmsClientDemo
                 CaptureBT.PerformClick();
                 Thread.Sleep(iInterval);
             }
+        }
+
+        private void AddRuleBT_Click(object sender, EventArgs e)
+        {
+            int iPosID = (int)CamADD.Tag;
+            if (iPosID == -1)
+            {
+                MessageBox.Show("地址信息错误，请检查！");
+                this.Close();
+                return;
+            }
+
+            RulesUI rulesWin = new RulesUI(iPosID, true);
+        }
+
+        private void DelRuleBT_Click(object sender, EventArgs e)
+        {
+            int iPosID = (int)CamADD.Tag;
+            if (iPosID == -1)
+            {
+                MessageBox.Show("地址信息错误，请检查！");
+                this.Close();
+                return;
+            }
+
+            RulesUI rulesWin = new RulesUI(iPosID, false);
         }
     }
 }

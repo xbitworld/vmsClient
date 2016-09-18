@@ -339,12 +339,16 @@ namespace VmsClientDemo
         private void btnFast_Click(object sender, EventArgs e)
         {
             if (_mediaPlayer == null) return;
+            _mediaPlayer.NextFrame();
+            _mediaPlayer.NormalPlay();
             _mediaPlayer.Fast();
         }
 
         private void btnSlow_Click(object sender, EventArgs e)
         {
             if (_mediaPlayer == null) return;
+            _mediaPlayer.NextFrame();
+            _mediaPlayer.NormalPlay();
             _mediaPlayer.Slow();
         }
 
@@ -363,6 +367,7 @@ namespace VmsClientDemo
         private void btnPlay_Click(object sender, EventArgs e)
         {
             if (_mediaPlayer == null) return;
+            _mediaPlayer.NextFrame();
             _mediaPlayer.NormalPlay();
         }
 

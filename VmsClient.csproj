@@ -92,6 +92,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="RulesUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RulesUI.Designer.cs">
+      <DependentUpon>RulesUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCDatabase.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +150,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RulesUI.resx">
+      <DependentUpon>RulesUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCDatabase.resx">
       <DependentUpon>UCDatabase.cs</DependentUpon>
     </EmbeddedResource>
