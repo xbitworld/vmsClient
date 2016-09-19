@@ -53,11 +53,23 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = Form1.getData(strSQL, ref drc);
-            if (iRow >= 0)
+            if (iRow > 0)
             {
                 foreach(DataRow dr in drc)
                 {
-                    DirCOMB.Items.Add((string)dr[0]);
+                    //string dirStr = (string)(dr[0]);
+                    //int iPos = dirStr.IndexOf('\r');
+                    //string strTMP = null;
+                    //if (iPos >= 0)
+                    //{
+                    //    strTMP = dirStr.Substring(0, iPos);
+                    //}
+                    //else
+                    //{
+                    //    strTMP = dirStr;
+                    //}
+                    //DirCOMB.Items.Add(strTMP);
+                    DirCOMB.Items.Add((string)(dr[0]));
                 }
 
                 DirCOMB.SelectedIndex = 0;
@@ -70,7 +82,9 @@ namespace VmsClientDemo
 
         private void fillRules()
         {
+            iRuleID = -1;
             rulesCOMB.Items.Clear();
+            rulesCOMB.Text = "";
 
             if (iPosID == -1)
             {
@@ -82,7 +96,7 @@ namespace VmsClientDemo
             string strSQL = "";
             if (bAddOP == true)
             {
-                strSQL = "select 违章描述 from 违章种类及方向 where 路口ID = " + iPosID.ToString();
+                strSQL = "select 违章描述 from 违章编码表";
             }
             else
             {
@@ -98,11 +112,11 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = Form1.getData(strSQL, ref drc);
-            if (iRow >= 0)
+            if (iRow > 0)
             {
                 foreach (DataRow dr in drc)
                 {
-                    DirCOMB.Items.Add((string)dr[0]);
+                    rulesCOMB.Items.Add((string)dr[0]);
                 }
 
                 rulesCOMB.SelectedIndex = 0;
@@ -128,7 +142,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = Form1.getData(strSQL, ref drc);
-            if (iRow >= 0)
+            if (iRow > 0)
             {
                 iDirID = (int)drc[0][0];
             }
@@ -136,6 +150,12 @@ namespace VmsClientDemo
             {
                 MessageBox.Show("SQL Error: " + strSQL);
             }
+
+            if (bAddOP == false)
+            {
+                fillRules();
+            }
+
         }
 
         private void rulesCOMB_SelectedIndexChanged(object sender, EventArgs e)
@@ -153,7 +173,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = Form1.getData(strSQL, ref drc);
-            if (iRow >= 0)
+            if (iRow > 0)
             {
                 iRuleID = (int)drc[0][0];
             }
@@ -176,7 +196,7 @@ namespace VmsClientDemo
                     return;
                 }
 
-                string strSQL = "insert into 违章类型映射表(路口ID, 方向编码, 违章编码) values(" + iPosID.ToString() + ", " + iDirID.ToString() + ", " + iRuleID.ToString() + ")";
+                string strSQL = "insert into 违章类型映射表(路口ID, 视频方向, 违章编码) values(" + iPosID.ToString() + ", " + iDirID.ToString() + ", " + iRuleID.ToString() + ")";
 
                 DataRowCollection drc = null;
 
@@ -185,6 +205,7 @@ namespace VmsClientDemo
                 {
                     MessageBox.Show("SQL Error: " + strSQL);
                 }
+                MessageBox.Show("新增成功");
             }
             else
             {
@@ -194,7 +215,7 @@ namespace VmsClientDemo
                     return;
                 }
 
-                string strSQL = "delete 违章类型映射表 where 路口ID = " + iPosID.ToString() + " and 方向编码 = " + iDirID.ToString() + " and 违章编码 = " + iRuleID.ToString() + ")";
+                string strSQL = "delete from 违章类型映射表 where 路口ID = " + iPosID.ToString() + " and 视频方向 = " + iDirID.ToString() + " and 违章编码 = " + iRuleID.ToString();
 
                 DataRowCollection drc = null;
 
@@ -203,7 +224,21 @@ namespace VmsClientDemo
                 {
                     MessageBox.Show("SQL Error: " + strSQL);
                 }
+
+                rulesCOMB.Items.Remove(rulesCOMB.Text);
+
+                rulesCOMB.Text = "";
+                if (rulesCOMB.Items.Count > 0)
+                {
+                    rulesCOMB.SelectedIndex = 0;
+                }
+                MessageBox.Show("删除成功");
             }
+        }
+
+        private void IDOK_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

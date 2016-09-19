@@ -142,8 +142,8 @@ namespace VmsClientDemo
                     {
                         roadCOMB.Items.Add((string)(DR[0]));
                     }
+                    roadCOMB.SelectedIndex = 0;
                 }
-                roadCOMB.SelectedIndex = 0;
                 //Input Camera ID
                 //Insert info to DB
                 //string SQLInsertDev = "Insert into 设备路口映射表(设备Code, 设备名称, 设备编码) values('" + strCAMCode + "', '" + strCAMName + "', '" + "')";
@@ -243,13 +243,14 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "insert into 道路编码表(道路名称, 道路编码) values('" + strName + "', " + strCode + ")";
+            string strSQL = "insert into 道路编码表(道路名称, 道路代码) values('" + strName + "', " + strCode + ")";
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
                 FillRoadInfo(strName);
+                MessageBox.Show("新增成功");
             }
             else
             {
@@ -266,13 +267,14 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "delete 道路编码表 where ID = " + iID.ToString();
+            string strSQL = "delete from 道路编码表 where ID = " + iID.ToString();
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
                 initCOMB(roadCOMB);
+                MessageBox.Show("删除成功");
             }
             else
             {
@@ -298,6 +300,7 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 FillRoadInfo(strName);
+                MessageBox.Show("更新成功");
             }
             else
             {
@@ -323,6 +326,7 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 FillSecInfo(strName);
+                MessageBox.Show("新增成功");
             }
             else
             {
@@ -339,13 +343,14 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "delete 路段编码表 where ID = " + iID.ToString();
+            string strSQL = "delete from 路段编码表 where ID = " + iID.ToString();
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
                 initCOMB(secCOMB);
+                MessageBox.Show("删除成功");
             }
             else
             {
@@ -371,6 +376,7 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 FillSecInfo(strName);
+                MessageBox.Show("更新成功");
             }
             else
             {
@@ -396,6 +402,7 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 FillPosInfo(strName);
+                MessageBox.Show("新增成功");
             }
             else
             {
@@ -412,13 +419,14 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "delete 路口编码表 where ID = " + iID.ToString();
+            string strSQL = "delete from 路口编码表 where ID = " + iID.ToString();
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
                 initCOMB(secCOMB);
+                MessageBox.Show("删除成功");
             }
             else
             {
@@ -444,6 +452,7 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 FillPosInfo(strName);
+                MessageBox.Show("更新成功");
             }
             else
             {
@@ -555,8 +564,8 @@ namespace VmsClientDemo
             int iSecID = (int)secCOMB.Tag;
             int iPosID = (int)posCOMB.Tag;
 
-            string strCAMID = (string)CamNameBox.Tag;
-            string strCAMCode = CAMCodeBox.Text;
+            string strCAMID = (string)CamNameBox.Tag;   //摄像机编码——来自摄像机硬件标号
+            string strCAMCode = CAMCodeBox.Text;        //摄像机编码——来自人工编码
             string strCAMName = CamNameBox.Text;
 
             if (iRoadID == -1 || iSecID == -1 || iPosID == -1
@@ -597,6 +606,25 @@ namespace VmsClientDemo
             {
                 MessageBox.Show("更新失败，请核对数据有效性");
             }
+        }
+
+        public int getPostitionID(ref int iP, ref string CAMCode, ref string POSCode)
+        {
+            if (posCOMB.Tag == null || CAMCodeBox.Text == null || posCodeBox.Text == null)
+            {
+                return -1;
+            }
+
+            iP = (int)posCOMB.Tag;
+            CAMCode = CAMCodeBox.Text;
+            POSCode = posCodeBox.Text;
+
+            if (iP == -1 || CAMCode == "" || POSCode == "")
+            {
+                return 1;
+            }
+
+            return 0;
         }
     }
 }

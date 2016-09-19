@@ -224,15 +224,21 @@ namespace VmsClientDemo
                 }));
         }
 
-        //需要修改该函数，使得主界面中的数据和数据库界面数据保持同步
+        //
         private void lstCamList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int iPosID = -1;
+            string strPOSCode = "";
+            string strCAMCode = "";
+
             CamADD.Tag = -1;   //Rest the AddrID
+
+            DirCOMB.Items.Clear();
+            CamADD.Text = "";
+            CamID.Text = "";
 
             if (this.lstCamList.SelectedItems.Count==0) return ;
             Spnet.Data.Model.Camera modelCam=lstCamList.SelectedItems[0].Tag as  Spnet.Data.Model.Camera;
-
-            _Database.fillDatabaseUI(modelCam.Code, modelCam.Name);
 
             if (modelCam != null)
             {
@@ -241,75 +247,63 @@ namespace VmsClientDemo
                 _prePlay.ModelCam = modelCam;
                 _timeRecPlay.ModelCam = modelCam;
 
-                string CamCode = modelCam.Code;
-                DataRowCollection drc = null;
-                int iRows = getData(@"select distinct 设备名称, 设备编码, 地点编码, 路口ID from 设备及地点 where 设备编码 = '" + CamCode + "'", ref drc);
-
-                if (iRows > 0)
+                CamADD.Text = modelCam.Name;
+                _Database.fillDatabaseUI(modelCam.Code, modelCam.Name);
+                if(_Database.getPostitionID(ref iPosID, ref strCAMCode, ref strPOSCode) == 0)
                 {
-                    DirCOMB.Items.Clear();
-                    CamADD.Text = (string)(drc[0][0]);
-                    CamID.Text = (string)(drc[0][1]);
-                    string strAddrCode = (string)(drc[0][2]);
-                    int iAddID = (int)(drc[0][3]);
+                    //Switch to Database table
+                    CamID.Text = strCAMCode;
+                    AddrID.Text = strPOSCode;
 
-                    CamADD.Tag = iAddID;    //存储当前的地址信息
+                    CamADD.Tag = iPosID;
 
-                    iRows = getData(@"select distinct 方向描述 from 违章种类及方向 where 路口ID = " + iAddID.ToString(), ref drc);
-                    if (iRows > 0)
-                    {
-                        foreach (DataRow DR in drc)
-                        {
-                            string dirStr = (string)(DR[0]);
-                            int iPos = dirStr.IndexOf('\r');
-                            string strTMP = null;
-                            if (iPos >= 0)
-                            {
-                                strTMP = dirStr.Substring(0, iPos);
-                            }
-                            else
-                            {
-                                strTMP = dirStr;
-                            }
-                            DirCOMB.Items.Add(strTMP);
-                        }
-
-                        DirCOMB.SelectedIndex = 0;
-                        //setRulesBox();
-                    }
-                    else
-                    {//Switch to database table to edit rules data
-                        ;
-                    }
+                    fillRulesInfo(iPosID);
                 }
                 else
-                {//Switch to Database table to edit information data
-                    string CamName = modelCam.Name;
-                    //code，name, road, segement, enter, 
-                    ;
+                {
+                    this.VideoPlayTab.SelectedTab = this.tabPage6;
                 }
+            }
+        }
+
+        public int fillRulesInfo(int iPosID)
+        {
+            DirCOMB.Items.Clear();
+            DirCOMB.Text = "";
+            ruleCOMB.Items.Clear();
+            ruleCOMB.Text = "";
+
+            DataRowCollection drc = null;
+            int iRows = getData(@"select distinct 方向描述 from 违章种类及方向 where 路口ID = " + iPosID.ToString(), ref drc);
+            if (iRows > 0)
+            {
+                foreach (DataRow DR in drc)
+                {
+                    string dirStr = (string)(DR[0]);
+                    int iPos = dirStr.IndexOf('\r');
+                    string strTMP = null;
+                    if (iPos >= 0)
+                    {
+                        strTMP = dirStr.Substring(0, iPos);
+                    }
+                    else
+                    {
+                        strTMP = dirStr;
+                    }
+                    DirCOMB.Items.Add(strTMP);
+                }
+
+                DirCOMB.SelectedIndex = 0;  //triger to fill the rules combbox
+                return 0;
+            }
+            else
+            {//Switch to database table to edit rules data
+                return 1;
             }
         }
 
         private void ChangeDIR(object sender, EventArgs e)
         {
-            //string strDir = DirCOMB.SelectedText;
-            //DataRowCollection drc = null;
-
-            //string strSQL = "select distinct 违章描述 from 最终视图 where 设备编码 = '" +
-            //    CamID.Text + "' and 方向描述 like '%" +
-            //    strDir + "%'";
-
-            //int iRows = getData(strSQL, ref drc);
-            //if (iRows > 0)
-            //{
-            //    ruleCOMB.Items.Clear();
-
-            //    foreach (DataRow DR in drc)
-            //    {
-            //        ruleCOMB.Items.Add(DR[0]);
-            //    }
-            //}
             setRulesBox();
         }
 
@@ -319,7 +313,6 @@ namespace VmsClientDemo
             if (iAddrCode == -1)
             {
                 MessageBox.Show("地址信息错误，请检查！");
-                this.Close();
                 return;
             }
 
@@ -327,7 +320,7 @@ namespace VmsClientDemo
             int iIndex = DirCOMB.SelectedIndex;
             ruleCOMB.Items.Clear();
 
-            string strSQL = "select 方向描述, 违章描述 from 违章种类及方向 where 地点代码 = " +
+            string strSQL = "select 方向描述, 违章描述 from 违章种类及方向 where 路口ID = " +
                 iAddrCode.ToString();
 
             DataRowCollection drc = null;
@@ -684,11 +677,11 @@ namespace VmsClientDemo
             if (iPosID == -1)
             {
                 MessageBox.Show("地址信息错误，请检查！");
-                this.Close();
                 return;
             }
 
             RulesUI rulesWin = new RulesUI(iPosID, true);
+            rulesWin.Show(this);
         }
 
         private void DelRuleBT_Click(object sender, EventArgs e)
@@ -697,11 +690,17 @@ namespace VmsClientDemo
             if (iPosID == -1)
             {
                 MessageBox.Show("地址信息错误，请检查！");
-                this.Close();
+                return;
+            }
+
+            if(ruleCOMB.Items.Count < 1)
+            {
+                MessageBox.Show("数据已经为空，请返回");
                 return;
             }
 
             RulesUI rulesWin = new RulesUI(iPosID, false);
+            rulesWin.Show(this);
         }
     }
 }
