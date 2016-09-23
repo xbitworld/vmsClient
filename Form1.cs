@@ -652,6 +652,7 @@ namespace VmsClientDemo
 
         private void ConfirmCAP(object sender, EventArgs e)
         {
+            EXIFCall("capture.jpg");
             if (_PreviewPic.ConfirmSelected())
             {//Clear the list for the capture operation of the next time
                 iFilesCounter = 0;
@@ -701,6 +702,37 @@ namespace VmsClientDemo
 
             RulesUI rulesWin = new RulesUI(iPosID, false);
             rulesWin.Show(this);
+        }
+
+        private void EXIFCall(string picFileName)
+        {
+            DirectoryInfo di = new DirectoryInfo(@".\\");
+            string beCalledName = di.FullName + @"exiftool.exe";
+
+            System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
+
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = false;
+                myProcess.StartInfo.RedirectStandardOutput = true;
+                // You can start any process, HelloWorld is a do-nothing example.
+                myProcess.StartInfo.FileName = beCalledName;
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.StartInfo.Arguments = " -a -u -g1 " + picFileName;
+                myProcess.StartInfo.WorkingDirectory = di.FullName;
+                myProcess.Start();
+                string output = myProcess.StandardOutput.ReadToEnd();
+                myProcess.WaitForExit(1000);
+                Console.Write(output);
+                // This code assumes the process you are starting will terminate itself.
+                // Given that is is started without a window so you cannot terminate it
+                // on the desktop, it must terminate itself or you can do it programmatically
+                // from this application using the Kill method.
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
