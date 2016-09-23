@@ -86,6 +86,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EXIF.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,7 @@
     <Compile Include="RulesUI.Designer.cs">
       <DependentUpon>RulesUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Translation.cs" />
     <Compile Include="UCDatabase.cs">
       <SubType>UserControl</SubType>
     </Compile>
