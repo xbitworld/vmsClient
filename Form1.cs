@@ -11,6 +11,8 @@ using System.Threading;
 using System.Xml;
 using System.Data.OleDb;
 using System.Runtime.InteropServices;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace VmsClientDemo
 {
@@ -603,7 +605,38 @@ namespace VmsClientDemo
                 finalFileName += iFilesCounter.ToString("D2");
 
                 finalFileName = strSavePath + @"//" + finalFileName + ".jpg";
-                image.Save(finalFileName.ToUpper());
+
+                //Save Jpeg with quality variable
+                ImageCodecInfo myImageCodecInfo;
+                System.Drawing.Imaging.Encoder myEncoder;
+                EncoderParameter myEncoderParameter;
+                EncoderParameters myEncoderParameters;
+
+                // Get an ImageCodecInfo object that represents the JPEG codec.
+                myImageCodecInfo = GetEncoderInfo("image/jpeg");
+
+                // Create an Encoder object based on the GUID
+
+                // for the Quality parameter category.
+                myEncoder = System.Drawing.Imaging.Encoder.Quality;
+
+                // Create an EncoderParameters object.
+
+                // An EncoderParameters object has an array of EncoderParameter
+
+                // objects. In this case, there is only one
+
+                // EncoderParameter object in the array.
+                myEncoderParameters = new EncoderParameters(1);
+
+                // Save the bitmap as a JPEG file with quality level 25.
+                myEncoderParameter = new EncoderParameter(myEncoder, 100L);
+                myEncoderParameters.Param[0] = myEncoderParameter;
+                //image.Save("Shapes025.jpg", myImageCodecInfo, myEncoderParameters);
+                image.Save(finalFileName.ToUpper(), myImageCodecInfo, myEncoderParameters);
+                //Save End.......
+
+                //image.Save(finalFileName.ToUpper(), System.Drawing.Imaging.ImageFormat.Jpeg);
 
                 //Thread.Sleep(1000);
                 _PreviewPic.AddImg(finalFileName, iFilesCounter);
@@ -614,6 +647,18 @@ namespace VmsClientDemo
                 MessageBox.Show("图片保存失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private ImageCodecInfo GetEncoderInfo(string v)
+        {
+            // Get image codecs for all image formats
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+
+            // Find the correct image codec
+            for (int i = 0; i < codecs.Length; i++)
+                if (codecs[i].MimeType == v)
+                    return codecs[i];
+            return null;
         }
 
         private void SelectDIR_Click(object sender, EventArgs e)
@@ -652,7 +697,6 @@ namespace VmsClientDemo
 
         private void ConfirmCAP(object sender, EventArgs e)
         {
-            EXIFCall("capture.jpg");
             if (_PreviewPic.ConfirmSelected())
             {//Clear the list for the capture operation of the next time
                 iFilesCounter = 0;
@@ -702,37 +746,6 @@ namespace VmsClientDemo
 
             RulesUI rulesWin = new RulesUI(iPosID, false);
             rulesWin.Show(this);
-        }
-
-        private void EXIFCall(string picFileName)
-        {
-            DirectoryInfo di = new DirectoryInfo(@".\\");
-            string beCalledName = di.FullName + @"exiftool.exe";
-
-            System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
-
-            try
-            {
-                myProcess.StartInfo.UseShellExecute = false;
-                myProcess.StartInfo.RedirectStandardOutput = true;
-                // You can start any process, HelloWorld is a do-nothing example.
-                myProcess.StartInfo.FileName = beCalledName;
-                myProcess.StartInfo.CreateNoWindow = true;
-                myProcess.StartInfo.Arguments = " -a -u -g1 " + picFileName;
-                myProcess.StartInfo.WorkingDirectory = di.FullName;
-                myProcess.Start();
-                string output = myProcess.StandardOutput.ReadToEnd();
-                myProcess.WaitForExit(1000);
-                Console.Write(output);
-                // This code assumes the process you are starting will terminate itself.
-                // Given that is is started without a window so you cannot terminate it
-                // on the desktop, it must terminate itself or you can do it programmatically
-                // from this application using the Kill method.
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
         }
     }
 }

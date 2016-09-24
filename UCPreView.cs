@@ -151,12 +151,16 @@ namespace VmsClientDemo
 
                 string fullNameNew = fullPathNew + "\\" + fileNameNew;
 
+                //EXIFCall(getFiles[iLoop]);
+
                 System.IO.FileStream fs_old = new System.IO.FileStream(getFiles[iLoop], System.IO.FileMode.Open, System.IO.FileAccess.Read);
                 System.IO.FileStream fs_new = new System.IO.FileStream(fullNameNew, System.IO.FileMode.Create, System.IO.FileAccess.Write);
                 fs_old.CopyTo(fs_new);
 
                 fs_new.Close();
                 fs_old.Close();
+
+                EXIFCall(fullNameNew);
             }
 
             resetList();
@@ -279,5 +283,48 @@ namespace VmsClientDemo
 
             AmountTextbox.Text = iCount.ToString();
         }
+
+
+        //exiftool.exe -tagsFromFile template.jpg "-ExifIFD:ISO<ExifIFD:ISO"  -tagsFromFile template.jpg "-IFD0:ALL<IFD0:ALL" 510122000000510122000000A90342160908115250000210640000000000031_A00001_1347.jpg
+        //exiftool.exe "-DateTimeOriginal<FileModifyDate" 510122000000510122000000A90342160908115250000210640000000000031_A00001_1347.jpg
+        //exiftool.exe "-DateTimeOriginal<FileCreateDate" 510122000000510122000000A90342160908115250000210640000000000031_A00001_1347.jpg
+
+        //exiftool.exe -overwrite_original -tagsFromFile template.jpg "-ExifIFD:ISO<ExifIFD:ISO"  -tagsFromFile template.jpg "-IFD0:ALL<IFD0:ALL" "-DateTimeOriginal<FileCreateDate"  510122000000510122000000A90342160908115250000210640000000000032_A00001_1347.jpg
+        private void EXIFCall(string picFileName)
+        {
+            DirectoryInfo di = new DirectoryInfo(@".\\");
+            string beCalledName = di.FullName + @"exiftool.exe";
+
+            System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
+
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = false;
+                myProcess.StartInfo.RedirectStandardOutput = true;
+                // You can start any process, HelloWorld is a do-nothing example.
+                myProcess.StartInfo.FileName = beCalledName;
+                myProcess.StartInfo.CreateNoWindow = true;
+                myProcess.StartInfo.Arguments = " -overwrite_original -tagsFromFile " + di.FullName + "template.jpg \"-ExifIFD:ISO<ExifIFD:ISO\" -tagsFromFile " + di.FullName + "template.jpg \"-IFD0:ALL<IFD0:ALL\" -tagsFromFile " + picFileName + " \"-DateTimeOriginal<FileCreateDate\" " + picFileName;
+//                myProcess.StartInfo.Arguments = " -overwrite_original -tagsFromFile " + di.FullName + "template.jpg \"-ExifIFD:ISO<ExifIFD:ISO\" -tagsFromFile " + di.FullName + "template.jpg \"-IFD0:ALL<IFD0:ALL\" " + picFileName;
+                myProcess.StartInfo.WorkingDirectory = di.FullName;
+                myProcess.Start();
+                string output = myProcess.StandardOutput.ReadToEnd();
+                myProcess.WaitForExit(1000);
+                Console.Write(output);
+                //myProcess.StartInfo.Arguments = "  -overwrite_original \"-DateTimeOriginal<FileCreateDate\" " + picFileName;                // This code assumes the process you are starting will terminate itself.
+                //myProcess.Start();
+                //output = myProcess.StandardOutput.ReadToEnd();
+                //myProcess.WaitForExit(1000);
+                //Console.Write(output);
+                // Given that is is started without a window so you cannot terminate it
+                // on the desktop, it must terminate itself or you can do it programmatically
+                // from this application using the Kill method.
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
     }
 }
