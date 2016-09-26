@@ -54,6 +54,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.CamADD = new System.Windows.Forms.TextBox();
             this.DevGroup = new System.Windows.Forms.GroupBox();
+            this.DelRuleBT = new System.Windows.Forms.Button();
+            this.AddRuleBT = new System.Windows.Forms.Button();
             this.AddrID = new System.Windows.Forms.TextBox();
             this.ruleCOMB = new System.Windows.Forms.ComboBox();
             this.RoadNOCMB = new System.Windows.Forms.ComboBox();
@@ -61,9 +63,9 @@
             this.IntervalTimeBox = new System.Windows.Forms.TextBox();
             this.colorBox = new System.Windows.Forms.PictureBox();
             this.SavePICPath = new System.Windows.Forms.TextBox();
+            this.ChoisePICs = new System.Windows.Forms.Button();
             this.SelectDIR = new System.Windows.Forms.Button();
             this.rstCAP = new System.Windows.Forms.Button();
-            this.ChoisePICs = new System.Windows.Forms.Button();
             this.AutoCapBT = new System.Windows.Forms.Button();
             this.CaptureBT = new System.Windows.Forms.Button();
             this.CamID = new System.Windows.Forms.TextBox();
@@ -73,8 +75,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.AddRuleBT = new System.Windows.Forms.Button();
-            this.DelRuleBT = new System.Windows.Forms.Button();
             this.VideoPlayTab.SuspendLayout();
             this.LoginGroup.SuspendLayout();
             this.DevGroup.SuspendLayout();
@@ -202,8 +202,8 @@
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(750, 935);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(750, 543);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "实时视频";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -212,8 +212,8 @@
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(750, 644);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(750, 543);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "录像回放";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(750, 644);
+            this.tabPage3.Size = new System.Drawing.Size(750, 543);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "预录像播放";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -231,8 +231,8 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage4.Size = new System.Drawing.Size(750, 644);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(750, 543);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "按时间回放录像";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -240,9 +240,9 @@
             // tabPage5
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(750, 644);
+            this.tabPage5.Size = new System.Drawing.Size(750, 543);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "图片预览";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -342,6 +342,26 @@
             this.DevGroup.TabStop = false;
             this.DevGroup.Text = "截图信息";
             // 
+            // DelRuleBT
+            // 
+            this.DelRuleBT.Location = new System.Drawing.Point(256, 100);
+            this.DelRuleBT.Name = "DelRuleBT";
+            this.DelRuleBT.Size = new System.Drawing.Size(22, 22);
+            this.DelRuleBT.TabIndex = 23;
+            this.DelRuleBT.Text = "-";
+            this.DelRuleBT.UseVisualStyleBackColor = true;
+            this.DelRuleBT.Click += new System.EventHandler(this.DelRuleBT_Click);
+            // 
+            // AddRuleBT
+            // 
+            this.AddRuleBT.Location = new System.Drawing.Point(234, 100);
+            this.AddRuleBT.Name = "AddRuleBT";
+            this.AddRuleBT.Size = new System.Drawing.Size(22, 22);
+            this.AddRuleBT.TabIndex = 23;
+            this.AddRuleBT.Text = "+";
+            this.AddRuleBT.UseVisualStyleBackColor = true;
+            this.AddRuleBT.Click += new System.EventHandler(this.AddRuleBT_Click);
+            // 
             // AddrID
             // 
             this.AddrID.Location = new System.Drawing.Point(190, 47);
@@ -363,6 +383,7 @@
             // 
             this.RoadNOCMB.FormattingEnabled = true;
             this.RoadNOCMB.Items.AddRange(new object[] {
+            "0",
             "1",
             "2",
             "3",
@@ -415,6 +436,17 @@
             this.SavePICPath.TabIndex = 15;
             this.SavePICPath.Text = "C:\\抓取图片";
             // 
+            // ChoisePICs
+            // 
+            this.ChoisePICs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChoisePICs.Location = new System.Drawing.Point(96, 159);
+            this.ChoisePICs.Name = "ChoisePICs";
+            this.ChoisePICs.Size = new System.Drawing.Size(89, 23);
+            this.ChoisePICs.TabIndex = 14;
+            this.ChoisePICs.Text = "选图";
+            this.ChoisePICs.UseVisualStyleBackColor = true;
+            this.ChoisePICs.Click += new System.EventHandler(this.ChoisePIC);
+            // 
             // SelectDIR
             // 
             this.SelectDIR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -436,17 +468,6 @@
             this.rstCAP.Text = "选图确认";
             this.rstCAP.UseVisualStyleBackColor = true;
             this.rstCAP.Click += new System.EventHandler(this.ConfirmCAP);
-            // 
-            // ChoisePICs
-            // 
-            this.ChoisePICs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChoisePICs.Location = new System.Drawing.Point(96, 159);
-            this.ChoisePICs.Name = "ChoisePICs";
-            this.ChoisePICs.Size = new System.Drawing.Size(89, 23);
-            this.ChoisePICs.TabIndex = 14;
-            this.ChoisePICs.Text = "选图";
-            this.ChoisePICs.UseVisualStyleBackColor = true;
-            this.ChoisePICs.Click += new System.EventHandler(this.ChoisePIC);
             // 
             // AutoCapBT
             // 
@@ -528,26 +549,6 @@
             this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // AddRuleBT
-            // 
-            this.AddRuleBT.Location = new System.Drawing.Point(234, 100);
-            this.AddRuleBT.Name = "AddRuleBT";
-            this.AddRuleBT.Size = new System.Drawing.Size(22, 22);
-            this.AddRuleBT.TabIndex = 23;
-            this.AddRuleBT.Text = "+";
-            this.AddRuleBT.UseVisualStyleBackColor = true;
-            this.AddRuleBT.Click += new System.EventHandler(this.AddRuleBT_Click);
-            // 
-            // DelRuleBT
-            // 
-            this.DelRuleBT.Location = new System.Drawing.Point(256, 100);
-            this.DelRuleBT.Name = "DelRuleBT";
-            this.DelRuleBT.Size = new System.Drawing.Size(22, 22);
-            this.DelRuleBT.TabIndex = 23;
-            this.DelRuleBT.Text = "-";
-            this.DelRuleBT.UseVisualStyleBackColor = true;
-            this.DelRuleBT.Click += new System.EventHandler(this.DelRuleBT_Click);
             // 
             // Form1
             // 

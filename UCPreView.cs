@@ -44,6 +44,7 @@ namespace VmsClientDemo
             PICsList.Images.Clear();
             listViewPICs.Items.Clear();
             AmountTextbox.Text = "0";
+            checkBoxALL.CheckState = CheckState.Unchecked;
             return;
         }
 
@@ -118,7 +119,7 @@ namespace VmsClientDemo
             }
         }
 
-        public bool ConfirmSelected()
+        public bool ConfirmSelected(string strBreakRule)
         {
             List<string> getFiles = new List<string>();
 
@@ -138,9 +139,24 @@ namespace VmsClientDemo
             }
 
             System.IO.DirectoryInfo dirInfo = new DirectoryInfo(getFiles[0]);
-            string fullPathNew = dirInfo.Parent.Parent.FullName;
+            string fullPathNew = dirInfo.Parent.Parent.FullName + "\\" + strBreakRule;
             string fileNameOld = dirInfo.Name; //Get the first file name, all the others file name base it.
             string[] strsName = fileNameOld.Split('.');
+
+
+            if (!Directory.Exists(fullPathNew))
+            {
+                try
+                {
+                    Directory.CreateDirectory(fullPathNew);
+                }
+                catch
+                {
+                    MessageBox.Show("目录无法找到或建立，请检查后再试！");
+                    return false;
+                }
+            }
+
 
             for (int iLoop = 0; iLoop < iAmount; iLoop ++)
             {

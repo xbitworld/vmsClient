@@ -84,7 +84,7 @@
             // modRoad
             // 
             this.modRoad.Location = new System.Drawing.Point(113, 114);
-            this.modRoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modRoad.Margin = new System.Windows.Forms.Padding(2);
             this.modRoad.Name = "modRoad";
             this.modRoad.Size = new System.Drawing.Size(45, 20);
             this.modRoad.TabIndex = 6;
@@ -96,7 +96,7 @@
             // 
             this.roadCOMB.FormattingEnabled = true;
             this.roadCOMB.Location = new System.Drawing.Point(6, 29);
-            this.roadCOMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roadCOMB.Margin = new System.Windows.Forms.Padding(2);
             this.roadCOMB.Name = "roadCOMB";
             this.roadCOMB.Size = new System.Drawing.Size(165, 20);
             this.roadCOMB.TabIndex = 7;
@@ -116,18 +116,18 @@
             this.groupBox1.Controls.Add(this.modRoad);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(9, 18);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(175, 209);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "摄像机名";
+            this.groupBox1.Text = "道路名称";
             // 
             // roadCode
             // 
             this.roadCode.Location = new System.Drawing.Point(64, 83);
-            this.roadCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roadCode.Margin = new System.Windows.Forms.Padding(2);
             this.roadCode.Name = "roadCode";
             this.roadCode.Size = new System.Drawing.Size(107, 21);
             this.roadCode.TabIndex = 9;
@@ -135,7 +135,7 @@
             // roadName
             // 
             this.roadName.Location = new System.Drawing.Point(64, 57);
-            this.roadName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roadName.Margin = new System.Windows.Forms.Padding(2);
             this.roadName.Name = "roadName";
             this.roadName.Size = new System.Drawing.Size(107, 21);
             this.roadName.TabIndex = 9;
@@ -143,7 +143,7 @@
             // addRoad
             // 
             this.addRoad.Location = new System.Drawing.Point(15, 114);
-            this.addRoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addRoad.Margin = new System.Windows.Forms.Padding(2);
             this.addRoad.Name = "addRoad";
             this.addRoad.Size = new System.Drawing.Size(45, 20);
             this.addRoad.TabIndex = 6;
@@ -154,7 +154,7 @@
             // delRoad
             // 
             this.delRoad.Location = new System.Drawing.Point(64, 114);
-            this.delRoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.delRoad.Margin = new System.Windows.Forms.Padding(2);
             this.delRoad.Name = "delRoad";
             this.delRoad.Size = new System.Drawing.Size(45, 20);
             this.delRoad.TabIndex = 6;
@@ -195,18 +195,18 @@
             this.groupBox2.Controls.Add(this.addSection);
             this.groupBox2.Controls.Add(this.modSection);
             this.groupBox2.Location = new System.Drawing.Point(187, 18);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(174, 209);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "道路名";
+            this.groupBox2.Text = "路段名称";
             // 
             // secCode
             // 
             this.secCode.Location = new System.Drawing.Point(62, 83);
-            this.secCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.secCode.Margin = new System.Windows.Forms.Padding(2);
             this.secCode.Name = "secCode";
             this.secCode.Size = new System.Drawing.Size(107, 21);
             this.secCode.TabIndex = 9;
@@ -224,7 +224,7 @@
             // secName
             // 
             this.secName.Location = new System.Drawing.Point(61, 57);
-            this.secName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.secName.Margin = new System.Windows.Forms.Padding(2);
             this.secName.Name = "secName";
             this.secName.Size = new System.Drawing.Size(107, 21);
             this.secName.TabIndex = 9;
@@ -243,7 +243,7 @@
             // 
             this.secCOMB.FormattingEnabled = true;
             this.secCOMB.Location = new System.Drawing.Point(6, 29);
-            this.secCOMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.secCOMB.Margin = new System.Windows.Forms.Padding(2);
             this.secCOMB.Name = "secCOMB";
             this.secCOMB.Size = new System.Drawing.Size(163, 20);
             this.secCOMB.TabIndex = 7;
@@ -252,7 +252,7 @@
             // delSection
             // 
             this.delSection.Location = new System.Drawing.Point(62, 114);
-            this.delSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.delSection.Margin = new System.Windows.Forms.Padding(2);
             this.delSection.Name = "delSection";
             this.delSection.Size = new System.Drawing.Size(45, 20);
             this.delSection.TabIndex = 6;
@@ -263,7 +263,7 @@
             // addSection
             // 
             this.addSection.Location = new System.Drawing.Point(13, 114);
-            this.addSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addSection.Margin = new System.Windows.Forms.Padding(2);
             this.addSection.Name = "addSection";
             this.addSection.Size = new System.Drawing.Size(45, 20);
             this.addSection.TabIndex = 6;
@@ -274,7 +274,7 @@
             // modSection
             // 
             this.modSection.Location = new System.Drawing.Point(111, 114);
-            this.modSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modSection.Margin = new System.Windows.Forms.Padding(2);
             this.modSection.Name = "modSection";
             this.modSection.Size = new System.Drawing.Size(45, 20);
             this.modSection.TabIndex = 6;
@@ -296,18 +296,18 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Location = new System.Drawing.Point(364, 18);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(174, 209);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "路段名";
+            this.groupBox3.Text = "路口名称";
             // 
             // posCode
             // 
             this.posCode.Location = new System.Drawing.Point(63, 83);
-            this.posCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.posCode.Margin = new System.Windows.Forms.Padding(2);
             this.posCode.Name = "posCode";
             this.posCode.Size = new System.Drawing.Size(107, 21);
             this.posCode.TabIndex = 9;
@@ -315,7 +315,7 @@
             // posName
             // 
             this.posName.Location = new System.Drawing.Point(63, 57);
-            this.posName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.posName.Margin = new System.Windows.Forms.Padding(2);
             this.posName.Name = "posName";
             this.posName.Size = new System.Drawing.Size(107, 21);
             this.posName.TabIndex = 9;
@@ -325,7 +325,7 @@
             this.posCOMB.FormattingEnabled = true;
             this.posCOMB.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.posCOMB.Location = new System.Drawing.Point(6, 29);
-            this.posCOMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.posCOMB.Margin = new System.Windows.Forms.Padding(2);
             this.posCOMB.Name = "posCOMB";
             this.posCOMB.Size = new System.Drawing.Size(164, 20);
             this.posCOMB.TabIndex = 7;
@@ -334,7 +334,7 @@
             // delPos
             // 
             this.delPos.Location = new System.Drawing.Point(65, 114);
-            this.delPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.delPos.Margin = new System.Windows.Forms.Padding(2);
             this.delPos.Name = "delPos";
             this.delPos.Size = new System.Drawing.Size(45, 20);
             this.delPos.TabIndex = 6;
@@ -345,7 +345,7 @@
             // addPos
             // 
             this.addPos.Location = new System.Drawing.Point(17, 114);
-            this.addPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addPos.Margin = new System.Windows.Forms.Padding(2);
             this.addPos.Name = "addPos";
             this.addPos.Size = new System.Drawing.Size(45, 20);
             this.addPos.TabIndex = 6;
@@ -356,7 +356,7 @@
             // modPos
             // 
             this.modPos.Location = new System.Drawing.Point(114, 114);
-            this.modPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modPos.Margin = new System.Windows.Forms.Padding(2);
             this.modPos.Name = "modPos";
             this.modPos.Size = new System.Drawing.Size(45, 20);
             this.modPos.TabIndex = 6;
@@ -399,7 +399,7 @@
             // 
             this.CAMCodeBox.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CAMCodeBox.Location = new System.Drawing.Point(172, 59);
-            this.CAMCodeBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CAMCodeBox.Margin = new System.Windows.Forms.Padding(2);
             this.CAMCodeBox.Name = "CAMCodeBox";
             this.CAMCodeBox.Size = new System.Drawing.Size(304, 29);
             this.CAMCodeBox.TabIndex = 9;
@@ -419,7 +419,7 @@
             // 
             this.ADDCamera.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ADDCamera.Location = new System.Drawing.Point(409, 99);
-            this.ADDCamera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ADDCamera.Margin = new System.Windows.Forms.Padding(2);
             this.ADDCamera.Name = "ADDCamera";
             this.ADDCamera.Size = new System.Drawing.Size(66, 26);
             this.ADDCamera.TabIndex = 10;
@@ -431,7 +431,7 @@
             // 
             this.ModifyCAM.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ModifyCAM.Location = new System.Drawing.Point(485, 98);
-            this.ModifyCAM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ModifyCAM.Margin = new System.Windows.Forms.Padding(2);
             this.ModifyCAM.Name = "ModifyCAM";
             this.ModifyCAM.Size = new System.Drawing.Size(66, 26);
             this.ModifyCAM.TabIndex = 10;
@@ -470,9 +470,9 @@
             this.groupBox4.Controls.Add(this.groupBox2);
             this.groupBox4.Controls.Add(this.groupBox3);
             this.groupBox4.Location = new System.Drawing.Point(27, 143);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(548, 249);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;

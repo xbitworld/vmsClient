@@ -249,7 +249,7 @@ namespace VmsClientDemo
                 _prePlay.ModelCam = modelCam;
                 _timeRecPlay.ModelCam = modelCam;
 
-                CamADD.Text = modelCam.Name;
+                CamADD.Text = modelCam.Name;    //Display Camera name in the Camera address textbox by dutao @ 2016-09-26
                 _Database.fillDatabaseUI(modelCam.Code, modelCam.Name);
                 if(_Database.getPostitionID(ref iPosID, ref strCAMCode, ref strPOSCode) == 0)
                 {
@@ -311,6 +311,10 @@ namespace VmsClientDemo
 
         private void setRulesBox()
         {
+            if(CamADD.Tag == null)
+            {
+                return;
+            }
             int iAddrCode = (int)(CamADD.Tag);
             if (iAddrCode == -1)
             {
@@ -512,8 +516,16 @@ namespace VmsClientDemo
             }
             StringBuilder sb = new StringBuilder(); //文字描述
             sb.Append(@"设备编号：" + CamID.Text + "  ");
-            sb.Append(@"地点：" + CamADD.Text + "  ");
-            sb.Append(@"方向：" + DirCOMB.SelectedText + "\n");
+
+            string strCamName = CamADD.Text.Substring(4);
+            sb.Append(@"地点：" + strCamName + "  ");
+
+            string strDIRm = DirCOMB.Text;
+            if (strDIRm != null && strDIRm.Last() == '向')
+            {
+                strDIRm = strDIRm.Substring(0, 1);
+            }
+            sb.Append(@"方向：" + strDIRm + "\n");
             //
 
             string picPath = "";
@@ -564,12 +576,12 @@ namespace VmsClientDemo
 
                 //Draw the black board
                 Brush blackBrush = new SolidBrush(Color.Black);
-                g.DrawString(sb.ToString(), new Font("黑体", 16, FontStyle.Bold), blackBrush, new PointF(0, 10));
-                g.DrawString(sb.ToString(), new Font("黑体", 16, FontStyle.Bold), blackBrush, new PointF(2, 10));
-                g.DrawString(sb.ToString(), new Font("黑体", 16, FontStyle.Bold), blackBrush, new PointF(0, 12));
-                g.DrawString(sb.ToString(), new Font("黑体", 16, FontStyle.Bold), blackBrush, new PointF(2, 12));
+                g.DrawString(sb.ToString(), new Font("黑体", 24, FontStyle.Bold), blackBrush, new PointF(0, 10));
+                g.DrawString(sb.ToString(), new Font("黑体", 24, FontStyle.Bold), blackBrush, new PointF(2, 10));
+                g.DrawString(sb.ToString(), new Font("黑体", 24, FontStyle.Bold), blackBrush, new PointF(0, 12));
+                g.DrawString(sb.ToString(), new Font("黑体", 24, FontStyle.Bold), blackBrush, new PointF(2, 12));
 
-                g.DrawString(sb.ToString(), new Font("黑体", 16, FontStyle.Bold), coverBrush, new PointF(1, 11));
+                g.DrawString(sb.ToString(), new Font("黑体", 24, FontStyle.Bold), coverBrush, new PointF(1, 11));
 
                 System.IO.File.Delete(picPath); //删除原有图片
 
@@ -697,7 +709,7 @@ namespace VmsClientDemo
 
         private void ConfirmCAP(object sender, EventArgs e)
         {
-            if (_PreviewPic.ConfirmSelected())
+            if (_PreviewPic.ConfirmSelected(ruleCOMB.Text))
             {//Clear the list for the capture operation of the next time
                 iFilesCounter = 0;
             }

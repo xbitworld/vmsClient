@@ -593,8 +593,10 @@ namespace VmsClientDemo
         private void ModifyCAM_Click(object sender, EventArgs e)
         {
             int iPosID = (int)posCOMB.Tag;
-            string strCamCode = (string)CamNameBox.Tag;
-            string strSQL = "update 设备路口映射表 set 路口ID = " + iPosID.ToString() + " where 设备CODE = '" + strCamCode + "'";
+            string strCamCode = (string)CamNameBox.Tag; //Code from camera device
+            string strCAMCode = CAMCodeBox.Text;        //摄像机编码——来自人工编码
+
+            string strSQL = "update 设备路口映射表 set 路口ID = " + iPosID.ToString() + ", 设备编码 = '" + strCAMCode + "'  where 设备CODE = '" + strCamCode + "'";
 
             DataRowCollection drc = null;
             int iRow = pDBSQLFun(strSQL, ref drc);
