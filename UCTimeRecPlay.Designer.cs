@@ -80,9 +80,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelVideo.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panelVideo.Location = new System.Drawing.Point(10, 79);
+            this.panelVideo.Location = new System.Drawing.Point(3, 79);
             this.panelVideo.Name = "panelVideo";
-            this.panelVideo.Size = new System.Drawing.Size(815, 541);
+            this.panelVideo.Size = new System.Drawing.Size(822, 541);
             this.panelVideo.TabIndex = 12;
             // 
             // btnStopPlay

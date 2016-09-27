@@ -93,7 +93,7 @@
             this.columnHeaderState});
             this.lstRecords.Location = new System.Drawing.Point(3, 44);
             this.lstRecords.Name = "lstRecords";
-            this.lstRecords.Size = new System.Drawing.Size(852, 164);
+            this.lstRecords.Size = new System.Drawing.Size(870, 164);
             this.lstRecords.TabIndex = 3;
             this.lstRecords.UseCompatibleStateImageBehavior = false;
             this.lstRecords.View = System.Windows.Forms.View.Details;
@@ -123,7 +123,7 @@
             this.panelVideo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panelVideo.Location = new System.Drawing.Point(4, 214);
             this.panelVideo.Name = "panelVideo";
-            this.panelVideo.Size = new System.Drawing.Size(697, 416);
+            this.panelVideo.Size = new System.Drawing.Size(713, 416);
             this.panelVideo.TabIndex = 4;
             // 
             // _seekBar_video_playback
@@ -132,7 +132,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this._seekBar_video_playback.Location = new System.Drawing.Point(4, 637);
             this._seekBar_video_playback.Name = "_seekBar_video_playback";
-            this._seekBar_video_playback.Size = new System.Drawing.Size(697, 45);
+            this._seekBar_video_playback.Size = new System.Drawing.Size(713, 45);
             this._seekBar_video_playback.TabIndex = 5;
             this._seekBar_video_playback.ValueChanged += new System.EventHandler(this._seekBar_video_playback_ValueChanged);
             this._seekBar_video_playback.MouseDown += new System.Windows.Forms.MouseEventHandler(this._seekBar_video_playback_MouseDown);
@@ -231,7 +231,7 @@
             this.groupBox1.Controls.Add(this.btnPause);
             this.groupBox1.Controls.Add(this.btnSlow);
             this.groupBox1.Controls.Add(this.btnStep);
-            this.groupBox1.Location = new System.Drawing.Point(711, 420);
+            this.groupBox1.Location = new System.Drawing.Point(723, 420);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(144, 185);
             this.groupBox1.TabIndex = 8;
@@ -242,7 +242,7 @@
             // 
             this.lblPlayTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPlayTime.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblPlayTime.Location = new System.Drawing.Point(707, 637);
+            this.lblPlayTime.Location = new System.Drawing.Point(719, 637);
             this.lblPlayTime.Name = "lblPlayTime";
             this.lblPlayTime.Size = new System.Drawing.Size(144, 23);
             this.lblPlayTime.TabIndex = 9;
@@ -264,7 +264,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.lblSelRec);
             this.groupBox2.Controls.Add(this.btnPlayRec);
-            this.groupBox2.Location = new System.Drawing.Point(711, 245);
+            this.groupBox2.Location = new System.Drawing.Point(723, 245);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(140, 169);
             this.groupBox2.TabIndex = 11;
@@ -282,7 +282,7 @@
             // btnCapturePic
             // 
             this.btnCapturePic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCapturePic.Location = new System.Drawing.Point(782, 18);
+            this.btnCapturePic.Location = new System.Drawing.Point(784, 18);
             this.btnCapturePic.Name = "btnCapturePic";
             this.btnCapturePic.Size = new System.Drawing.Size(75, 23);
             this.btnCapturePic.TabIndex = 12;
@@ -310,7 +310,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UCRec";
-            this.Size = new System.Drawing.Size(874, 689);
+            this.Size = new System.Drawing.Size(876, 689);
             ((System.ComponentModel.ISupportInitialize)(this._seekBar_video_playback)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

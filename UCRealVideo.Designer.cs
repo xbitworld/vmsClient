@@ -85,7 +85,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel1.Location = new System.Drawing.Point(4, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(666, 482);
+            this.panel1.Size = new System.Drawing.Size(680, 482);
             this.panel1.TabIndex = 3;
             // 
             // btnUp

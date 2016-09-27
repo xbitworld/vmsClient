@@ -83,7 +83,7 @@
             // 
             // modRoad
             // 
-            this.modRoad.Location = new System.Drawing.Point(113, 114);
+            this.modRoad.Location = new System.Drawing.Point(148, 114);
             this.modRoad.Margin = new System.Windows.Forms.Padding(2);
             this.modRoad.Name = "modRoad";
             this.modRoad.Size = new System.Drawing.Size(45, 20);
@@ -98,7 +98,7 @@
             this.roadCOMB.Location = new System.Drawing.Point(6, 29);
             this.roadCOMB.Margin = new System.Windows.Forms.Padding(2);
             this.roadCOMB.Name = "roadCOMB";
-            this.roadCOMB.Size = new System.Drawing.Size(165, 20);
+            this.roadCOMB.Size = new System.Drawing.Size(187, 20);
             this.roadCOMB.TabIndex = 7;
             this.roadCOMB.SelectedIndexChanged += new System.EventHandler(this.roadCOMB_SelectedIndexChanged);
             // 
@@ -119,7 +119,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(175, 209);
+            this.groupBox1.Size = new System.Drawing.Size(200, 209);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "道路名称";
@@ -129,7 +129,7 @@
             this.roadCode.Location = new System.Drawing.Point(64, 83);
             this.roadCode.Margin = new System.Windows.Forms.Padding(2);
             this.roadCode.Name = "roadCode";
-            this.roadCode.Size = new System.Drawing.Size(107, 21);
+            this.roadCode.Size = new System.Drawing.Size(129, 21);
             this.roadCode.TabIndex = 9;
             // 
             // roadName
@@ -137,7 +137,7 @@
             this.roadName.Location = new System.Drawing.Point(64, 57);
             this.roadName.Margin = new System.Windows.Forms.Padding(2);
             this.roadName.Name = "roadName";
-            this.roadName.Size = new System.Drawing.Size(107, 21);
+            this.roadName.Size = new System.Drawing.Size(129, 21);
             this.roadName.TabIndex = 9;
             // 
             // addRoad
@@ -194,11 +194,11 @@
             this.groupBox2.Controls.Add(this.delSection);
             this.groupBox2.Controls.Add(this.addSection);
             this.groupBox2.Controls.Add(this.modSection);
-            this.groupBox2.Location = new System.Drawing.Point(187, 18);
+            this.groupBox2.Location = new System.Drawing.Point(224, 18);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(174, 209);
+            this.groupBox2.Size = new System.Drawing.Size(193, 209);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "路段名称";
@@ -208,7 +208,7 @@
             this.secCode.Location = new System.Drawing.Point(62, 83);
             this.secCode.Margin = new System.Windows.Forms.Padding(2);
             this.secCode.Name = "secCode";
-            this.secCode.Size = new System.Drawing.Size(107, 21);
+            this.secCode.Size = new System.Drawing.Size(127, 21);
             this.secCode.TabIndex = 9;
             // 
             // label9
@@ -226,7 +226,7 @@
             this.secName.Location = new System.Drawing.Point(61, 57);
             this.secName.Margin = new System.Windows.Forms.Padding(2);
             this.secName.Name = "secName";
-            this.secName.Size = new System.Drawing.Size(107, 21);
+            this.secName.Size = new System.Drawing.Size(127, 21);
             this.secName.TabIndex = 9;
             // 
             // label2
@@ -245,13 +245,13 @@
             this.secCOMB.Location = new System.Drawing.Point(6, 29);
             this.secCOMB.Margin = new System.Windows.Forms.Padding(2);
             this.secCOMB.Name = "secCOMB";
-            this.secCOMB.Size = new System.Drawing.Size(163, 20);
+            this.secCOMB.Size = new System.Drawing.Size(183, 20);
             this.secCOMB.TabIndex = 7;
             this.secCOMB.SelectedIndexChanged += new System.EventHandler(this.secCOMB_SelectedIndexChanged);
             // 
             // delSection
             // 
-            this.delSection.Location = new System.Drawing.Point(62, 114);
+            this.delSection.Location = new System.Drawing.Point(61, 114);
             this.delSection.Margin = new System.Windows.Forms.Padding(2);
             this.delSection.Name = "delSection";
             this.delSection.Size = new System.Drawing.Size(45, 20);
@@ -262,7 +262,7 @@
             // 
             // addSection
             // 
-            this.addSection.Location = new System.Drawing.Point(13, 114);
+            this.addSection.Location = new System.Drawing.Point(12, 114);
             this.addSection.Margin = new System.Windows.Forms.Padding(2);
             this.addSection.Name = "addSection";
             this.addSection.Size = new System.Drawing.Size(45, 20);
@@ -273,7 +273,7 @@
             // 
             // modSection
             // 
-            this.modSection.Location = new System.Drawing.Point(111, 114);
+            this.modSection.Location = new System.Drawing.Point(143, 114);
             this.modSection.Margin = new System.Windows.Forms.Padding(2);
             this.modSection.Name = "modSection";
             this.modSection.Size = new System.Drawing.Size(45, 20);
@@ -295,11 +295,11 @@
             this.groupBox3.Controls.Add(this.modPos);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(364, 18);
+            this.groupBox3.Location = new System.Drawing.Point(431, 18);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(174, 209);
+            this.groupBox3.Size = new System.Drawing.Size(202, 209);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "路口名称";
@@ -309,7 +309,7 @@
             this.posCode.Location = new System.Drawing.Point(63, 83);
             this.posCode.Margin = new System.Windows.Forms.Padding(2);
             this.posCode.Name = "posCode";
-            this.posCode.Size = new System.Drawing.Size(107, 21);
+            this.posCode.Size = new System.Drawing.Size(132, 21);
             this.posCode.TabIndex = 9;
             // 
             // posName
@@ -317,7 +317,7 @@
             this.posName.Location = new System.Drawing.Point(63, 57);
             this.posName.Margin = new System.Windows.Forms.Padding(2);
             this.posName.Name = "posName";
-            this.posName.Size = new System.Drawing.Size(107, 21);
+            this.posName.Size = new System.Drawing.Size(132, 21);
             this.posName.TabIndex = 9;
             // 
             // posCOMB
@@ -327,13 +327,13 @@
             this.posCOMB.Location = new System.Drawing.Point(6, 29);
             this.posCOMB.Margin = new System.Windows.Forms.Padding(2);
             this.posCOMB.Name = "posCOMB";
-            this.posCOMB.Size = new System.Drawing.Size(164, 20);
+            this.posCOMB.Size = new System.Drawing.Size(189, 20);
             this.posCOMB.TabIndex = 7;
             this.posCOMB.SelectedIndexChanged += new System.EventHandler(this.posCOMB_SelectedIndexChanged);
             // 
             // delPos
             // 
-            this.delPos.Location = new System.Drawing.Point(65, 114);
+            this.delPos.Location = new System.Drawing.Point(63, 114);
             this.delPos.Margin = new System.Windows.Forms.Padding(2);
             this.delPos.Name = "delPos";
             this.delPos.Size = new System.Drawing.Size(45, 20);
@@ -344,7 +344,7 @@
             // 
             // addPos
             // 
-            this.addPos.Location = new System.Drawing.Point(17, 114);
+            this.addPos.Location = new System.Drawing.Point(15, 114);
             this.addPos.Margin = new System.Windows.Forms.Padding(2);
             this.addPos.Name = "addPos";
             this.addPos.Size = new System.Drawing.Size(45, 20);
@@ -355,7 +355,7 @@
             // 
             // modPos
             // 
-            this.modPos.Location = new System.Drawing.Point(114, 114);
+            this.modPos.Location = new System.Drawing.Point(150, 114);
             this.modPos.Margin = new System.Windows.Forms.Padding(2);
             this.modPos.Name = "modPos";
             this.modPos.Size = new System.Drawing.Size(45, 20);
@@ -401,7 +401,7 @@
             this.CAMCodeBox.Location = new System.Drawing.Point(172, 59);
             this.CAMCodeBox.Margin = new System.Windows.Forms.Padding(2);
             this.CAMCodeBox.Name = "CAMCodeBox";
-            this.CAMCodeBox.Size = new System.Drawing.Size(304, 29);
+            this.CAMCodeBox.Size = new System.Drawing.Size(379, 29);
             this.CAMCodeBox.TabIndex = 9;
             // 
             // CamNameBox
@@ -473,7 +473,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(548, 249);
+            this.groupBox4.Size = new System.Drawing.Size(643, 249);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "关联信息";
@@ -492,7 +492,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox4);
             this.Name = "UCDatabase";
-            this.Size = new System.Drawing.Size(604, 445);
+            this.Size = new System.Drawing.Size(699, 445);
             this.MouseEnter += new System.EventHandler(this.UCDatabase_MouseEnter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

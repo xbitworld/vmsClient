@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -11,7 +9,6 @@ using System.Threading;
 using System.Xml;
 using System.Data.OleDb;
 using System.Runtime.InteropServices;
-using System.Drawing;
 using System.Drawing.Imaging;
 
 namespace VmsClientDemo
@@ -759,6 +756,14 @@ namespace VmsClientDemo
 
             RulesUI rulesWin = new RulesUI(iPosID, false);
             rulesWin.Show(this);
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {//Adjust the size of tabcontrol to avoid some area be hide
+            //VideoPlayTab.Width = this.Width - LoginGroup.Width - 5;
+            //VideoPlayTab.Height = this.Height;
+            //VideoPlayTab.Update();
+            //VideoPlayTab.Refresh();
         }
     }
 }
