@@ -7,8 +7,8 @@
     <ProjectGuid>{713F3E2A-5A98-4E74-9874-8BA884B74C5B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VmsClientDemo</RootNamespace>
-    <AssemblyName>VmsClientDemo</AssemblyName>
+    <RootNamespace>VmsClient</RootNamespace>
+    <AssemblyName>VmsClient</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
@@ -45,6 +45,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Tittle.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Nvr.Common">
@@ -213,6 +216,7 @@
     <Content Include="template.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Tittle.ico" />
     <Content Include="VMS.mdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

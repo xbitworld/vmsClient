@@ -515,7 +515,6 @@ namespace VmsClientDemo
                 return;
             }
             StringBuilder sb = new StringBuilder(); //文字描述
-            sb.Append(@"设备编号：" + CamID.Text + "  ");
 
             string strCamName = CamADD.Text.Substring(4);
             sb.Append(@"地点：" + strCamName + "  ");
@@ -556,6 +555,8 @@ namespace VmsClientDemo
             {
                 return;
             }
+
+            sb.Append("\n" + @"设备编号：" + CamID.Text);
 
             if (!bCaptured)
             {

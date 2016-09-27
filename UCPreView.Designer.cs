@@ -45,7 +45,7 @@
             this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.Image = global::VmsClientDemo.Properties.Resources._1454046538594;
+            this.pictureBox.Image = global::VmsClient.Properties.Resources._1454046538594;
             this.pictureBox.InitialImage = null;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";

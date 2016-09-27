@@ -23,7 +23,7 @@ namespace VmsClientDemo
         public void resetList()
         {
             pictureBox.Image.Dispose();
-            pictureBox.Image = VmsClientDemo.Properties.Resources._1454046538594;
+            pictureBox.Image = VmsClient.Properties.Resources._1454046538594;
 
             for (int iLoop = 0; iLoop < listViewPICs.Items.Count; iLoop++)
             {
