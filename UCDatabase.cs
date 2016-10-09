@@ -267,10 +267,19 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "delete from 道路编码表 where ID = " + iID.ToString();
+            string strSQL = "select count(ID) from 路段编码表 where 道路ID = " + iID.ToString();
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow > 0)
+            {
+                MessageBox.Show("数据被关联，无法删除，请删除关联的路段再试！");
+                return;
+            }
+
+            strSQL = "delete from 道路编码表 where ID = " + iID.ToString();
+
+            iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
                 initCOMB(roadCOMB);
@@ -343,10 +352,19 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "delete from 路段编码表 where ID = " + iID.ToString();
+            string strSQL = "select count(ID) from 路口编码表 where 路段ID = " + iID.ToString();
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow > 0)
+            {
+                MessageBox.Show("数据被关联，无法删除，请删除关联的路口再试！");
+                return;
+            }
+
+            strSQL = "delete from 路段编码表 where ID = " + iID.ToString();
+
+            iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
                 initCOMB(secCOMB);

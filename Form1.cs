@@ -38,6 +38,8 @@ namespace VmsClientDemo
 
         private int iColor = 0;
 
+        private bool bSupperUser = false;
+
         static System.Data.OleDb.OleDbConnection AccessConn = new System.Data.OleDb.OleDbConnection();
 
         private void InitDBConn(string DBFullpath)
@@ -110,6 +112,8 @@ namespace VmsClientDemo
             this.tabPage6.Controls.Add(_Database);
             _Database.Dock = DockStyle.Fill;
 
+            _Database.Enabled = false;
+            _real.btnSetPreset.Enabled = false;
         }
 
         private static int AccessRead(string strSQL, ref DataTableCollection dta)
@@ -206,6 +210,14 @@ namespace VmsClientDemo
                                     item.ImageIndex = 0;
                                     lstCamList.Items.Add(item);
                                 }
+
+                                if ((camList.Count > 0) && (this.txtUid.Text.Trim().Equals("admin")))
+                                {
+                                    bSupperUser = true;
+
+                                    _Database.Enabled = true;
+                                    _real.btnSetPreset.Enabled = true;
+                                }
                             }));
                     }
                     catch (Exception ex)
@@ -220,6 +232,14 @@ namespace VmsClientDemo
                     {
                         rmtCam = null;
                     }
+
+            if((rmtCam != null) && (this.txtUid.Text.Trim().Equals("admin")))
+            {
+                bSupperUser = true;
+
+                _Database.Enabled = true;
+                _real.btnSetPreset.Enabled = true;
+            }
                 }));
         }
 

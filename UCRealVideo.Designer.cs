@@ -256,8 +256,8 @@
         private System.Windows.Forms.Button btnZoom2;
         private System.Windows.Forms.Button btnZoom1;
         private System.Windows.Forms.NumericUpDown nudPresetNo;
-        private System.Windows.Forms.Button btnSetPreset;
         private System.Windows.Forms.Button btnCallPreset;
         private System.Windows.Forms.Button btnCapturePic;
+        public System.Windows.Forms.Button btnSetPreset;
     }
 }
