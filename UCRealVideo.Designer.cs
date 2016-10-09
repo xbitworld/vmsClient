@@ -64,7 +64,7 @@
             "主码流",
             "子码流"});
             this.comboBox1.Location = new System.Drawing.Point(339, 28);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(180, 26);
             this.comboBox1.TabIndex = 1;
@@ -72,7 +72,7 @@
             // btnPlayVideo
             // 
             this.btnPlayVideo.Location = new System.Drawing.Point(531, 27);
-            this.btnPlayVideo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPlayVideo.Margin = new System.Windows.Forms.Padding(4);
             this.btnPlayVideo.Name = "btnPlayVideo";
             this.btnPlayVideo.Size = new System.Drawing.Size(112, 34);
             this.btnPlayVideo.TabIndex = 2;
@@ -87,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel1.Location = new System.Drawing.Point(6, 86);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1020, 723);
             this.panel1.TabIndex = 3;
@@ -96,7 +96,7 @@
             // 
             this.btnUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUp.Location = new System.Drawing.Point(28, 818);
-            this.btnUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(60, 34);
             this.btnUp.TabIndex = 4;
@@ -109,7 +109,7 @@
             // 
             this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDown.Location = new System.Drawing.Point(98, 818);
-            this.btnDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDown.Margin = new System.Windows.Forms.Padding(4);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(60, 34);
             this.btnDown.TabIndex = 4;
@@ -122,7 +122,7 @@
             // 
             this.btnLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLeft.Location = new System.Drawing.Point(166, 818);
-            this.btnLeft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLeft.Margin = new System.Windows.Forms.Padding(4);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(60, 34);
             this.btnLeft.TabIndex = 4;
@@ -135,7 +135,7 @@
             // 
             this.btnRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRight.Location = new System.Drawing.Point(236, 818);
-            this.btnRight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRight.Margin = new System.Windows.Forms.Padding(4);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(60, 34);
             this.btnRight.TabIndex = 4;
@@ -148,11 +148,11 @@
             // 
             this.btnZoom2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnZoom2.Location = new System.Drawing.Point(304, 818);
-            this.btnZoom2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnZoom2.Margin = new System.Windows.Forms.Padding(4);
             this.btnZoom2.Name = "btnZoom2";
             this.btnZoom2.Size = new System.Drawing.Size(60, 34);
             this.btnZoom2.TabIndex = 4;
-            this.btnZoom2.Text = "拉远";
+            this.btnZoom2.Text = "拉近";
             this.btnZoom2.UseVisualStyleBackColor = true;
             this.btnZoom2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnZoom1_MouseDown);
             this.btnZoom2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnZoom1_MouseUp);
@@ -161,11 +161,11 @@
             // 
             this.btnZoom1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnZoom1.Location = new System.Drawing.Point(374, 818);
-            this.btnZoom1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnZoom1.Margin = new System.Windows.Forms.Padding(4);
             this.btnZoom1.Name = "btnZoom1";
             this.btnZoom1.Size = new System.Drawing.Size(60, 34);
             this.btnZoom1.TabIndex = 4;
-            this.btnZoom1.Text = "拉近";
+            this.btnZoom1.Text = "拉远";
             this.btnZoom1.UseVisualStyleBackColor = true;
             this.btnZoom1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnZoom2_MouseDown);
             this.btnZoom1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnZoom2_MouseUp);
@@ -174,7 +174,7 @@
             // 
             this.nudPresetNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nudPresetNo.Location = new System.Drawing.Point(590, 820);
-            this.nudPresetNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudPresetNo.Margin = new System.Windows.Forms.Padding(4);
             this.nudPresetNo.Name = "nudPresetNo";
             this.nudPresetNo.Size = new System.Drawing.Size(80, 28);
             this.nudPresetNo.TabIndex = 5;
@@ -183,7 +183,7 @@
             // 
             this.btnSetPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSetPreset.Location = new System.Drawing.Point(468, 818);
-            this.btnSetPreset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSetPreset.Margin = new System.Windows.Forms.Padding(4);
             this.btnSetPreset.Name = "btnSetPreset";
             this.btnSetPreset.Size = new System.Drawing.Size(112, 34);
             this.btnSetPreset.TabIndex = 6;
@@ -195,7 +195,7 @@
             // 
             this.btnCallPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCallPreset.Location = new System.Drawing.Point(678, 818);
-            this.btnCallPreset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCallPreset.Margin = new System.Windows.Forms.Padding(4);
             this.btnCallPreset.Name = "btnCallPreset";
             this.btnCallPreset.Size = new System.Drawing.Size(112, 34);
             this.btnCallPreset.TabIndex = 6;
@@ -207,7 +207,7 @@
             // 
             this.btnCapturePic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCapturePic.Location = new System.Drawing.Point(892, 27);
-            this.btnCapturePic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCapturePic.Margin = new System.Windows.Forms.Padding(4);
             this.btnCapturePic.Name = "btnCapturePic";
             this.btnCapturePic.Size = new System.Drawing.Size(112, 34);
             this.btnCapturePic.TabIndex = 7;
@@ -234,7 +234,7 @@
             this.Controls.Add(this.btnPlayVideo);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCRealVideo";
             this.Size = new System.Drawing.Size(1030, 872);
             this.Load += new System.EventHandler(this.UCRealVideo_Load);
