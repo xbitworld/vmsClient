@@ -114,6 +114,8 @@ namespace VmsClientDemo
 
             _Database.Enabled = false;
             _real.btnSetPreset.Enabled = false;
+            AddRuleBT.Enabled = false;
+            DelRuleBT.Enabled = false;
         }
 
         private static int AccessRead(string strSQL, ref DataTableCollection dta)
@@ -193,7 +195,7 @@ namespace VmsClientDemo
             Spnet.Core.Service.RemoteObjectFactory.Pwd = this.txtPwd.Text.Trim();
             ServiceGlobal.ServerAddr = _serverIp;
             ServiceGlobal.Port = _port;
-                
+
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
                 {
                     var rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera(_serverIp, _port);
@@ -224,8 +226,8 @@ namespace VmsClientDemo
                     {
                         this.Invoke(new System.Threading.ThreadStart(delegate
                             {
-                        MessageBox.Show(this, ex.Message);
-                        //出错了一般是通讯失败或服务器内调用失败
+                                MessageBox.Show(this, ex.Message);
+                                //出错了一般是通讯失败或服务器内调用失败
                             }));
                     }
                     finally
@@ -233,13 +235,15 @@ namespace VmsClientDemo
                         rmtCam = null;
                     }
 
-            if((rmtCam != null) && (this.txtUid.Text.Trim().Equals("admin")))
-            {
-                bSupperUser = true;
+                    if ((rmtCam != null) && (this.txtUid.Text.Trim().Equals("admin")))
+                    {
+                        bSupperUser = true;
 
-                _Database.Enabled = true;
-                _real.btnSetPreset.Enabled = true;
-            }
+                        _Database.Enabled = true;
+                        _real.btnSetPreset.Enabled = true;
+                        AddRuleBT.Enabled = true;
+                        DelRuleBT.Enabled = true;
+                    }
                 }));
         }
 
