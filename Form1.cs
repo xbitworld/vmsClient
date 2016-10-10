@@ -563,7 +563,7 @@ namespace VmsClientDemo
                 else
                 {
                     string xMS = (new Random()).Next(1000).ToString("000"); //模拟毫秒数
-                    sb.Append("抓拍时间：" + Convert.ToDateTime(strTm).ToString("yyyy-MM-dd HH:mm:ss") + xMS);
+                    sb.Append("抓拍时间：" + Convert.ToDateTime(strTm).ToString("yyyy-MM-dd HH:mm:ss.") + xMS);
                     FirstFileTime = Convert.ToDateTime(strTm + "." + xMS);
                 }
                 bCaptured = _rec.SaveRecPicToPath(out picPath);
