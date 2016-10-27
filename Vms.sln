@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pic4Tabpage", "pic4Tabpage", "{FE15270B-0C9A-4B72-B85C-E6E4A1978A3A}"
 	ProjectSection(SolutionItems) = preProject
+		pics4TAB\CamIcon-OffLine.png = pics4TAB\CamIcon-OffLine.png
+		pics4TAB\CamIcon-Online.png = pics4TAB\CamIcon-Online.png
 		pics4TAB\CamIcon.png = pics4TAB\CamIcon.png
 		pics4TAB\clapper2.png = pics4TAB\clapper2.png
 		pics4TAB\database16.png = pics4TAB\database16.png
