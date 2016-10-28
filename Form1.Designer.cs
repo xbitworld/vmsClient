@@ -184,6 +184,8 @@
             this.TabImageList.Images.SetKeyName(3, "time_clock.png");
             this.TabImageList.Images.SetKeyName(4, "pictures1.png");
             this.TabImageList.Images.SetKeyName(5, "database16.png");
+            this.TabImageList.Images.SetKeyName(6, "CamIcon-OffLine.png");
+            this.TabImageList.Images.SetKeyName(7, "CamIcon-Online.png");
             // 
             // VideoPlayTab
             // 
@@ -209,8 +211,8 @@
             this.tabPage1.ImageIndex = 0;
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(751, 529);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(751, 530);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "实时视频";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -220,8 +222,8 @@
             this.tabPage2.ImageIndex = 1;
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(751, 529);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(751, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "录像回放";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -231,7 +233,7 @@
             this.tabPage3.ImageIndex = 2;
             this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(751, 529);
+            this.tabPage3.Size = new System.Drawing.Size(751, 530);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "预录像播放";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -241,8 +243,8 @@
             this.tabPage4.ImageKey = "time_clock.png";
             this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage4.Size = new System.Drawing.Size(751, 529);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(751, 530);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "按时间回放录像";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -251,9 +253,9 @@
             // 
             this.tabPage5.ImageIndex = 4;
             this.tabPage5.Location = new System.Drawing.Point(4, 31);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(751, 529);
+            this.tabPage5.Size = new System.Drawing.Size(751, 530);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "图片预览";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -479,6 +481,7 @@
             this.rstCAP.TabIndex = 14;
             this.rstCAP.Text = "选图确认";
             this.rstCAP.UseVisualStyleBackColor = true;
+            this.rstCAP.EnabledChanged += new System.EventHandler(this.WaitProgress);
             this.rstCAP.Click += new System.EventHandler(this.ConfirmCAP);
             // 
             // AutoCapBT
@@ -617,7 +620,6 @@
         private System.Windows.Forms.Button rstCAP;
         private System.Windows.Forms.TextBox IntervalTimeBox;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox DirCOMB;
         private System.Windows.Forms.ComboBox ruleCOMB;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label5;
@@ -627,6 +629,7 @@
         private System.Windows.Forms.TextBox AddrID;
         private System.Windows.Forms.Button AddRuleBT;
         private System.Windows.Forms.Button DelRuleBT;
+        public System.Windows.Forms.ComboBox DirCOMB;
     }
 }
 

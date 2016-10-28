@@ -42,6 +42,8 @@ namespace VmsClientDemo
 
         static System.Data.OleDb.OleDbConnection AccessConn = new System.Data.OleDb.OleDbConnection();
 
+        WaitBox waitWin;
+
         private void InitDBConn(string DBFullpath)
         {
             // TODO: Modify the connection string and include any
@@ -196,7 +198,7 @@ namespace VmsClientDemo
                 
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
                 {
-                    var rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera(_serverIp, _port);
+                    Spnet.Core.Service.Camera rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera(_serverIp, _port);
                     try
                     {
                         var camList = rmtCam.GetModelList("");
@@ -206,8 +208,19 @@ namespace VmsClientDemo
                                 {
                                     ListViewItem item = new ListViewItem(modelCam.ID + "_" + modelCam.Name);
                                     //string codex = modelCam.Code; //For test only
+
+                                    Spnet.Data.Model.SysModels.CameraState camSt = rmtCam.GetCameraStateById(modelCam.ID);
+
                                     item.Tag = modelCam;
-                                    item.ImageIndex = 0;
+                                    if (camSt.IsOnline)
+                                    {
+                                        item.ImageIndex = 7;
+                                    }
+                                    else
+                                    {
+                                        item.ImageIndex = 6;
+                                    }
+
                                     lstCamList.Items.Add(item);
                                 }
 
@@ -727,12 +740,20 @@ namespace VmsClientDemo
 
         private void ConfirmCAP(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            waitWin = new WaitBox();
+            waitWin.Show(this);
+
             if (_PreviewPic.ConfirmSelected(ruleCOMB.Text))
             {//Clear the list for the capture operation of the next time
                 iFilesCounter = 0;
+                //MessageBox.Show("保存完毕");
             }
 
             VideoPlayTab.SelectedIndex = iCurrentIndex;
+
+            waitWin.Close();
+            Cursor.Current = Cursors.Default;
         }
 
         private void AutoCapPics(object sender, EventArgs e)
@@ -784,6 +805,16 @@ namespace VmsClientDemo
             //VideoPlayTab.Height = this.Height;
             //VideoPlayTab.Update();
             //VideoPlayTab.Refresh();
+        }
+
+        private void WaitProgress(object sender, EventArgs e)
+        {
+            if(rstCAP.Enabled == false)
+            {
+            }
+            else
+            {
+            }
         }
     }
 }

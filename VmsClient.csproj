@@ -145,6 +145,12 @@
     <Compile Include="UCTimeRecPlay.Designer.cs">
       <DependentUpon>UCTimeRecPlay.cs</DependentUpon>
     </Compile>
+    <Compile Include="WaitBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitBox.Designer.cs">
+      <DependentUpon>WaitBox.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCTimeRecPlay.resx">
       <DependentUpon>UCTimeRecPlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitBox.resx">
+      <DependentUpon>WaitBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
