@@ -360,9 +360,9 @@ namespace VmsClientDemo
         private void btnCallPreset_Click(object sender, EventArgs e)
         {
             int preset = (int)this.nudPresetNo.Value;
-            //Form1 xForm = (Form1)this.ParentForm;
-            ////xForm.DirCOMB.SelectedIndex = preset;
-            //xForm.DirCOMB.Text = dirText[preset];
+            Form1 xForm = (Form1)this.ParentForm;
+            //xForm.DirCOMB.SelectedIndex = preset;
+            xForm.DirCOMB.Text = dirText[preset];
             if (_stream == null) return;
 
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
