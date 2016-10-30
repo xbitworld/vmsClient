@@ -13,6 +13,7 @@ namespace VmsClientDemo
     public partial class UCDatabase : UserControl
     {
         private Form1.dbCallbackFun pDBSQLFun = null;
+        private string []dirString = { "东", "东南", "南", "西南", "西", "西北", "北", "东北" };
 
         public UCDatabase(Form1.dbCallbackFun SQLFun)
         {
@@ -30,48 +31,53 @@ namespace VmsClientDemo
 
         public void initCOMB(ComboBox comb)
         {
+            posCOMB.Items.Clear();
+            posCOMB.Tag = -1;
+            posName.Text = "";
+            posCode.Text = "";
+            if (comb.Equals(posCOMB))
+                return;
+
+            secCOMB.Items.Clear();
+            secCOMB.Tag = -1;
+            secName.Text = "";
+            secCode.Text = "";
+            if (comb.Equals(secCOMB))
+                return;
+
+            roadCOMB.Items.Clear();
+            roadCOMB.Tag = -1;
+            roadName.Text = "";
+            roadCode.Text = "";
             if (comb.Equals(roadCOMB))
+                return;
+        }
+
+        public bool fillDevDir(string strCAMCode)
+        {
+            devDirCMB.Items.Clear();
+            DelDirBT.Enabled = false;
+
+            DataRowCollection drc = null;
+            string strSQL = "select 方向ID, 预置位ID from 设备方向映射表 where 设备CODE = '" + strCAMCode + "'";
+            int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow > 0)
             {
-                roadCOMB.Items.Clear();
-                secCOMB.Items.Clear();
-                posCOMB.Items.Clear();
-
-                roadCOMB.Tag = -1;
-                secCOMB.Tag = -1;
-                posCOMB.Tag = -1;
-
-                roadName.Text = "";
-                roadCode.Text = "";
-
-                secName.Text = "";
-                secCode.Text = "";
-
-                posName.Text = "";
-                posCode.Text = "";
+                //Fill Info to UI
+                DelDirBT.Enabled = true;
+                foreach (DataRow DR in drc)
+                {
+                    string strPrePos = (string)DR[0];
+                    int iDir = (int)DR[1];
+                    devDirCMB.Items.Add("预置位:" + strPrePos + "-" + dirString[iDir]);
+                }
+                devDirCMB.SelectedIndex = 0;
             }
-            else if(comb.Equals(secCOMB))
+            else
             {
-                secCOMB.Items.Clear();
-                posCOMB.Items.Clear();
-
-                secCOMB.Tag = -1;
-                posCOMB.Tag = -1;
-
-                secName.Text = "";
-                secCode.Text = "";
-
-                posName.Text = "";
-                posCode.Text = "";
+                return false;
             }
-            else if(comb.Equals(posCOMB))
-            {
-                posCOMB.Items.Clear();
-
-                posCOMB.Tag = -1;
-
-                posName.Text = "";
-                posCode.Text = "";
-            }
+            return true;
         }
 
         public bool fillDatabaseUI(string strCAMCode, string strCAMName)
@@ -645,6 +651,60 @@ namespace VmsClientDemo
             }
 
             return 0;
+        }
+
+        private void AddDirBT_Click(object sender, EventArgs e)
+        {
+            string strDevCode = (string)CamNameBox.Tag;
+            int prePosID = prePosCMB.SelectedIndex;
+            int dirID = dirCMB.SelectedIndex;
+
+            if (prePosID == -1 || strDevCode == null || strDevCode == "" || dirID == -1)
+            {
+                MessageBox.Show("信息不完整，请检查！");
+                return;
+            }
+
+            string strSQL = "insert into 设备方向映射表(设备CODE, 预置位ID, 方向ID) values('" + strDevCode + "', " + prePosID + ", " + dirID + ")";
+            DataRowCollection drc = null;
+
+            int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow >= 0)
+            {
+                fillDevDir(strDevCode);
+                MessageBox.Show("新增成功");
+            }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
+            }
+        }
+
+        private void DelDirBT_Click(object sender, EventArgs e)
+        {
+            string strDevCode = (string)CamNameBox.Tag;
+            int prePosID = prePosCMB.SelectedIndex;
+            int dirID = dirCMB.SelectedIndex;
+
+            if (prePosID == -1 || strDevCode == null || strDevCode == "" || dirID == -1)
+            {
+                MessageBox.Show("信息不完整，请检查！");
+                return;
+            }
+
+            string strSQL = "delete from 设备方向映射表 where 设备CODE = '" + strDevCode + "' and 预置位ID = " + prePosID.ToString() + " and 方向ID = " + dirID.ToString();
+            DataRowCollection drc = null;
+
+            int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow >= 0)
+            {
+                initCOMB(secCOMB);
+                MessageBox.Show("删除成功");
+            }
+            else
+            {
+                MessageBox.Show("SQL Error: " + strSQL);
+            }
         }
     }
 }

@@ -267,6 +267,8 @@ namespace VmsClientDemo
                 _timeRecPlay.ModelCam = modelCam;
 
                 CamADD.Text = modelCam.Name;    //Display Camera name in the Camera address textbox by dutao @ 2016-09-26
+                _Database.fillDevDir(modelCam.Code);
+
                 _Database.fillDatabaseUI(modelCam.Code, modelCam.Name);
                 if(_Database.getPostitionID(ref iPosID, ref strCAMCode, ref strPOSCode) == 0)
                 {
