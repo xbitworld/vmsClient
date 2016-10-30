@@ -356,10 +356,14 @@ namespace VmsClientDemo
             }));
         }
 
+        string[] dirText = { "南向", "西南", "西向", "西北", "北向", "东北", "东向", "东南" };
         private void btnCallPreset_Click(object sender, EventArgs e)
         {
-            if (_stream == null) return;
             int preset = (int)this.nudPresetNo.Value;
+            Form1 xForm = (Form1)this.ParentForm;
+            //xForm.DirCOMB.SelectedIndex = preset;
+            xForm.DirCOMB.Text = dirText[preset];
+            if (_stream == null) return;
 
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
             {
