@@ -818,5 +818,17 @@ namespace VmsClientDemo
             {
             }
         }
+
+        public void getDirFromPre(string devCode, int prePos)
+        {
+            string strSQL = "SELECT 方向编码表.方向描述 FROM 设备方向映射表 LEFT JOIN 方向编码表 ON 设备方向映射表.方向ID = 方向编码表.方向编码 WHERE 设备方向映射表.设备CODE = '" + devCode  + "' and 设备方向映射表.预置位ID = " + prePos.ToString();
+            DataRowCollection drc = null;
+            int iRow = getData(strSQL, ref drc);
+            if (iRow > 0)
+            {
+                string strDIR = (string)drc[0][0];
+                DirCOMB.Text = strDIR;
+            }
+        }
     }
 }

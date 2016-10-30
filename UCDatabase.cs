@@ -13,7 +13,7 @@ namespace VmsClientDemo
     public partial class UCDatabase : UserControl
     {
         private Form1.dbCallbackFun pDBSQLFun = null;
-        private string []dirString = { "东", "东南", "南", "西南", "西", "西北", "北", "东北" };
+        private string []dirString = { "南", "西南", "西", "西北", "北", "东北", "东", "东南"};
 
         public UCDatabase(Form1.dbCallbackFun SQLFun)
         {
@@ -56,22 +56,24 @@ namespace VmsClientDemo
         public bool fillDevDir(string strCAMCode)
         {
             devDirCMB.Items.Clear();
+            devDirCMB.Text = "";
             DelDirBT.Enabled = false;
 
             DataRowCollection drc = null;
-            string strSQL = "select 方向ID, 预置位ID from 设备方向映射表 where 设备CODE = '" + strCAMCode + "'";
+            string strSQL = "select 方向ID, 预置位ID from 设备方向映射表 where 设备CODE = '" + strCAMCode + "' order by 预置位ID";
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow > 0)
             {
                 //Fill Info to UI
-                DelDirBT.Enabled = true;
                 foreach (DataRow DR in drc)
                 {
-                    string strPrePos = (string)DR[0];
-                    int iDir = (int)DR[1];
-                    devDirCMB.Items.Add("预置位:" + strPrePos + "-" + dirString[iDir]);
+                    int iDir = int.Parse(DR[0].ToString());
+                    int iPrePOS = int.Parse(DR[1].ToString());
+                    devDirCMB.Items.Add("预置位:" + iPrePOS.ToString() + ", 方向:" + dirString[iDir]);
                 }
+
                 devDirCMB.SelectedIndex = 0;
+                DelDirBT.Enabled = true;
             }
             else
             {
@@ -664,11 +666,17 @@ namespace VmsClientDemo
                 MessageBox.Show("信息不完整，请检查！");
                 return;
             }
-
-            string strSQL = "insert into 设备方向映射表(设备CODE, 预置位ID, 方向ID) values('" + strDevCode + "', " + prePosID + ", " + dirID + ")";
+            string strSQL = "select 方向ID, 预置位ID from 设备方向映射表 where 设备CODE = '" + strDevCode + "' and 预置位ID = " + prePosID.ToString();
             DataRowCollection drc = null;
-
             int iRow = pDBSQLFun(strSQL, ref drc);
+            if (iRow > 0)
+            {
+                MessageBox.Show("预置位已经设置方向，请删除后重新插入！");
+                return;
+            }
+
+            strSQL = "insert into 设备方向映射表(设备CODE, 预置位ID, 方向ID) values('" + strDevCode + "', " + prePosID + ", " + dirID + ")";
+            iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
                 fillDevDir(strDevCode);
@@ -692,13 +700,13 @@ namespace VmsClientDemo
                 return;
             }
 
-            string strSQL = "delete from 设备方向映射表 where 设备CODE = '" + strDevCode + "' and 预置位ID = " + prePosID.ToString() + " and 方向ID = " + dirID.ToString();
+            string strSQL = "delete from 设备方向映射表 where 设备CODE = '" + strDevCode + "' and 预置位ID = " + prePosID.ToString();
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {
-                initCOMB(secCOMB);
+                fillDevDir(strDevCode);
                 MessageBox.Show("删除成功");
             }
             else

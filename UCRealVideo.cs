@@ -361,8 +361,9 @@ namespace VmsClientDemo
         {
             int preset = (int)this.nudPresetNo.Value;
             Form1 xForm = (Form1)this.ParentForm;
+            xForm.getDirFromPre(_modelCam.Code, preset);
             //xForm.DirCOMB.SelectedIndex = preset;
-            xForm.DirCOMB.Text = dirText[preset];
+            //xForm.DirCOMB.Text = dirText[preset];
             if (_stream == null) return;
 
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate

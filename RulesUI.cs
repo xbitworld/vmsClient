@@ -144,7 +144,7 @@ namespace VmsClientDemo
             int iRow = Form1.getData(strSQL, ref drc);
             if (iRow > 0)
             {
-                iDirID = (int)drc[0][0];
+                iDirID = int.Parse(drc[0][0].ToString());
             }
             else
             {
