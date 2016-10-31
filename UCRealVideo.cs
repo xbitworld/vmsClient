@@ -359,6 +359,9 @@ namespace VmsClientDemo
         string[] dirText = { "南向", "西南", "西向", "西北", "北向", "东北", "东向", "东南" };
         private void btnCallPreset_Click(object sender, EventArgs e)
         {
+            if (_modelCam == null)
+                return;
+
             int preset = (int)this.nudPresetNo.Value;
             Form1 xForm = (Form1)this.ParentForm;
             xForm.getDirFromPre(_modelCam.Code, preset);

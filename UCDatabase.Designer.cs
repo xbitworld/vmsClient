@@ -83,19 +83,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(48, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(72, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 19);
+            this.label1.Size = new System.Drawing.Size(180, 28);
             this.label1.TabIndex = 4;
             this.label1.Text = "摄像机名称：";
             // 
             // modRoad
             // 
-            this.modRoad.Location = new System.Drawing.Point(148, 114);
-            this.modRoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modRoad.Location = new System.Drawing.Point(222, 171);
             this.modRoad.Name = "modRoad";
-            this.modRoad.Size = new System.Drawing.Size(45, 20);
+            this.modRoad.Size = new System.Drawing.Size(68, 30);
             this.modRoad.TabIndex = 6;
             this.modRoad.Text = "改";
             this.modRoad.UseVisualStyleBackColor = true;
@@ -104,10 +102,9 @@
             // roadCOMB
             // 
             this.roadCOMB.FormattingEnabled = true;
-            this.roadCOMB.Location = new System.Drawing.Point(6, 29);
-            this.roadCOMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roadCOMB.Location = new System.Drawing.Point(9, 44);
             this.roadCOMB.Name = "roadCOMB";
-            this.roadCOMB.Size = new System.Drawing.Size(187, 20);
+            this.roadCOMB.Size = new System.Drawing.Size(278, 26);
             this.roadCOMB.TabIndex = 7;
             this.roadCOMB.SelectedIndexChanged += new System.EventHandler(this.roadCOMB_SelectedIndexChanged);
             // 
@@ -124,37 +121,32 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.modRoad);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(9, 18);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Location = new System.Drawing.Point(14, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(200, 209);
+            this.groupBox1.Size = new System.Drawing.Size(300, 314);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "道路名称";
             // 
             // roadCode
             // 
-            this.roadCode.Location = new System.Drawing.Point(64, 83);
-            this.roadCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roadCode.Location = new System.Drawing.Point(96, 124);
             this.roadCode.Name = "roadCode";
-            this.roadCode.Size = new System.Drawing.Size(129, 21);
+            this.roadCode.Size = new System.Drawing.Size(192, 28);
             this.roadCode.TabIndex = 9;
             // 
             // roadName
             // 
-            this.roadName.Location = new System.Drawing.Point(64, 57);
-            this.roadName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roadName.Location = new System.Drawing.Point(96, 86);
             this.roadName.Name = "roadName";
-            this.roadName.Size = new System.Drawing.Size(129, 21);
+            this.roadName.Size = new System.Drawing.Size(192, 28);
             this.roadName.TabIndex = 9;
             // 
             // addRoad
             // 
-            this.addRoad.Location = new System.Drawing.Point(15, 114);
-            this.addRoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addRoad.Location = new System.Drawing.Point(22, 171);
             this.addRoad.Name = "addRoad";
-            this.addRoad.Size = new System.Drawing.Size(45, 20);
+            this.addRoad.Size = new System.Drawing.Size(68, 30);
             this.addRoad.TabIndex = 6;
             this.addRoad.Text = "+";
             this.addRoad.UseVisualStyleBackColor = true;
@@ -162,10 +154,9 @@
             // 
             // delRoad
             // 
-            this.delRoad.Location = new System.Drawing.Point(64, 114);
-            this.delRoad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.delRoad.Location = new System.Drawing.Point(96, 171);
             this.delRoad.Name = "delRoad";
-            this.delRoad.Size = new System.Drawing.Size(45, 20);
+            this.delRoad.Size = new System.Drawing.Size(68, 30);
             this.delRoad.TabIndex = 6;
             this.delRoad.Text = "-";
             this.delRoad.UseVisualStyleBackColor = true;
@@ -174,20 +165,18 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 85);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(6, 128);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.Size = new System.Drawing.Size(98, 18);
             this.label8.TabIndex = 8;
             this.label8.Text = "道路编码：";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 59);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(6, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.Size = new System.Drawing.Size(98, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "道路名称：";
             // 
@@ -203,67 +192,59 @@
             this.groupBox2.Controls.Add(this.delSection);
             this.groupBox2.Controls.Add(this.addSection);
             this.groupBox2.Controls.Add(this.modSection);
-            this.groupBox2.Location = new System.Drawing.Point(224, 18);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Location = new System.Drawing.Point(358, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Size = new System.Drawing.Size(193, 209);
+            this.groupBox2.Size = new System.Drawing.Size(290, 314);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "路段名称";
             // 
             // secCode
             // 
-            this.secCode.Location = new System.Drawing.Point(62, 83);
-            this.secCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.secCode.Location = new System.Drawing.Point(93, 124);
             this.secCode.Name = "secCode";
-            this.secCode.Size = new System.Drawing.Size(127, 21);
+            this.secCode.Size = new System.Drawing.Size(188, 28);
             this.secCode.TabIndex = 9;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 85);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(6, 128);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.Size = new System.Drawing.Size(98, 18);
             this.label9.TabIndex = 8;
             this.label9.Text = "路段编码：";
             // 
             // secName
             // 
-            this.secName.Location = new System.Drawing.Point(61, 57);
-            this.secName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.secName.Location = new System.Drawing.Point(92, 86);
             this.secName.Name = "secName";
-            this.secName.Size = new System.Drawing.Size(127, 21);
+            this.secName.Size = new System.Drawing.Size(188, 28);
             this.secName.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 59);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(6, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.Size = new System.Drawing.Size(98, 18);
             this.label2.TabIndex = 8;
             this.label2.Text = "路段名称：";
             // 
             // secCOMB
             // 
             this.secCOMB.FormattingEnabled = true;
-            this.secCOMB.Location = new System.Drawing.Point(6, 29);
-            this.secCOMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.secCOMB.Location = new System.Drawing.Point(9, 44);
             this.secCOMB.Name = "secCOMB";
-            this.secCOMB.Size = new System.Drawing.Size(183, 20);
+            this.secCOMB.Size = new System.Drawing.Size(272, 26);
             this.secCOMB.TabIndex = 7;
             this.secCOMB.SelectedIndexChanged += new System.EventHandler(this.secCOMB_SelectedIndexChanged);
             // 
             // delSection
             // 
-            this.delSection.Location = new System.Drawing.Point(61, 114);
-            this.delSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.delSection.Location = new System.Drawing.Point(92, 171);
             this.delSection.Name = "delSection";
-            this.delSection.Size = new System.Drawing.Size(45, 20);
+            this.delSection.Size = new System.Drawing.Size(68, 30);
             this.delSection.TabIndex = 6;
             this.delSection.Text = "-";
             this.delSection.UseVisualStyleBackColor = true;
@@ -271,10 +252,9 @@
             // 
             // addSection
             // 
-            this.addSection.Location = new System.Drawing.Point(12, 114);
-            this.addSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addSection.Location = new System.Drawing.Point(18, 171);
             this.addSection.Name = "addSection";
-            this.addSection.Size = new System.Drawing.Size(45, 20);
+            this.addSection.Size = new System.Drawing.Size(68, 30);
             this.addSection.TabIndex = 6;
             this.addSection.Text = "+";
             this.addSection.UseVisualStyleBackColor = true;
@@ -282,10 +262,9 @@
             // 
             // modSection
             // 
-            this.modSection.Location = new System.Drawing.Point(143, 114);
-            this.modSection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modSection.Location = new System.Drawing.Point(214, 171);
             this.modSection.Name = "modSection";
-            this.modSection.Size = new System.Drawing.Size(45, 20);
+            this.modSection.Size = new System.Drawing.Size(68, 30);
             this.modSection.TabIndex = 6;
             this.modSection.Text = "改";
             this.modSection.UseVisualStyleBackColor = true;
@@ -304,48 +283,42 @@
             this.groupBox3.Controls.Add(this.modPos);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(431, 18);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Location = new System.Drawing.Point(690, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(202, 209);
+            this.groupBox3.Size = new System.Drawing.Size(303, 314);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "路口名称";
             // 
             // posCode
             // 
-            this.posCode.Location = new System.Drawing.Point(63, 83);
-            this.posCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.posCode.Location = new System.Drawing.Point(94, 124);
             this.posCode.Name = "posCode";
-            this.posCode.Size = new System.Drawing.Size(132, 21);
+            this.posCode.Size = new System.Drawing.Size(196, 28);
             this.posCode.TabIndex = 9;
             // 
             // posName
             // 
-            this.posName.Location = new System.Drawing.Point(63, 57);
-            this.posName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.posName.Location = new System.Drawing.Point(94, 86);
             this.posName.Name = "posName";
-            this.posName.Size = new System.Drawing.Size(132, 21);
+            this.posName.Size = new System.Drawing.Size(196, 28);
             this.posName.TabIndex = 9;
             // 
             // posCOMB
             // 
             this.posCOMB.FormattingEnabled = true;
             this.posCOMB.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.posCOMB.Location = new System.Drawing.Point(6, 29);
-            this.posCOMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.posCOMB.Location = new System.Drawing.Point(9, 44);
             this.posCOMB.Name = "posCOMB";
-            this.posCOMB.Size = new System.Drawing.Size(189, 20);
+            this.posCOMB.Size = new System.Drawing.Size(282, 26);
             this.posCOMB.TabIndex = 7;
             this.posCOMB.SelectedIndexChanged += new System.EventHandler(this.posCOMB_SelectedIndexChanged);
             // 
             // delPos
             // 
-            this.delPos.Location = new System.Drawing.Point(63, 114);
-            this.delPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.delPos.Location = new System.Drawing.Point(94, 171);
             this.delPos.Name = "delPos";
-            this.delPos.Size = new System.Drawing.Size(45, 20);
+            this.delPos.Size = new System.Drawing.Size(68, 30);
             this.delPos.TabIndex = 6;
             this.delPos.Text = "-";
             this.delPos.UseVisualStyleBackColor = true;
@@ -353,10 +326,9 @@
             // 
             // addPos
             // 
-            this.addPos.Location = new System.Drawing.Point(15, 114);
-            this.addPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addPos.Location = new System.Drawing.Point(22, 171);
             this.addPos.Name = "addPos";
-            this.addPos.Size = new System.Drawing.Size(45, 20);
+            this.addPos.Size = new System.Drawing.Size(68, 30);
             this.addPos.TabIndex = 6;
             this.addPos.Text = "+";
             this.addPos.UseVisualStyleBackColor = true;
@@ -364,10 +336,9 @@
             // 
             // modPos
             // 
-            this.modPos.Location = new System.Drawing.Point(150, 114);
-            this.modPos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.modPos.Location = new System.Drawing.Point(225, 171);
             this.modPos.Name = "modPos";
-            this.modPos.Size = new System.Drawing.Size(45, 20);
+            this.modPos.Size = new System.Drawing.Size(68, 30);
             this.modPos.TabIndex = 6;
             this.modPos.Text = "改";
             this.modPos.UseVisualStyleBackColor = true;
@@ -376,20 +347,18 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 59);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(6, 88);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.Size = new System.Drawing.Size(98, 18);
             this.label10.TabIndex = 8;
             this.label10.Text = "路口信息：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 85);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(6, 128);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.Size = new System.Drawing.Size(98, 18);
             this.label4.TabIndex = 8;
             this.label4.Text = "路口编码：";
             // 
@@ -397,40 +366,36 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(48, 61);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(72, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 19);
+            this.label5.Size = new System.Drawing.Size(180, 28);
             this.label5.TabIndex = 4;
             this.label5.Text = "摄像机编码：";
             // 
             // CAMCodeBox
             // 
             this.CAMCodeBox.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CAMCodeBox.Location = new System.Drawing.Point(172, 59);
-            this.CAMCodeBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CAMCodeBox.Location = new System.Drawing.Point(258, 88);
             this.CAMCodeBox.Name = "CAMCodeBox";
-            this.CAMCodeBox.Size = new System.Drawing.Size(343, 29);
+            this.CAMCodeBox.Size = new System.Drawing.Size(512, 39);
             this.CAMCodeBox.TabIndex = 9;
             // 
             // CamNameBox
             // 
             this.CamNameBox.AutoSize = true;
             this.CamNameBox.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CamNameBox.Location = new System.Drawing.Point(169, 26);
-            this.CamNameBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CamNameBox.Location = new System.Drawing.Point(254, 39);
             this.CamNameBox.Name = "CamNameBox";
-            this.CamNameBox.Size = new System.Drawing.Size(294, 19);
+            this.CamNameBox.Size = new System.Drawing.Size(432, 28);
             this.CamNameBox.TabIndex = 4;
             this.CamNameBox.Text = "摄像机名称摄像机名称摄像机名称";
             // 
             // ADDCamera
             // 
             this.ADDCamera.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ADDCamera.Location = new System.Drawing.Point(372, 98);
-            this.ADDCamera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ADDCamera.Location = new System.Drawing.Point(558, 147);
             this.ADDCamera.Name = "ADDCamera";
-            this.ADDCamera.Size = new System.Drawing.Size(66, 26);
+            this.ADDCamera.Size = new System.Drawing.Size(99, 39);
             this.ADDCamera.TabIndex = 10;
             this.ADDCamera.Text = "+";
             this.ADDCamera.UseVisualStyleBackColor = true;
@@ -439,10 +404,9 @@
             // ModifyCAM
             // 
             this.ModifyCAM.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ModifyCAM.Location = new System.Drawing.Point(448, 97);
-            this.ModifyCAM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ModifyCAM.Location = new System.Drawing.Point(672, 146);
             this.ModifyCAM.Name = "ModifyCAM";
-            this.ModifyCAM.Size = new System.Drawing.Size(66, 26);
+            this.ModifyCAM.Size = new System.Drawing.Size(99, 39);
             this.ModifyCAM.TabIndex = 10;
             this.ModifyCAM.Text = "改";
             this.ModifyCAM.UseVisualStyleBackColor = true;
@@ -452,10 +416,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(48, 103);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(72, 154);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(123, 19);
+            this.label6.Size = new System.Drawing.Size(180, 28);
             this.label6.TabIndex = 4;
             this.label6.Text = "路口点编码：";
             // 
@@ -463,10 +426,9 @@
             // 
             this.posCodeBox.AutoSize = true;
             this.posCodeBox.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.posCodeBox.Location = new System.Drawing.Point(169, 101);
-            this.posCodeBox.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.posCodeBox.Location = new System.Drawing.Point(254, 152);
             this.posCodeBox.Name = "posCodeBox";
-            this.posCodeBox.Size = new System.Drawing.Size(129, 19);
+            this.posCodeBox.Size = new System.Drawing.Size(180, 28);
             this.posCodeBox.TabIndex = 4;
             this.posCodeBox.Text = "100001000100";
             // 
@@ -478,18 +440,15 @@
             this.groupBox4.Controls.Add(this.groupBox1);
             this.groupBox4.Controls.Add(this.groupBox2);
             this.groupBox4.Controls.Add(this.groupBox3);
-            this.groupBox4.Location = new System.Drawing.Point(27, 165);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Location = new System.Drawing.Point(40, 248);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Size = new System.Drawing.Size(643, 249);
+            this.groupBox4.Size = new System.Drawing.Size(1008, 374);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "关联信息";
             // 
             // 方向信息
             // 
-            this.方向信息.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.方向信息.Controls.Add(this.dirCMB);
             this.方向信息.Controls.Add(this.prePosCMB);
             this.方向信息.Controls.Add(this.label11);
@@ -497,11 +456,9 @@
             this.方向信息.Controls.Add(this.devDirCMB);
             this.方向信息.Controls.Add(this.DelDirBT);
             this.方向信息.Controls.Add(this.AddDirBT);
-            this.方向信息.Location = new System.Drawing.Point(531, 19);
-            this.方向信息.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.方向信息.Location = new System.Drawing.Point(797, 16);
             this.方向信息.Name = "方向信息";
-            this.方向信息.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.方向信息.Size = new System.Drawing.Size(138, 151);
+            this.方向信息.Size = new System.Drawing.Size(251, 226);
             this.方向信息.TabIndex = 12;
             this.方向信息.TabStop = false;
             this.方向信息.Text = "摄像机方向";
@@ -518,10 +475,9 @@
             "东北",
             "东",
             "东南"});
-            this.dirCMB.Location = new System.Drawing.Point(77, 84);
-            this.dirCMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dirCMB.Location = new System.Drawing.Point(150, 136);
             this.dirCMB.Name = "dirCMB";
-            this.dirCMB.Size = new System.Drawing.Size(57, 20);
+            this.dirCMB.Size = new System.Drawing.Size(84, 26);
             this.dirCMB.TabIndex = 4;
             // 
             // prePosCMB
@@ -538,47 +494,42 @@
             "7",
             "8",
             "9"});
-            this.prePosCMB.Location = new System.Drawing.Point(4, 85);
-            this.prePosCMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.prePosCMB.Location = new System.Drawing.Point(20, 138);
             this.prePosCMB.Name = "prePosCMB";
-            this.prePosCMB.Size = new System.Drawing.Size(56, 20);
+            this.prePosCMB.Size = new System.Drawing.Size(82, 26);
             this.prePosCMB.TabIndex = 4;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(93, 64);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(169, 106);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.Size = new System.Drawing.Size(44, 18);
             this.label11.TabIndex = 3;
             this.label11.Text = "方向";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 64);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(41, 106);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.Size = new System.Drawing.Size(44, 18);
             this.label7.TabIndex = 3;
             this.label7.Text = "位置";
             // 
             // devDirCMB
             // 
             this.devDirCMB.FormattingEnabled = true;
-            this.devDirCMB.Location = new System.Drawing.Point(4, 27);
-            this.devDirCMB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.devDirCMB.Location = new System.Drawing.Point(20, 47);
             this.devDirCMB.Name = "devDirCMB";
-            this.devDirCMB.Size = new System.Drawing.Size(130, 20);
+            this.devDirCMB.Size = new System.Drawing.Size(216, 26);
             this.devDirCMB.TabIndex = 2;
             // 
             // DelDirBT
             // 
-            this.DelDirBT.Location = new System.Drawing.Point(77, 122);
-            this.DelDirBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DelDirBT.Location = new System.Drawing.Point(150, 182);
             this.DelDirBT.Name = "DelDirBT";
-            this.DelDirBT.Size = new System.Drawing.Size(57, 20);
+            this.DelDirBT.Size = new System.Drawing.Size(86, 30);
             this.DelDirBT.TabIndex = 1;
             this.DelDirBT.Text = "-";
             this.DelDirBT.UseVisualStyleBackColor = true;
@@ -586,10 +537,9 @@
             // 
             // AddDirBT
             // 
-            this.AddDirBT.Location = new System.Drawing.Point(4, 122);
-            this.AddDirBT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddDirBT.Location = new System.Drawing.Point(20, 182);
             this.AddDirBT.Name = "AddDirBT";
-            this.AddDirBT.Size = new System.Drawing.Size(56, 20);
+            this.AddDirBT.Size = new System.Drawing.Size(84, 30);
             this.AddDirBT.TabIndex = 1;
             this.AddDirBT.Text = "+";
             this.AddDirBT.UseVisualStyleBackColor = true;
@@ -597,7 +547,7 @@
             // 
             // UCDatabase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.方向信息);
             this.Controls.Add(this.ModifyCAM);
@@ -609,8 +559,9 @@
             this.Controls.Add(this.CamNameBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UCDatabase";
-            this.Size = new System.Drawing.Size(699, 445);
+            this.Size = new System.Drawing.Size(1092, 668);
             this.MouseEnter += new System.EventHandler(this.UCDatabase_MouseEnter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

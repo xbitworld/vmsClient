@@ -279,7 +279,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (int.Parse(drc[0][0].ToString()) > 0)
             {
                 MessageBox.Show("数据被关联，无法删除，请删除关联的路段再试！");
                 return;
@@ -364,7 +364,7 @@ namespace VmsClientDemo
             DataRowCollection drc = null;
 
             int iRow = pDBSQLFun(strSQL, ref drc);
-            if (iRow > 0)
+            if (int.Parse(drc[0][0].ToString()) > 0)
             {
                 MessageBox.Show("数据被关联，无法删除，请删除关联的路口再试！");
                 return;
@@ -376,6 +376,7 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 initCOMB(secCOMB);
+                FillSecInfo(roadName.Text);
                 MessageBox.Show("删除成功");
             }
             else
@@ -452,6 +453,7 @@ namespace VmsClientDemo
             if (iRow >= 0)
             {
                 initCOMB(secCOMB);
+                FillSecInfo(secName.Text);
                 MessageBox.Show("删除成功");
             }
             else

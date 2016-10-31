@@ -193,66 +193,125 @@ namespace VmsClientDemo
             Spnet.Core.Service.RemoteObjectFactory.CorePort = _port;
             Spnet.Core.Service.RemoteObjectFactory.Uid = this.txtUid.Text.Trim();
             Spnet.Core.Service.RemoteObjectFactory.Pwd = this.txtPwd.Text.Trim();
+            int userRoleID = 0;
             ServiceGlobal.ServerAddr = _serverIp;
             ServiceGlobal.Port = _port;
-                
-            System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
+
+            if(this.txtUid.Text.Trim().Equals("admin"))
+            {//Super user
+                System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
                 {
                     Spnet.Core.Service.Camera rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera(_serverIp, _port);
                     try
                     {
                         var camList = rmtCam.GetModelList("");
                         this.Invoke(new System.Threading.ThreadStart(delegate
+                        {
+                            foreach (var modelCam in camList)
                             {
-                                foreach (var modelCam in camList)
+                                ListViewItem item = new ListViewItem(modelCam.ID + "_" + modelCam.Name);
+                                //string codex = modelCam.Code; //For test only
+
+                                Spnet.Data.Model.SysModels.CameraState camSt = rmtCam.GetCameraStateById(modelCam.ID);
+
+                                item.Tag = modelCam;
+                                if (camSt.IsOnline)
                                 {
-                                    ListViewItem item = new ListViewItem(modelCam.ID + "_" + modelCam.Name);
-                                    //string codex = modelCam.Code; //For test only
-
-                                    Spnet.Data.Model.SysModels.CameraState camSt = rmtCam.GetCameraStateById(modelCam.ID);
-
-                                    item.Tag = modelCam;
-                                    if (camSt.IsOnline)
-                                    {
-                                        item.ImageIndex = 7;
-                                    }
-                                    else
-                                    {
-                                        item.ImageIndex = 6;
-                                    }
-
-                                    lstCamList.Items.Add(item);
+                                    item.ImageIndex = 7;
+                                }
+                                else
+                                {
+                                    item.ImageIndex = 6;
                                 }
 
-                                if ((camList.Count > 0) && (this.txtUid.Text.Trim().Equals("admin")))
-                                {
-                                    bSupperUser = true;
+                                lstCamList.Items.Add(item);
+                            }
 
-                                    _Database.Enabled = true;
-                                    _real.btnSetPreset.Enabled = true;
-                                }
-                            }));
+                            if ((camList.Count > 0) && (this.txtUid.Text.Trim().Equals("admin")))
+                            {
+                                bSupperUser = true;
+
+                                _Database.Enabled = true;
+                                _real.btnSetPreset.Enabled = true;
+                            }
+                        }));
                     }
                     catch (Exception ex)
                     {
                         this.Invoke(new System.Threading.ThreadStart(delegate
-                            {
-                        MessageBox.Show(this, ex.Message);
-                        //出错了一般是通讯失败或服务器内调用失败
-                            }));
+                        {
+                            MessageBox.Show(this, ex.Message);
+                            //出错了一般是通讯失败或服务器内调用失败
+                        }));
                     }
                     finally
                     {
                         rmtCam = null;
                     }
-
-            if((rmtCam != null) && (this.txtUid.Text.Trim().Equals("admin")))
-            {
-                bSupperUser = true;
-
-                _Database.Enabled = true;
-                _real.btnSetPreset.Enabled = true;
+                }));
+                return;
             }
+
+            System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
+                {
+                    //Spnet.Core.Service.Camera rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera(_serverIp, _port);
+                    var rmtUser = Spnet.Core.Service.RemoteObjectFactory.CreateUser();
+                    var rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera();
+                    var rmt = Spnet.Core.Service.RemoteObjectFactory.CreateUserRoleObjectData();
+                    var userModel = rmtUser.GetModelByUid(Spnet.Core.Service.RemoteObjectFactory.Uid);
+                    if (userModel == null)
+                        return;
+
+                    userRoleID = userModel.UserRoleId;
+
+                    var tempList = rmt.GetModelListByUserRoleIdAndObjType(userRoleID, Spnet.Common.ObjectType.CameraGrp);
+                    foreach (var temp in tempList)
+                    {
+                        try
+                        {
+                            int camGrpID = temp.ObjectId;
+
+                            var camList = rmtCam.GetModelListByGroupId(camGrpID);
+                            //var camList = rmtCam.GetModelList("");
+                            this.Invoke(new System.Threading.ThreadStart(delegate
+                                {
+                                    foreach (var modelCam in camList)
+                                    {
+                                        ListViewItem item = new ListViewItem(modelCam.ID + "_" + modelCam.Name);
+                                        //string codex = modelCam.Code; //For test only
+
+                                        Spnet.Data.Model.SysModels.CameraState camSt = rmtCam.GetCameraStateById(modelCam.ID);
+
+                                        item.Tag = modelCam;
+                                        if (camSt.IsOnline)
+                                        {
+                                            item.ImageIndex = 7;
+                                        }
+                                        else
+                                        {
+                                            item.ImageIndex = 6;
+                                        }
+
+                                        lstCamList.Items.Add(item);
+                                    }
+
+                                    _Database.Enabled = false;
+                                    _real.btnSetPreset.Enabled = false;
+                                }));
+                        }
+                        catch (Exception ex)
+                        {
+                            this.Invoke(new System.Threading.ThreadStart(delegate
+                                {
+                                    MessageBox.Show(this, ex.Message);
+                                    //出错了一般是通讯失败或服务器内调用失败
+                                }));
+                        }
+                        finally
+                        {
+                            rmtCam = null;
+                        }
+                    }
                 }));
         }
 
@@ -771,10 +830,15 @@ namespace VmsClientDemo
 
         private void AddRuleBT_Click(object sender, EventArgs e)
         {
-            int iPosID = (int)CamADD.Tag;
+            if (CamADD.Tag == null)
+            {
+                MessageBox.Show("设备信息错误，请检查！");
+                return;
+            }
+            int iPosID = int.Parse(CamADD.Tag.ToString());
             if (iPosID == -1)
             {
-                MessageBox.Show("地址信息错误，请检查！");
+                MessageBox.Show("设备地址信息错误，请检查！");
                 return;
             }
 
@@ -784,10 +848,15 @@ namespace VmsClientDemo
 
         private void DelRuleBT_Click(object sender, EventArgs e)
         {
-            int iPosID = (int)CamADD.Tag;
+            if (CamADD.Tag == null)
+            {
+                MessageBox.Show("设备信息错误，请检查！");
+                return;
+            }
+            int iPosID = int.Parse(CamADD.Tag.ToString());
             if (iPosID == -1)
             {
-                MessageBox.Show("地址信息错误，请检查！");
+                MessageBox.Show("设备地址信息错误，请检查！");
                 return;
             }
 
