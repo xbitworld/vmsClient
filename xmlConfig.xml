@@ -2,4 +2,6 @@
 <Config>
   <Server IP="127.0.0.1" Port="8899" User="admin" Pass="admin" />
   <Capture CapPath="E:\手动抓拍违法图片" txtColor="-256" IntervalTime="600"/>
+  <ShortKey Key="wsadzxfgc" />
+  <!--上、下、左、右、放大、缩小、抓图、选图、确认-->
 </Config>

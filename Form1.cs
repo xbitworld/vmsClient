@@ -19,6 +19,8 @@ namespace VmsClientDemo
 
         private int _port = 8899;
 
+        private string ShortString = "";
+
         private UCRealVideo _real = new UCRealVideo();
 
         private UCRec _rec = new UCRec();
@@ -500,6 +502,12 @@ namespace VmsClientDemo
                         coverBrush = new SolidBrush(boxColor);
                         colorBox.BackColor = boxColor;
                     }
+
+                    dt = ds.Tables["ShortKey"];
+                    if (dt.Rows.Count > 0)
+                    {
+                        ShortString = dt.Rows[0]["key"].ToString();
+                    }
                 }
             }
             catch { }
@@ -897,6 +905,46 @@ namespace VmsClientDemo
             {
                 string strDIR = (string)drc[0][0];
                 DirCOMB.Text = strDIR;
+            }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ShortString[0])    //'w')
+            {
+                _real.btnUp.PerformClick();      
+            }
+            else if (e.KeyChar == ShortString[1])    //'s')
+            {
+                _real.btnDown.PerformClick();     
+            }
+            else if (e.KeyChar == ShortString[2])    //'a')
+            {
+                _real.btnLeft.PerformClick(); 
+            }
+            else if (e.KeyChar == ShortString[3])    //'d')
+            {
+                _real.btnRight.PerformClick(); 
+            }
+            else if (e.KeyChar == ShortString[4])    //'z')
+            {
+                _real.btnZoom2.PerformClick(); 
+            }
+            else if (e.KeyChar == ShortString[5])    //'x')
+            {
+                _real.btnZoom1.PerformClick();
+            }
+            else if (e.KeyChar == ShortString[6])    //'f')
+            {
+                CaptureBT.PerformClick();
+            }
+            else if (e.KeyChar == ShortString[7])    //'g')
+            {
+                ChoisePICs.PerformClick();
+            }
+            else if (e.KeyChar == ShortString[8])    //'c')
+            {
+                rstCAP.PerformClick();
             }
         }
     }

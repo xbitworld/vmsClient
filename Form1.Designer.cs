@@ -568,12 +568,14 @@
             this.Controls.Add(this.VideoPlayTab);
             this.Controls.Add(this.lstCamList);
             this.Controls.Add(this.DevGroup);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "HVMS客户端 Ver 3.5";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.VideoPlayTab.ResumeLayout(false);
             this.LoginGroup.ResumeLayout(false);
             this.LoginGroup.PerformLayout();
