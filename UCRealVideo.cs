@@ -23,8 +23,9 @@ namespace VmsClientDemo
         /// </summary>
         public Spnet.Data.Model.Camera ModelCam
         {
-            get { return _modelCam;}
-            set { 
+            get { return _modelCam; }
+            set
+            {
                 _modelCam = value;
                 this.label1.Text = _modelCam.Name;
             }
@@ -83,10 +84,10 @@ namespace VmsClientDemo
 
         private void PlayVideo()
         {
-            int streamType=this.comboBox1.SelectedIndex; //0主码流 1子码流
-            Spnet.Core.Service.Camera rmtCam=Spnet.Core.Service.RemoteObjectFactory.CreateCamera();
-            var videoInfo= rmtCam.GetVideoInfo(_modelCam.ID);
-            if (videoInfo==null ) return ;
+            int streamType = this.comboBox1.SelectedIndex; //0主码流 1子码流
+            Spnet.Core.Service.Camera rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera();
+            var videoInfo = rmtCam.GetVideoInfo(_modelCam.ID);
+            if (videoInfo == null) return;
             _stream = new Nvr.VideoLib.Sockets.TsStreamClient(ServiceGlobal.ServerAddr, 6699, videoInfo.NvrServerIp, videoInfo.NvrStreamPort, videoInfo.NvrUid, videoInfo.NvrPwd, _modelCam.NvrCameraId, streamType);
             _stream.OnGenricAvStreamData += _stream_OnGenricAvStreamData;
             _stream.Open();
@@ -94,7 +95,7 @@ namespace VmsClientDemo
 
         void _stream_OnGenricAvStreamData(object sender, Nvr.VideoLib.GenericAvStreamDataEventArgs e)
         {
-           // System.Console.WriteLine("收到:" + e.StreamHeader.DataLen);
+            // System.Console.WriteLine("收到:" + e.StreamHeader.DataLen);
 
             if (_player == null)
             {
@@ -388,12 +389,12 @@ namespace VmsClientDemo
         {
             if (_player != null)
             {
-               string filePath =Environment.CurrentDirectory+"\\"+DateTime.Now.ToString("yyyyMMddHHmmssfff")+".jpg";
-               bool flag=  _player.CaputrePic(filePath);
-               if (flag)
-               {
-                   MessageBox.Show(this, "保存在" + filePath);
-               }
+                string filePath = Environment.CurrentDirectory + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".jpg";
+                bool flag = _player.CaputrePic(filePath);
+                if (flag)
+                {
+                    MessageBox.Show(this, "保存在" + filePath);
+                }
             }
         }
 
@@ -411,6 +412,31 @@ namespace VmsClientDemo
                 picPath = "";
                 return false;
             }
+        }
+
+        public void TimerCount(int delayNum)
+        {
+            new System.Threading.Thread(new System.Threading.ThreadStart(delegate
+            {
+                for (int i = 0; i < delayNum;)
+                {
+                    TimerLable.Text = (i / 1000).ToString();
+                    TimerLable.Update();
+                    System.Threading.Thread.Sleep(1000);
+                    i += 1000;
+                }
+            }));
+
+            //this.Invoke(new System.Threading.ThreadStart(delegate
+            //{
+            //    for (int i = 0; i < delayNum;)
+            //    {
+            //        TimerLable.Text = (i / 1000).ToString();
+            //        TimerLable.Update();
+            //        System.Threading.Thread.Sleep(1000);
+            //        i += 1000;
+            //    }
+            //}));
         }
     }
 }

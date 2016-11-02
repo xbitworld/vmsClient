@@ -42,6 +42,7 @@
             this.btnSetPreset = new System.Windows.Forms.Button();
             this.btnCallPreset = new System.Windows.Forms.Button();
             this.btnCapturePic = new System.Windows.Forms.Button();
+            this.TimerLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudPresetNo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,7 +207,7 @@
             // btnCapturePic
             // 
             this.btnCapturePic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCapturePic.Location = new System.Drawing.Point(892, 27);
+            this.btnCapturePic.Location = new System.Drawing.Point(863, 820);
             this.btnCapturePic.Margin = new System.Windows.Forms.Padding(4);
             this.btnCapturePic.Name = "btnCapturePic";
             this.btnCapturePic.Size = new System.Drawing.Size(112, 34);
@@ -216,10 +217,21 @@
             this.btnCapturePic.Visible = false;
             this.btnCapturePic.Click += new System.EventHandler(this.btnCapturePic_Click);
             // 
+            // TimerLable
+            // 
+            this.TimerLable.AutoSize = true;
+            this.TimerLable.Font = new System.Drawing.Font("宋体", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TimerLable.ForeColor = System.Drawing.Color.Brown;
+            this.TimerLable.Location = new System.Drawing.Point(933, 17);
+            this.TimerLable.Name = "TimerLable";
+            this.TimerLable.Size = new System.Drawing.Size(0, 44);
+            this.TimerLable.TabIndex = 8;
+            // 
             // UCRealVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TimerLable);
             this.Controls.Add(this.btnCapturePic);
             this.Controls.Add(this.btnCallPreset);
             this.Controls.Add(this.btnSetPreset);
@@ -240,6 +252,7 @@
             this.Load += new System.EventHandler(this.UCRealVideo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudPresetNo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -259,5 +272,6 @@
         private System.Windows.Forms.Button btnCallPreset;
         private System.Windows.Forms.Button btnCapturePic;
         public System.Windows.Forms.Button btnSetPreset;
+        private System.Windows.Forms.Label TimerLable;
     }
 }

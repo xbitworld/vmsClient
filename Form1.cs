@@ -260,14 +260,17 @@ namespace VmsClientDemo
                     var rmt = Spnet.Core.Service.RemoteObjectFactory.CreateUserRoleObjectData();
                     var userModel = rmtUser.GetModelByUid(Spnet.Core.Service.RemoteObjectFactory.Uid);
                     if (userModel == null)
+                    {
+                        MessageBox.Show("User Model Error!");
                         return;
+                    }
 
                     userRoleID = userModel.UserRoleId;
 
-                    var tempList = rmt.GetModelListByUserRoleIdAndObjType(userRoleID, Spnet.Common.ObjectType.CameraGrp);
-                    foreach (var temp in tempList)
+                    try
                     {
-                        try
+                        var tempList = rmt.GetModelListByUserRoleIdAndObjType(userRoleID, Spnet.Common.ObjectType.CameraGrp);
+                        foreach (var temp in tempList)
                         {
                             int camGrpID = temp.ObjectId;
 
@@ -299,18 +302,18 @@ namespace VmsClientDemo
                                     _real.btnSetPreset.Enabled = false;
                                 }));
                         }
-                        catch (Exception ex)
+                    }
+                    catch (Exception ex)
+                    {
+                        this.Invoke(new System.Threading.ThreadStart(delegate
                         {
-                            this.Invoke(new System.Threading.ThreadStart(delegate
-                                {
-                                    MessageBox.Show(this, ex.Message);
-                                    //出错了一般是通讯失败或服务器内调用失败
-                                }));
-                        }
-                        finally
-                        {
-                            rmtCam = null;
-                        }
+                            MessageBox.Show(this, ex.Message);
+                            //出错了一般是通讯失败或服务器内调用失败
+                        }));
+                    }
+                    finally
+                    {
+                        rmtCam = null;
                     }
                 }));
         }
@@ -586,6 +589,12 @@ namespace VmsClientDemo
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
         {
+
+            if (VideoPlayTab.SelectedIndex == 0)
+            {
+                int iInterval = Convert.ToInt32(IntervalTimeBox.Text);
+                _real.TimerCount(iInterval);
+            }
             Button sendBT = (Button)sender;
 
             if (string.IsNullOrEmpty(SavePICPath.Text.Trim()))
@@ -745,6 +754,12 @@ namespace VmsClientDemo
                 //Thread.Sleep(1000);
                 _PreviewPic.AddImg(finalFileName, iFilesCounter);
                 iFilesCounter++;
+
+                //if (VideoPlayTab.SelectedIndex == 0)
+                //{
+                //    int iInterval = Convert.ToInt32(IntervalTimeBox.Text);
+                //    _real.TimerCount(iInterval);
+                //}
             }
             else
             {
