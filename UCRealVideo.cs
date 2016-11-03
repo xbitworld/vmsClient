@@ -414,18 +414,11 @@ namespace VmsClientDemo
             }
         }
 
-        public void TimerCount(int delayNum)
+        public void TimerShow(int delayNum)
         {
-            new System.Threading.Thread(new System.Threading.ThreadStart(delegate
-            {
-                for (int i = 0; i < delayNum;)
-                {
-                    TimerLable.Text = (i / 1000).ToString();
-                    TimerLable.Update();
-                    System.Threading.Thread.Sleep(1000);
-                    i += 1000;
-                }
-            }));
+            double fValue = delayNum / 1000.0;
+            TimerLable.Text = fValue.ToString("F1");
+            TimerLable.Update();
 
             //this.Invoke(new System.Threading.ThreadStart(delegate
             //{

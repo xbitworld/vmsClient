@@ -224,8 +224,9 @@
             this.TimerLable.ForeColor = System.Drawing.Color.Brown;
             this.TimerLable.Location = new System.Drawing.Point(933, 17);
             this.TimerLable.Name = "TimerLable";
-            this.TimerLable.Size = new System.Drawing.Size(0, 44);
+            this.TimerLable.Size = new System.Drawing.Size(42, 44);
             this.TimerLable.TabIndex = 8;
+            this.TimerLable.Text = "0";
             // 
             // UCRealVideo
             // 

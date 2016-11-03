@@ -10,6 +10,7 @@ using System.Xml;
 using System.Data.OleDb;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
+using System.ComponentModel;
 
 namespace VmsClientDemo
 {
@@ -44,6 +45,8 @@ namespace VmsClientDemo
 
         WaitBox waitWin;
 
+        private BackgroundWorker m_BackgroundWorker;// 申明后台对象
+
         private void InitDBConn(string DBFullpath)
         {
             // TODO: Modify the connection string and include any
@@ -66,7 +69,7 @@ namespace VmsClientDemo
         {
             InitializeComponent();
             loadXml();
-
+            initBKW();
             //Find the mdb from current directory.
             FileInfo[] fileInfo = getFileFullPath(@"VMS.mdb", ".\\");
             if (fileInfo.Count() < 1)
@@ -589,12 +592,10 @@ namespace VmsClientDemo
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
         {
+            CaptureBT.Enabled = false;
+            AutoCapBT.Enabled = false;
+            m_BackgroundWorker.RunWorkerAsync(this);
 
-            if (VideoPlayTab.SelectedIndex == 0)
-            {
-                int iInterval = Convert.ToInt32(IntervalTimeBox.Text);
-                _real.TimerCount(iInterval);
-            }
             Button sendBT = (Button)sender;
 
             if (string.IsNullOrEmpty(SavePICPath.Text.Trim()))
@@ -893,14 +894,56 @@ namespace VmsClientDemo
             //VideoPlayTab.Refresh();
         }
 
+        private void initBKW()
+        {
+            m_BackgroundWorker = new BackgroundWorker(); // 实例化后台对象
+            m_BackgroundWorker.WorkerReportsProgress = true; // 设置可以通告进度
+            m_BackgroundWorker.WorkerSupportsCancellation = true; // 设置可以取消
+            m_BackgroundWorker.DoWork += new DoWorkEventHandler(DoWork);
+            m_BackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(UpdateProgress);
+            m_BackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(CompletedWork);
+//            m_BackgroundWorker.RunWorkerAsync(this);
+        }
+
         private void WaitProgress(object sender, EventArgs e)
         {
-            if(rstCAP.Enabled == false)
+            if(CAPConfirmBT.Enabled == false)
             {
             }
             else
             {
             }
+        }
+
+        void DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker bw = sender as BackgroundWorker;
+
+            int iMax = Convert.ToInt32(IntervalTimeBox.Text);
+            int i = 0;
+            while (i <= iMax)
+            {
+                if (bw.CancellationPending)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                bw.ReportProgress(i);
+                Thread.Sleep(100);
+                i += 100;
+            }
+        }
+
+        void UpdateProgress(object sender, ProgressChangedEventArgs e)
+        {
+            int progress = e.ProgressPercentage;
+            _real.TimerShow(progress);
+        }
+
+        void CompletedWork(object sender, RunWorkerCompletedEventArgs e)
+        {
+            CaptureBT.Enabled = true;
+            AutoCapBT.Enabled = true;
         }
 
         public void getDirFromPre(string devCode, int prePos)
