@@ -1012,7 +1012,7 @@ namespace VmsClientDemo
             }
             else if (e.KeyChar == ShortString[8])    //'c')
             {
-                rstCAP.PerformClick();
+                CAPConfirmBT.PerformClick();
             }
         }
     }

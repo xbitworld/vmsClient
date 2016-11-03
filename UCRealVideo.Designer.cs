@@ -263,16 +263,16 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnPlayVideo;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnUp;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnLeft;
-        private System.Windows.Forms.Button btnRight;
-        private System.Windows.Forms.Button btnZoom2;
-        private System.Windows.Forms.Button btnZoom1;
         private System.Windows.Forms.NumericUpDown nudPresetNo;
         private System.Windows.Forms.Button btnCallPreset;
         private System.Windows.Forms.Button btnCapturePic;
         public System.Windows.Forms.Button btnSetPreset;
         private System.Windows.Forms.Label TimerLable;
+        public System.Windows.Forms.Button btnUp;
+        public System.Windows.Forms.Button btnDown;
+        public System.Windows.Forms.Button btnLeft;
+        public System.Windows.Forms.Button btnRight;
+        public System.Windows.Forms.Button btnZoom2;
+        public System.Windows.Forms.Button btnZoom1;
     }
 }

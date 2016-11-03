@@ -74,6 +74,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.shortCheck = new System.Windows.Forms.CheckBox();
             this.VideoPlayTab.SuspendLayout();
             this.LoginGroup.SuspendLayout();
             this.DevGroup.SuspendLayout();
@@ -346,6 +347,7 @@
             // 
             // DevGroup
             // 
+            this.DevGroup.Controls.Add(this.shortCheck);
             this.DevGroup.Controls.Add(this.DelRuleBT);
             this.DevGroup.Controls.Add(this.AddRuleBT);
             this.DevGroup.Controls.Add(this.AddrID);
@@ -602,6 +604,18 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "间隔(ms)：";
             // 
+            // shortCheck
+            // 
+            this.shortCheck.AutoSize = true;
+            this.shortCheck.Checked = true;
+            this.shortCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.shortCheck.Location = new System.Drawing.Point(306, 115);
+            this.shortCheck.Name = "shortCheck";
+            this.shortCheck.Size = new System.Drawing.Size(88, 22);
+            this.shortCheck.TabIndex = 24;
+            this.shortCheck.Text = "快捷键";
+            this.shortCheck.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -611,6 +625,7 @@
             this.Controls.Add(this.VideoPlayTab);
             this.Controls.Add(this.lstCamList);
             this.Controls.Add(this.DevGroup);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "HVMS客户端 Ver 3.5";
@@ -674,6 +689,7 @@
         private System.Windows.Forms.Button AddRuleBT;
         private System.Windows.Forms.Button DelRuleBT;
         public System.Windows.Forms.ComboBox DirCOMB;
+        private System.Windows.Forms.CheckBox shortCheck;
     }
 }
 
