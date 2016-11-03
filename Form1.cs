@@ -503,9 +503,11 @@ namespace VmsClientDemo
                         colorBox.BackColor = boxColor;
                     }
 
-                    dt = ds.Tables["ShortKey"];
+                    dt = ds.Tables[2];
                     if (dt.Rows.Count > 0)
                     {
+                        //string strShort = dt.Rows[0]["Short"].ToString();
+                        //shortCheck.Checked = (int.Parse(strShort) == 1);
                         ShortString = dt.Rows[0]["key"].ToString();
                     }
                 }
@@ -531,6 +533,9 @@ namespace VmsClientDemo
                 xe.SetAttribute("CapPath", SavePICPath.Text);
                 xe.SetAttribute("txtColor", iColor.ToString());
                 xe.SetAttribute("IntervalTime", IntervalTimeBox.Text);
+
+                //xe = (XmlElement)root[2];
+                //xe.SetAttribute("Short", shortCheck.Checked == true ? 1.ToString() : 0.ToString());
 
                 xmlDoc.Save(Application.StartupPath + "\\xmlConfig.xml");
             }
@@ -910,6 +915,11 @@ namespace VmsClientDemo
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if(shortCheck.Checked == false)
+            {
+                return;
+            }
+
             if (e.KeyChar == ShortString[0])    //'w')
             {
                 _real.btnUp.PerformClick();      

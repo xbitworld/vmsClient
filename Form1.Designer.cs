@@ -54,6 +54,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.CamADD = new System.Windows.Forms.TextBox();
             this.DevGroup = new System.Windows.Forms.GroupBox();
+            this.shortCheck = new System.Windows.Forms.CheckBox();
             this.DelRuleBT = new System.Windows.Forms.Button();
             this.AddRuleBT = new System.Windows.Forms.Button();
             this.AddrID = new System.Windows.Forms.TextBox();
@@ -325,6 +326,7 @@
             // 
             // DevGroup
             // 
+            this.DevGroup.Controls.Add(this.shortCheck);
             this.DevGroup.Controls.Add(this.DelRuleBT);
             this.DevGroup.Controls.Add(this.AddRuleBT);
             this.DevGroup.Controls.Add(this.AddrID);
@@ -355,6 +357,18 @@
             this.DevGroup.TabIndex = 13;
             this.DevGroup.TabStop = false;
             this.DevGroup.Text = "截图信息";
+            // 
+            // shortCheck
+            // 
+            this.shortCheck.AutoSize = true;
+            this.shortCheck.Checked = true;
+            this.shortCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.shortCheck.Location = new System.Drawing.Point(218, 76);
+            this.shortCheck.Name = "shortCheck";
+            this.shortCheck.Size = new System.Drawing.Size(60, 16);
+            this.shortCheck.TabIndex = 24;
+            this.shortCheck.Text = "快捷键";
+            this.shortCheck.UseVisualStyleBackColor = true;
             // 
             // DelRuleBT
             // 
@@ -632,6 +646,7 @@
         private System.Windows.Forms.Button AddRuleBT;
         private System.Windows.Forms.Button DelRuleBT;
         public System.Windows.Forms.ComboBox DirCOMB;
+        private System.Windows.Forms.CheckBox shortCheck;
     }
 }
 

@@ -193,7 +193,7 @@
             // btnCapturePic
             // 
             this.btnCapturePic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCapturePic.Location = new System.Drawing.Point(595, 18);
+            this.btnCapturePic.Location = new System.Drawing.Point(598, 545);
             this.btnCapturePic.Name = "btnCapturePic";
             this.btnCapturePic.Size = new System.Drawing.Size(75, 23);
             this.btnCapturePic.TabIndex = 7;
