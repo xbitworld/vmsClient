@@ -662,6 +662,7 @@ namespace VmsClientDemo
             string strDevCode = (string)CamNameBox.Tag;
             int prePosID = prePosCMB.SelectedIndex;
             int dirID = dirCMB.SelectedIndex;
+            string strAngle = AngelBox.Text;
 
             if (prePosID == -1 || strDevCode == null || strDevCode == "" || dirID == -1)
             {
@@ -677,7 +678,7 @@ namespace VmsClientDemo
                 return;
             }
 
-            strSQL = "insert into 设备方向映射表(设备CODE, 预置位ID, 方向ID) values('" + strDevCode + "', " + prePosID + ", " + dirID + ")";
+            strSQL = "insert into 设备方向映射表(设备CODE, 预置位ID, 方向ID, 角度) values('" + strDevCode + "', " + prePosID + ", " + dirID + ", " + strAngle + ")";
             iRow = pDBSQLFun(strSQL, ref drc);
             if (iRow >= 0)
             {

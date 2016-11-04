@@ -72,6 +72,8 @@
             this.devDirCMB = new System.Windows.Forms.ComboBox();
             this.DelDirBT = new System.Windows.Forms.Button();
             this.AddDirBT = new System.Windows.Forms.Button();
+            this.AngelBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -449,8 +451,10 @@
             // 
             // 方向信息
             // 
+            this.方向信息.Controls.Add(this.AngelBox);
             this.方向信息.Controls.Add(this.dirCMB);
             this.方向信息.Controls.Add(this.prePosCMB);
+            this.方向信息.Controls.Add(this.label12);
             this.方向信息.Controls.Add(this.label11);
             this.方向信息.Controls.Add(this.label7);
             this.方向信息.Controls.Add(this.devDirCMB);
@@ -475,9 +479,9 @@
             "东北",
             "东",
             "东南"});
-            this.dirCMB.Location = new System.Drawing.Point(150, 136);
+            this.dirCMB.Location = new System.Drawing.Point(94, 138);
             this.dirCMB.Name = "dirCMB";
-            this.dirCMB.Size = new System.Drawing.Size(84, 26);
+            this.dirCMB.Size = new System.Drawing.Size(69, 26);
             this.dirCMB.TabIndex = 4;
             // 
             // prePosCMB
@@ -494,15 +498,15 @@
             "7",
             "8",
             "9"});
-            this.prePosCMB.Location = new System.Drawing.Point(20, 138);
+            this.prePosCMB.Location = new System.Drawing.Point(6, 138);
             this.prePosCMB.Name = "prePosCMB";
-            this.prePosCMB.Size = new System.Drawing.Size(82, 26);
+            this.prePosCMB.Size = new System.Drawing.Size(75, 26);
             this.prePosCMB.TabIndex = 4;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(169, 106);
+            this.label11.Location = new System.Drawing.Point(106, 106);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 18);
             this.label11.TabIndex = 3;
@@ -511,7 +515,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 106);
+            this.label7.Location = new System.Drawing.Point(27, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 18);
             this.label7.TabIndex = 3;
@@ -527,9 +531,9 @@
             // 
             // DelDirBT
             // 
-            this.DelDirBT.Location = new System.Drawing.Point(150, 182);
+            this.DelDirBT.Location = new System.Drawing.Point(158, 182);
             this.DelDirBT.Name = "DelDirBT";
-            this.DelDirBT.Size = new System.Drawing.Size(86, 30);
+            this.DelDirBT.Size = new System.Drawing.Size(87, 30);
             this.DelDirBT.TabIndex = 1;
             this.DelDirBT.Text = "-";
             this.DelDirBT.UseVisualStyleBackColor = true;
@@ -537,13 +541,29 @@
             // 
             // AddDirBT
             // 
-            this.AddDirBT.Location = new System.Drawing.Point(20, 182);
+            this.AddDirBT.Location = new System.Drawing.Point(6, 182);
             this.AddDirBT.Name = "AddDirBT";
-            this.AddDirBT.Size = new System.Drawing.Size(84, 30);
+            this.AddDirBT.Size = new System.Drawing.Size(89, 30);
             this.AddDirBT.TabIndex = 1;
             this.AddDirBT.Text = "+";
             this.AddDirBT.UseVisualStyleBackColor = true;
             this.AddDirBT.Click += new System.EventHandler(this.AddDirBT_Click);
+            // 
+            // AngelBox
+            // 
+            this.AngelBox.Location = new System.Drawing.Point(176, 138);
+            this.AngelBox.Name = "AngelBox";
+            this.AngelBox.Size = new System.Drawing.Size(69, 28);
+            this.AngelBox.TabIndex = 5;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(190, 106);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 18);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "角度";
             // 
             // UCDatabase
             // 
@@ -559,7 +579,7 @@
             this.Controls.Add(this.CamNameBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox4);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCDatabase";
             this.Size = new System.Drawing.Size(1092, 668);
             this.MouseEnter += new System.EventHandler(this.UCDatabase_MouseEnter);
@@ -623,5 +643,7 @@
         private System.Windows.Forms.ComboBox devDirCMB;
         private System.Windows.Forms.Button DelDirBT;
         private System.Windows.Forms.Button AddDirBT;
+        private System.Windows.Forms.TextBox AngelBox;
+        private System.Windows.Forms.Label label12;
     }
 }
