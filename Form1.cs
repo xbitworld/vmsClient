@@ -605,28 +605,31 @@ namespace VmsClientDemo
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
         {
-            CaptureBT.Enabled = false;
-            AutoCapBT.Enabled = false;
-            m_BackgroundWorker.RunWorkerAsync(this);
+            if (VideoPlayTab.SelectedIndex == 0)
+            {
+                CaptureBT.Enabled = false;
+                AutoCapBT.Enabled = false;
+                m_BackgroundWorker.RunWorkerAsync(this);
+            }
 
             Button sendBT = (Button)sender;
 
             if (string.IsNullOrEmpty(SavePICPath.Text.Trim()))
             {
                 MessageBox.Show("保存路径不能为空！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                goto CancleASYN;
             }
             string strSavePath = SavePICPath.Text;
 
             if (VideoPlayTab.SelectedIndex != 0 && VideoPlayTab.SelectedIndex != 1)
             {//Not the vidio play table
-                return;
+                goto CancleASYN;
             }
 
             if (string.IsNullOrEmpty(CamADD.Text.Trim()))
             {
                 MessageBox.Show("地址不能为空！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                goto CancleASYN;
             }
             StringBuilder sb = new StringBuilder(); //文字描述
 
@@ -652,6 +655,11 @@ namespace VmsClientDemo
             else if (VideoPlayTab.SelectedIndex == 1)
             {
                 //If the capture picture time are samed, user the OrderChar to tag it to avoid something wrong.
+                if (_rec.ModelCam == null)
+                {
+                    MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 string strTm = _rec.getPlayTimeStr();
                 if (strTm == "")
                 {
@@ -667,7 +675,7 @@ namespace VmsClientDemo
             }
             else
             {
-                return;
+                goto CancleASYN;
             }
 
             sb.Append("\n" + @"设备编号：" + CamID.Text);
@@ -675,12 +683,12 @@ namespace VmsClientDemo
             if (!bCaptured)
             {
                 MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                goto CancleASYN;
             }
             if (string.IsNullOrEmpty(picPath))
             {
                 MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                goto CancleASYN;
             }
 
             if (System.IO.File.Exists(picPath))//图片是否存在  
@@ -716,7 +724,7 @@ namespace VmsClientDemo
                     catch
                     {
                         MessageBox.Show("目录无法找到或建立，请检查后再试！");
-                        return;
+                        goto CancleASYN;
                     }
                 }
 
@@ -769,16 +777,20 @@ namespace VmsClientDemo
                 _PreviewPic.AddImg(finalFileName, iFilesCounter);
                 iFilesCounter++;
 
-                //if (VideoPlayTab.SelectedIndex == 0)
-                //{
-                //    int iInterval = Convert.ToInt32(IntervalTimeBox.Text);
-                //    _real.TimerCount(iInterval);
-                //}
+                if (VideoPlayTab.SelectedIndex == 0)
+                {//Normally end
+                    return;
+                }
             }
             else
             {
                 MessageBox.Show("图片保存失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                goto CancleASYN;
+            }
+            CancleASYN:
+            if (VideoPlayTab.SelectedIndex == 0)
+            {
+                m_BackgroundWorker.CancelAsync();
             }
         }
 
