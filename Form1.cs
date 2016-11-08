@@ -45,6 +45,8 @@ namespace VmsClientDemo
 
         static System.Data.OleDb.OleDbConnection AccessConn = new System.Data.OleDb.OleDbConnection();
 
+        private bool bAutoCap = false;
+
         WaitBox waitWin;
 
         private BackgroundWorker m_BackgroundWorker;// 申明后台对象
@@ -605,10 +607,22 @@ namespace VmsClientDemo
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
         {
-            if (VideoPlayTab.SelectedIndex == 0)
+            if ((VideoPlayTab.SelectedIndex < 2) && (bAutoCap == false))
             {
-                CaptureBT.Enabled = false;
-                AutoCapBT.Enabled = false;
+                //CaptureBT.Enabled = false;
+                //AutoCapBT.Enabled = false;
+                if(m_BackgroundWorker.IsBusy)
+                {
+                    if (m_BackgroundWorker.IsBusy && !m_BackgroundWorker.CancellationPending)
+                    {
+                        m_BackgroundWorker.CancelAsync();
+                    }
+
+                    while (m_BackgroundWorker.IsBusy)
+                    {
+                        Thread.Sleep(100);
+                    }
+                }
                 m_BackgroundWorker.RunWorkerAsync(this);
             }
 
@@ -658,7 +672,7 @@ namespace VmsClientDemo
                 if (_rec.ModelCam == null)
                 {
                     MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    goto CancleASYN;
                 }
                 string strTm = _rec.getPlayTimeStr();
                 if (strTm == "")
@@ -776,9 +790,11 @@ namespace VmsClientDemo
                 //Thread.Sleep(1000);
                 _PreviewPic.AddImg(finalFileName, iFilesCounter);
                 iFilesCounter++;
+                //Show Amount of Captured Pictures
 
-                if (VideoPlayTab.SelectedIndex == 0)
-                {//Normally end
+                //Normally end
+                if (bAutoCap == false)
+                {
                     return;
                 }
             }
@@ -787,8 +803,9 @@ namespace VmsClientDemo
                 MessageBox.Show("图片保存失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 goto CancleASYN;
             }
+
             CancleASYN:
-            if (VideoPlayTab.SelectedIndex == 0)
+            if ((VideoPlayTab.SelectedIndex < 2) && (bAutoCap == false))
             {
                 m_BackgroundWorker.CancelAsync();
             }
@@ -862,11 +879,25 @@ namespace VmsClientDemo
         {
             int iAmount = 3;
             int iInterval = Convert.ToInt16(IntervalTimeBox.Text);
+
+            bAutoCap = true;
+
+            if (VideoPlayTab.SelectedIndex < 2)
+            {
+                CaptureBT.Enabled = false;
+                AutoCapBT.Enabled = false;
+                m_BackgroundWorker.RunWorkerAsync(this);
+            }
+
             for (int iLoop = 0; iLoop < iAmount; iLoop++)
             {
                 CaptureBT.PerformClick();
                 Thread.Sleep(iInterval);
             }
+
+            m_BackgroundWorker.CancelAsync();
+
+            bAutoCap = false;
         }
 
         private void AddRuleBT_Click(object sender, EventArgs e)
@@ -946,11 +977,17 @@ namespace VmsClientDemo
 
             int iMax = Convert.ToInt32(IntervalTimeBox.Text);
             int i = 0;
+
+            if(bAutoCap == false)
+            {
+                iMax = 5*1000;
+            }
+
             while (i <= iMax)
             {
                 if (bw.CancellationPending)
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
                     break;
                 }
                 bw.ReportProgress(i);
