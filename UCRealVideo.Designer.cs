@@ -43,6 +43,8 @@
             this.btnCallPreset = new System.Windows.Forms.Button();
             this.btnCapturePic = new System.Windows.Forms.Button();
             this.TimerLable = new System.Windows.Forms.Label();
+            this.CapAmountBox = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudPresetNo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,16 +224,39 @@
             this.TimerLable.AutoSize = true;
             this.TimerLable.Font = new System.Drawing.Font("宋体", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TimerLable.ForeColor = System.Drawing.Color.Brown;
-            this.TimerLable.Location = new System.Drawing.Point(933, 17);
+            this.TimerLable.Location = new System.Drawing.Point(933, 15);
             this.TimerLable.Name = "TimerLable";
             this.TimerLable.Size = new System.Drawing.Size(42, 44);
             this.TimerLable.TabIndex = 8;
             this.TimerLable.Text = "0";
             // 
+            // CapAmountBox
+            // 
+            this.CapAmountBox.AutoSize = true;
+            this.CapAmountBox.Font = new System.Drawing.Font("宋体", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CapAmountBox.ForeColor = System.Drawing.Color.OliveDrab;
+            this.CapAmountBox.Location = new System.Drawing.Point(787, 15);
+            this.CapAmountBox.Name = "CapAmountBox";
+            this.CapAmountBox.Size = new System.Drawing.Size(42, 44);
+            this.CapAmountBox.TabIndex = 8;
+            this.CapAmountBox.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(688, 27);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 34);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "截图";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // UCRealVideo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CapAmountBox);
             this.Controls.Add(this.TimerLable);
             this.Controls.Add(this.btnCapturePic);
             this.Controls.Add(this.btnCallPreset);
@@ -246,6 +271,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPlayVideo);
             this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCRealVideo";
@@ -274,5 +300,7 @@
         public System.Windows.Forms.Button btnRight;
         public System.Windows.Forms.Button btnZoom2;
         public System.Windows.Forms.Button btnZoom1;
+        private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label CapAmountBox;
     }
 }

@@ -47,6 +47,8 @@ namespace VmsClientDemo
 
         private bool bAutoCap = false;
 
+        private int iTimerAccount = 180*1000;
+
         WaitBox waitWin;
 
         private BackgroundWorker m_BackgroundWorker;// 申明后台对象
@@ -423,6 +425,12 @@ namespace VmsClientDemo
                 return;
             }
 
+            if(DirCOMB.SelectedIndex < 0)
+            {
+                MessageBox.Show("方向信息错误，请检查！");
+                return;
+            }
+
             string strDir = DirCOMB.Items[DirCOMB.SelectedIndex].ToString();
             int iIndex = DirCOMB.SelectedIndex;
             ruleCOMB.Items.Clear();
@@ -478,6 +486,9 @@ namespace VmsClientDemo
             }
 
             SaveXml();
+
+            m_BackgroundWorker.CancelAsync();   //停止计时器
+
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 
@@ -607,43 +618,44 @@ namespace VmsClientDemo
         //保存的文件名格式：dev+datetime+"160002106400000000000"+nm+"A599N0_1345"
         private void CapturePIC(object sender, EventArgs e)
         {
-            if ((VideoPlayTab.SelectedIndex < 2) && (bAutoCap == false))
-            {
-                //CaptureBT.Enabled = false;
-                //AutoCapBT.Enabled = false;
-                if(m_BackgroundWorker.IsBusy)
-                {
-                    if (m_BackgroundWorker.IsBusy && !m_BackgroundWorker.CancellationPending)
-                    {
-                        m_BackgroundWorker.CancelAsync();
-                    }
+            //if ((VideoPlayTab.SelectedIndex < 2) && (bAutoCap == false))
+            //{
+            //CaptureBT.Enabled = false;
+            //AutoCapBT.Enabled = false;
+            //if (m_BackgroundWorker.IsBusy)
+            //{
+            //    if (m_BackgroundWorker.IsBusy && !m_BackgroundWorker.CancellationPending)
+            //    {
+            //        m_BackgroundWorker.CancelAsync();
+            //    }
 
-                    while (m_BackgroundWorker.IsBusy)
-                    {
-                        Thread.Sleep(100);
-                    }
-                }
-                m_BackgroundWorker.RunWorkerAsync(this);
-            }
+            //    while (m_BackgroundWorker.IsBusy)
+            //    {
+            //        Thread.Sleep(1);
+            //    }
+            //}
+            //m_BackgroundWorker.RunWorkerAsync(this);
+            //}
+            iTimerAccount = 0;
 
             Button sendBT = (Button)sender;
 
             if (string.IsNullOrEmpty(SavePICPath.Text.Trim()))
             {
                 MessageBox.Show("保存路径不能为空！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                goto CancleASYN;
+                return;
             }
             string strSavePath = SavePICPath.Text;
 
             if (VideoPlayTab.SelectedIndex != 0 && VideoPlayTab.SelectedIndex != 1)
             {//Not the vidio play table
-                goto CancleASYN;
+                return;
             }
 
             if (string.IsNullOrEmpty(CamADD.Text.Trim()))
             {
                 MessageBox.Show("地址不能为空！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                goto CancleASYN;
+                return;
             }
             StringBuilder sb = new StringBuilder(); //文字描述
 
@@ -672,7 +684,7 @@ namespace VmsClientDemo
                 if (_rec.ModelCam == null)
                 {
                     MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    goto CancleASYN;
+                    return;
                 }
                 string strTm = _rec.getPlayTimeStr();
                 if (strTm == "")
@@ -689,7 +701,7 @@ namespace VmsClientDemo
             }
             else
             {
-                goto CancleASYN;
+                return;
             }
 
             sb.Append("\n" + @"设备编号：" + CamID.Text);
@@ -697,12 +709,12 @@ namespace VmsClientDemo
             if (!bCaptured)
             {
                 MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                goto CancleASYN;
+                return;
             }
             if (string.IsNullOrEmpty(picPath))
             {
                 MessageBox.Show("抓图失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                goto CancleASYN;
+                return;
             }
 
             if (System.IO.File.Exists(picPath))//图片是否存在  
@@ -738,7 +750,7 @@ namespace VmsClientDemo
                     catch
                     {
                         MessageBox.Show("目录无法找到或建立，请检查后再试！");
-                        goto CancleASYN;
+                        return;
                     }
                 }
 
@@ -790,25 +802,26 @@ namespace VmsClientDemo
                 //Thread.Sleep(1000);
                 _PreviewPic.AddImg(finalFileName, iFilesCounter);
                 iFilesCounter++;
+                _real.CapAmountBox.Text = iFilesCounter.ToString();
                 //Show Amount of Captured Pictures
 
                 //Normally end
-                if (bAutoCap == false)
-                {
-                    return;
-                }
+                //if (bAutoCap == false)
+                //{
+                //    return;
+                //}
             }
             else
             {
                 MessageBox.Show("图片保存失败！", "系统提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                goto CancleASYN;
+                return;
             }
 
-            CancleASYN:
-            if ((VideoPlayTab.SelectedIndex < 2) && (bAutoCap == false))
-            {
-                m_BackgroundWorker.CancelAsync();
-            }
+            //CancleASYN:
+            //if ((VideoPlayTab.SelectedIndex < 2) && (bAutoCap == false))
+            //{
+            //    m_BackgroundWorker.CancelAsync();
+            //}
         }
 
         private ImageCodecInfo GetEncoderInfo(string v)
@@ -866,6 +879,8 @@ namespace VmsClientDemo
             if (_PreviewPic.ConfirmSelected(ruleCOMB.Text))
             {//Clear the list for the capture operation of the next time
                 iFilesCounter = 0;
+                _real.CapAmountBox.Text = iFilesCounter.ToString();
+                iTimerAccount = 180*1000;
                 //MessageBox.Show("保存完毕");
             }
 
@@ -880,23 +895,18 @@ namespace VmsClientDemo
             int iAmount = 3;
             int iInterval = Convert.ToInt32(IntervalTimeBox.Text);
 
-            bAutoCap = true;
+            waitWin = new WaitBox();
+            waitWin.Show(this);
 
-            if (VideoPlayTab.SelectedIndex < 2)
-            {
-                CaptureBT.Enabled = false;
-                AutoCapBT.Enabled = false;
-                m_BackgroundWorker.RunWorkerAsync(this);
-            }
+            bAutoCap = true;
 
             for (int iLoop = 0; iLoop < iAmount; iLoop++)
             {
-                CaptureBT.PerformClick();
+                this.CaptureBT.PerformClick();
                 Thread.Sleep(iInterval);
             }
 
-            m_BackgroundWorker.CancelAsync();
-
+            waitWin.Close();
             bAutoCap = false;
         }
 
@@ -958,7 +968,7 @@ namespace VmsClientDemo
             m_BackgroundWorker.DoWork += new DoWorkEventHandler(DoWork);
             m_BackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(UpdateProgress);
             m_BackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(CompletedWork);
-//            m_BackgroundWorker.RunWorkerAsync(this);
+            m_BackgroundWorker.RunWorkerAsync(this);
         }
 
         private void WaitProgress(object sender, EventArgs e)
@@ -975,24 +985,21 @@ namespace VmsClientDemo
         {
             BackgroundWorker bw = sender as BackgroundWorker;
 
-            int iMax = Convert.ToInt32(IntervalTimeBox.Text);
-            int i = 0;
-
-            if(bAutoCap == false)
-            {
-                iMax = 5*1000;
-            }
-
-            while (i <= iMax)
+            int iMax = 180*1000;
+            while (true)
             {
                 if (bw.CancellationPending)
                 {
-                    //e.Cancel = true;
+                    e.Cancel = true;
                     break;
                 }
-                bw.ReportProgress(i);
-                Thread.Sleep(100);
-                i += 100;
+                if (iTimerAccount <= iMax)
+                {
+                    bw.ReportProgress(iTimerAccount);
+                    Thread.Sleep(100);
+                    iTimerAccount += 100;
+                    //iTimerAccount %= iMax;
+                }
             }
         }
 
@@ -1017,7 +1024,10 @@ namespace VmsClientDemo
             {
                 string strDIR = (string)drc[0][0];
                 int iAngle = (int)drc[0][1];
-                DirCOMB.Text = strDIR;
+
+                int iDirIndex = DirCOMB.FindString(strDIR);
+                DirCOMB.SelectedIndex = iDirIndex;
+                //DirCOMB.Text = strDIR;
                 AngleShowBox.Text = iAngle.ToString();
             }
         }
