@@ -52,6 +52,9 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>VmsClientDemo.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Nvr.Common">
       <HintPath>DLL\Nvr.Common.dll</HintPath>

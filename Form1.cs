@@ -636,7 +636,6 @@ namespace VmsClientDemo
             //}
             //m_BackgroundWorker.RunWorkerAsync(this);
             //}
-            iTimerAccount = 0;
 
             Button sendBT = (Button)sender;
 
@@ -810,6 +809,7 @@ namespace VmsClientDemo
                 //{
                 //    return;
                 //}
+                iTimerAccount = 0;
             }
             else
             {
@@ -952,14 +952,6 @@ namespace VmsClientDemo
             rulesWin.Show(this);
         }
 
-        private void Form1_ResizeEnd(object sender, EventArgs e)
-        {//Adjust the size of tabcontrol to avoid some area be hide
-            //VideoPlayTab.Width = this.Width - LoginGroup.Width - 5;
-            //VideoPlayTab.Height = this.Height;
-            //VideoPlayTab.Update();
-            //VideoPlayTab.Refresh();
-        }
-
         private void initBKW()
         {
             m_BackgroundWorker = new BackgroundWorker(); // 实例化后台对象
@@ -1081,6 +1073,16 @@ namespace VmsClientDemo
             {
                 _real.ShortKeyPressed(keyCMD);
             }
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            //MessageBox.Show("y");
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show("x");
         }
     }
 }
