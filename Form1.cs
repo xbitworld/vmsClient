@@ -1000,6 +1000,11 @@ namespace VmsClientDemo
                     iTimerAccount += 100;
                     //iTimerAccount %= iMax;
                 }
+                else
+                {
+                    bw.ReportProgress(0);
+                    Thread.Sleep(100);
+                }
             }
         }
 

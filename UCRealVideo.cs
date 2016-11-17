@@ -435,7 +435,7 @@ namespace VmsClientDemo
 
         public void ShortKeyPressed(Nvr.Common.PTZCommand keyCMD)
         {
-            MessageBox.Show("Z");
+            //MessageBox.Show("Z");
             if (_stream == null) return;
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
             {
