@@ -302,6 +302,7 @@ namespace VmsClientDemo
 
         private void btnZoom2_MouseDown(object sender, MouseEventArgs e)
         {
+            MessageBox.Show("Zoom2 Down");
             if (_stream == null) return;
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
             {
@@ -430,6 +431,42 @@ namespace VmsClientDemo
             //        i += 1000;
             //    }
             //}));
+        }
+
+        public void ShortKeyPressed(Nvr.Common.PTZCommand keyCMD)
+        {
+            MessageBox.Show("Z");
+            if (_stream == null) return;
+            System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
+            {
+                Spnet.Core.Service.Camera rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera();
+                try
+                {
+                    rmtCam.PtzControl(_modelCam.ID, "admin", 0, keyCMD, Nvr.Common.PTZOperType.Start, Nvr.Common.PTZSpeed.Speed4, "");
+                }
+                catch { }
+                finally
+                {
+                    rmtCam = null;
+                }
+            }));
+
+            System.Threading.Thread.Sleep(500);
+
+            if (_stream == null) return;
+            System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
+            {
+                Spnet.Core.Service.Camera rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera();
+                try
+                {
+                    rmtCam.PtzControl(_modelCam.ID, "admin", 0, keyCMD, Nvr.Common.PTZOperType.Start, Nvr.Common.PTZSpeed.Speed4, "");
+                }
+                catch { }
+                finally
+                {
+                    rmtCam = null;
+                }
+            }));
         }
     }
 }

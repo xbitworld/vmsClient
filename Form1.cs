@@ -878,7 +878,7 @@ namespace VmsClientDemo
         private void AutoCapPics(object sender, EventArgs e)
         {
             int iAmount = 3;
-            int iInterval = Convert.ToInt16(IntervalTimeBox.Text);
+            int iInterval = Convert.ToInt32(IntervalTimeBox.Text);
 
             bAutoCap = true;
 
@@ -1024,46 +1024,47 @@ namespace VmsClientDemo
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(shortCheck.Checked == false)
+            Nvr.Common.PTZCommand keyCMD = Nvr.Common.PTZCommand.None;
+
+            if (shortCheck.Checked == false)
             {
                 return;
             }
 
-            if (e.KeyChar == ShortString[0])    //'w')
+            switch(e.KeyChar)
             {
-                _real.btnUp.PerformClick();      
+                case 'w':
+                    keyCMD = Nvr.Common.PTZCommand.Up;
+                    break;
+                case 's':
+                    keyCMD = Nvr.Common.PTZCommand.Down;
+                    break;
+                case 'a':
+                    keyCMD = Nvr.Common.PTZCommand.Left;
+                    break;
+                case 'd':
+                    keyCMD = Nvr.Common.PTZCommand.Right;
+                    break;
+                case 'z':
+                    keyCMD = Nvr.Common.PTZCommand.Zoom2;
+                    break;
+                case 'x':
+                    keyCMD = Nvr.Common.PTZCommand.Zoom1;
+                    break;
+                case 'f':
+                    CaptureBT.PerformClick();
+                    break;
+                case 'g':
+                    ChoisePICs.PerformClick();
+                    break;
+                case 'c':
+                    CAPConfirmBT.PerformClick();
+                    break;
             }
-            else if (e.KeyChar == ShortString[1])    //'s')
+
+            if (keyCMD != Nvr.Common.PTZCommand.None)
             {
-                _real.btnDown.PerformClick();     
-            }
-            else if (e.KeyChar == ShortString[2])    //'a')
-            {
-                _real.btnLeft.PerformClick(); 
-            }
-            else if (e.KeyChar == ShortString[3])    //'d')
-            {
-                _real.btnRight.PerformClick(); 
-            }
-            else if (e.KeyChar == ShortString[4])    //'z')
-            {
-                _real.btnZoom2.PerformClick(); 
-            }
-            else if (e.KeyChar == ShortString[5])    //'x')
-            {
-                _real.btnZoom1.PerformClick();
-            }
-            else if (e.KeyChar == ShortString[6])    //'f')
-            {
-                CaptureBT.PerformClick();
-            }
-            else if (e.KeyChar == ShortString[7])    //'g')
-            {
-                ChoisePICs.PerformClick();
-            }
-            else if (e.KeyChar == ShortString[8])    //'c')
-            {
-                CAPConfirmBT.PerformClick();
+                _real.ShortKeyPressed(keyCMD);
             }
         }
     }
