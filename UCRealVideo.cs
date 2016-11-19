@@ -450,9 +450,10 @@ namespace VmsClientDemo
                     rmtCam = null;
                 }
             }));
+        }
 
-            System.Threading.Thread.Sleep(500);
-
+        public void PtzStop(Nvr.Common.PTZCommand keyCMD)
+        {
             if (_stream == null) return;
             System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback(delegate
             {

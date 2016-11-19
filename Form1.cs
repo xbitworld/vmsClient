@@ -1072,6 +1072,8 @@ namespace VmsClientDemo
             if (keyCMD != Nvr.Common.PTZCommand.None)
             {
                 _real.ShortKeyPressed(keyCMD);
+                System.Threading.Thread.Sleep(500);
+                _real.PtzStop(keyCMD);
             }
         }
 
