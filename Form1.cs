@@ -1029,10 +1029,18 @@ namespace VmsClientDemo
             }
         }
 
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            //MessageBox.Show("y");
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show("x");
+        }
+
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Nvr.Common.PTZCommand keyCMD = Nvr.Common.PTZCommand.None;
-
             if (shortCheck.Checked == false)
             {
                 return;
@@ -1040,25 +1048,7 @@ namespace VmsClientDemo
 
             switch(e.KeyChar)
             {
-                case 'w':
-                    keyCMD = Nvr.Common.PTZCommand.Up;
-                    break;
-                case 's':
-                    keyCMD = Nvr.Common.PTZCommand.Down;
-                    break;
-                case 'a':
-                    keyCMD = Nvr.Common.PTZCommand.Left;
-                    break;
-                case 'd':
-                    keyCMD = Nvr.Common.PTZCommand.Right;
-                    break;
-                case 'z':
-                    keyCMD = Nvr.Common.PTZCommand.Zoom2;
-                    break;
-                case 'x':
-                    keyCMD = Nvr.Common.PTZCommand.Zoom1;
-                    break;
-                case 'f':
+              case 'f':
                     CaptureBT.PerformClick();
                     break;
                 case 'g':
@@ -1068,23 +1058,80 @@ namespace VmsClientDemo
                     CAPConfirmBT.PerformClick();
                     break;
             }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Nvr.Common.PTZCommand keyCMD = Nvr.Common.PTZCommand.None;
+
+            if (shortCheck.Checked == false)
+            {
+                return;
+            }
+
+            switch (e.KeyCode)
+            {
+                case Keys.W:
+                    keyCMD = Nvr.Common.PTZCommand.Up;
+                    break;
+                case Keys.S:
+                    keyCMD = Nvr.Common.PTZCommand.Down;
+                    break;
+                case Keys.A:
+                    keyCMD = Nvr.Common.PTZCommand.Left;
+                    break;
+                case Keys.D:
+                    keyCMD = Nvr.Common.PTZCommand.Right;
+                    break;
+                case Keys.Z:
+                    keyCMD = Nvr.Common.PTZCommand.Zoom2;
+                    break;
+                case Keys.X:
+                    keyCMD = Nvr.Common.PTZCommand.Zoom1;
+                    break;
+            }
 
             if (keyCMD != Nvr.Common.PTZCommand.None)
             {
                 _real.ShortKeyPressed(keyCMD);
-                System.Threading.Thread.Sleep(500);
-                _real.PtzStop(keyCMD);
             }
         }
 
-        private void Form1_ResizeEnd(object sender, EventArgs e)
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            //MessageBox.Show("y");
-        }
+            Nvr.Common.PTZCommand keyCMD = Nvr.Common.PTZCommand.None;
 
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-            //MessageBox.Show("x");
+            if (shortCheck.Checked == false)
+            {
+                return;
+            }
+
+            switch (e.KeyCode)
+            {
+                case Keys.W:
+                    keyCMD = Nvr.Common.PTZCommand.Up;
+                    break;
+                case Keys.S:
+                    keyCMD = Nvr.Common.PTZCommand.Down;
+                    break;
+                case Keys.A:
+                    keyCMD = Nvr.Common.PTZCommand.Left;
+                    break;
+                case Keys.D:
+                    keyCMD = Nvr.Common.PTZCommand.Right;
+                    break;
+                case Keys.Z:
+                    keyCMD = Nvr.Common.PTZCommand.Zoom2;
+                    break;
+                case Keys.X:
+                    keyCMD = Nvr.Common.PTZCommand.Zoom1;
+                    break;
+            }
+
+            if (keyCMD != Nvr.Common.PTZCommand.None)
+            {
+                _real.PtzStop(keyCMD);
+            }
         }
     }
 }
