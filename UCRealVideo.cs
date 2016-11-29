@@ -450,6 +450,8 @@ namespace VmsClientDemo
                     rmtCam = null;
                 }
             }));
+
+            System.Threading.Thread.Sleep(500);
         }
 
         public void PtzStop(Nvr.Common.PTZCommand keyCMD)
@@ -460,7 +462,7 @@ namespace VmsClientDemo
                 Spnet.Core.Service.Camera rmtCam = Spnet.Core.Service.RemoteObjectFactory.CreateCamera();
                 try
                 {
-                    rmtCam.PtzControl(_modelCam.ID, "admin", 0, keyCMD, Nvr.Common.PTZOperType.Start, Nvr.Common.PTZSpeed.Speed4, "");
+                    rmtCam.PtzControl(_modelCam.ID, "admin", 0, keyCMD, Nvr.Common.PTZOperType.Stop, Nvr.Common.PTZSpeed.Speed4, "");
                 }
                 catch { }
                 finally
