@@ -1029,16 +1029,6 @@ namespace VmsClientDemo
             }
         }
 
-        private void Form1_ResizeEnd(object sender, EventArgs e)
-        {
-            //MessageBox.Show("y");
-        }
-
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-            //MessageBox.Show("x");
-        }
-
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (shortCheck.Checked == false)
@@ -1046,9 +1036,9 @@ namespace VmsClientDemo
                 return;
             }
 
-            switch(e.KeyChar)
+            switch (e.KeyChar)
             {
-              case 'f':
+                case 'f':
                     CaptureBT.PerformClick();
                     break;
                 case 'g':
