@@ -53,6 +53,8 @@ namespace VmsClientDemo
 
         private BackgroundWorker m_BackgroundWorker;// 申明后台对象
 
+        Nvr.Common.PTZCommand keyCMDGlobale = Nvr.Common.PTZCommand.None;
+
         private void InitDBConn(string DBFullpath)
         {
             // TODO: Modify the connection string and include any
@@ -1059,6 +1061,11 @@ namespace VmsClientDemo
                 return;
             }
 
+            if (keyCMDGlobale != Nvr.Common.PTZCommand.None)
+            {
+                return;
+            }
+
             switch (e.KeyCode)
             {
                 case Keys.W:
@@ -1084,6 +1091,7 @@ namespace VmsClientDemo
             if (keyCMD != Nvr.Common.PTZCommand.None)
             {
                 _real.ShortKeyPressed(keyCMD);
+                keyCMDGlobale = keyCMD;
             }
         }
 
@@ -1121,6 +1129,7 @@ namespace VmsClientDemo
             if (keyCMD != Nvr.Common.PTZCommand.None)
             {
                 _real.PtzStop(keyCMD);
+                keyCMDGlobale = Nvr.Common.PTZCommand.None;
             }
         }
     }
