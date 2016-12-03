@@ -1080,10 +1080,10 @@ namespace VmsClientDemo
                 case Keys.D:
                     keyCMD = Nvr.Common.PTZCommand.Right;
                     break;
-                case Keys.Z:
+                case Keys.Q:
                     keyCMD = Nvr.Common.PTZCommand.Zoom2;
                     break;
-                case Keys.X:
+                case Keys.E:
                     keyCMD = Nvr.Common.PTZCommand.Zoom1;
                     break;
             }
@@ -1118,10 +1118,10 @@ namespace VmsClientDemo
                 case Keys.D:
                     keyCMD = Nvr.Common.PTZCommand.Right;
                     break;
-                case Keys.Z:
+                case Keys.Q:
                     keyCMD = Nvr.Common.PTZCommand.Zoom2;
                     break;
-                case Keys.X:
+                case Keys.E:
                     keyCMD = Nvr.Common.PTZCommand.Zoom1;
                     break;
             }
