@@ -329,6 +329,9 @@ namespace VmsClientDemo
                 }));
         }
 
+
+        int iOldItemImage = 0;
+        ListViewItem lviOldItem = null;
         //
         private void lstCamList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -342,9 +345,11 @@ namespace VmsClientDemo
             CamADD.Text = "";
             CamID.Text = "";
 
+            //切换当前选择的摄像机图案
             if (this.lstCamList.SelectedItems.Count==0) return ;
-            Spnet.Data.Model.Camera modelCam=lstCamList.SelectedItems[0].Tag as  Spnet.Data.Model.Camera;
 
+            Spnet.Data.Model.Camera modelCam=lstCamList.SelectedItems[0].Tag as  Spnet.Data.Model.Camera;
+             
             if (modelCam != null)
             {
                 _real.ModelCam = modelCam;
@@ -587,6 +592,23 @@ namespace VmsClientDemo
             this.VideoPlayTab.SelectedTab = this.tabPage1;
 
             if (this.lstCamList.SelectedItems.Count == 0) return;
+
+            if (lviOldItem != null)
+            {
+                lviOldItem.ImageIndex = iOldItemImage;
+            }
+
+            iOldItemImage = lstCamList.SelectedItems[0].ImageIndex;
+            lviOldItem = lstCamList.SelectedItems[0];
+
+            lstCamList.SelectedItems[0].ImageIndex = 8;
+
+            //切换时，删除旧图片
+            _PreviewPic.resetList();
+            iFilesCounter = 0;
+            _real.CapAmountBox.Text = iFilesCounter.ToString();
+            iTimerAccount = 180 * 1000;
+
             Spnet.Data.Model.Camera modelCam = lstCamList.SelectedItems[0].Tag as Spnet.Data.Model.Camera;
             if (modelCam != null)
             {
@@ -895,7 +917,7 @@ namespace VmsClientDemo
         private void AutoCapPics(object sender, EventArgs e)
         {
             int iAmount = 3;
-            int iInterval = Convert.ToInt32(IntervalTimeBox.Text);
+            int iInterval = Convert.ToInt32(IntervalTimeBox.Text)*1000;
 
             waitWin = new WaitBox();
             waitWin.Show(this);

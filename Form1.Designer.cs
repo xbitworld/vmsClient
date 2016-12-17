@@ -168,6 +168,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lstCamList.GridLines = true;
             this.lstCamList.Location = new System.Drawing.Point(12, 382);
+            this.lstCamList.MultiSelect = false;
             this.lstCamList.Name = "lstCamList";
             this.lstCamList.Size = new System.Drawing.Size(285, 193);
             this.lstCamList.SmallImageList = this.TabImageList;
@@ -189,6 +190,7 @@
             this.TabImageList.Images.SetKeyName(5, "database16.png");
             this.TabImageList.Images.SetKeyName(6, "CamIcon-OffLine.png");
             this.TabImageList.Images.SetKeyName(7, "CamIcon-Online.png");
+            this.TabImageList.Images.SetKeyName(8, "captureCAM.png");
             // 
             // VideoPlayTab
             // 
@@ -214,7 +216,7 @@
             this.tabPage1.ImageIndex = 0;
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(751, 530);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "实时视频";
@@ -225,7 +227,7 @@
             this.tabPage2.ImageIndex = 1;
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(751, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "录像回放";
@@ -246,7 +248,7 @@
             this.tabPage4.ImageKey = "time_clock.png";
             this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(751, 530);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "按时间回放录像";
@@ -256,7 +258,7 @@
             // 
             this.tabPage5.ImageIndex = 4;
             this.tabPage5.Location = new System.Drawing.Point(4, 31);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(751, 530);
             this.tabPage5.TabIndex = 4;
@@ -298,7 +300,7 @@
             this.shortCheck.Checked = true;
             this.shortCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.shortCheck.Location = new System.Drawing.Point(218, 20);
-            this.shortCheck.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.shortCheck.Margin = new System.Windows.Forms.Padding(2);
             this.shortCheck.Name = "shortCheck";
             this.shortCheck.Size = new System.Drawing.Size(60, 16);
             this.shortCheck.TabIndex = 24;
@@ -378,7 +380,7 @@
             // AngleShowBox
             // 
             this.AngleShowBox.Location = new System.Drawing.Point(140, 74);
-            this.AngleShowBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AngleShowBox.Margin = new System.Windows.Forms.Padding(2);
             this.AngleShowBox.Name = "AngleShowBox";
             this.AngleShowBox.ReadOnly = true;
             this.AngleShowBox.Size = new System.Drawing.Size(47, 21);

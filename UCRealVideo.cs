@@ -358,7 +358,7 @@ namespace VmsClientDemo
             }));
         }
 
-        string[] dirText = { "南向", "西南", "西向", "西北", "北向", "东北", "东向", "东南" };
+//        string[] dirText = { "南向", "西南", "西向", "西北", "北向", "东北", "东向", "东南" };
         private void btnCallPreset_Click(object sender, EventArgs e)
         {
             if (_modelCam == null)

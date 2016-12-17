@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VmsClient", "VmsClient.csproj", "{713F3E2A-5A98-4E74-9874-8BA884B74C5B}"
 EndProject
@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pic4Tabpage", "pic4Tabpage"
 		pics4TAB\CamIcon-OffLine.png = pics4TAB\CamIcon-OffLine.png
 		pics4TAB\CamIcon-Online.png = pics4TAB\CamIcon-Online.png
 		pics4TAB\CamIcon.png = pics4TAB\CamIcon.png
+		pics4TAB\captureCAM.png = pics4TAB\captureCAM.png
 		pics4TAB\clapper2.png = pics4TAB\clapper2.png
 		pics4TAB\database16.png = pics4TAB\database16.png
 		pics4TAB\pictures1.png = pics4TAB\pictures1.png
