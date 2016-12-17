@@ -338,6 +338,7 @@
             // 
             this.CamADD.Location = new System.Drawing.Point(49, 47);
             this.CamADD.Name = "CamADD";
+            this.CamADD.ReadOnly = true;
             this.CamADD.Size = new System.Drawing.Size(138, 21);
             this.CamADD.TabIndex = 12;
             this.CamADD.Text = "一环路科华路口磨子桥";
@@ -410,6 +411,7 @@
             // 
             this.AddrID.Location = new System.Drawing.Point(190, 47);
             this.AddrID.Name = "AddrID";
+            this.AddrID.ReadOnly = true;
             this.AddrID.Size = new System.Drawing.Size(88, 21);
             this.AddrID.TabIndex = 22;
             this.AddrID.Text = "100001000100";
@@ -476,6 +478,7 @@
             this.SavePICPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SavePICPath.Location = new System.Drawing.Point(49, 127);
             this.SavePICPath.Name = "SavePICPath";
+            this.SavePICPath.ReadOnly = true;
             this.SavePICPath.Size = new System.Drawing.Size(179, 21);
             this.SavePICPath.TabIndex = 15;
             this.SavePICPath.Text = "C:\\抓取图片";
@@ -540,6 +543,7 @@
             // 
             this.CamID.Location = new System.Drawing.Point(49, 20);
             this.CamID.Name = "CamID";
+            this.CamID.ReadOnly = true;
             this.CamID.Size = new System.Drawing.Size(138, 21);
             this.CamID.TabIndex = 14;
             this.CamID.Text = "512113889150570369";
