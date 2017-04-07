@@ -27,6 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pic4Tabpage", "pic4Tabpage"
 		pics4TAB\video166.png = pics4TAB\video166.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "验收材料", "验收材料", "{911F58F5-936F-4C65-8302-EC46258651CE}"
+	ProjectSection(SolutionItems) = preProject
+		验收材料\双流区视频监控平台手动抓拍-测试文档.docx = 验收材料\双流区视频监控平台手动抓拍-测试文档.docx
+		验收材料\双流区视频监控平台手动抓拍-系统设计.docx = 验收材料\双流区视频监控平台手动抓拍-系统设计.docx
+		验收材料\双流区视频监控平台手动抓拍-需求分析.docx = 验收材料\双流区视频监控平台手动抓拍-需求分析.docx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
